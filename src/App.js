@@ -1,9 +1,8 @@
 import "./App.css";
 import React, { Component } from "react";
-import Answers from "./components/answers/answer";
-import CustomizedInputs from "./components/input/input";
+import Main from "./components/main/main";
+
 import { useState } from "react";
-import FetchData from "./components/fetch/index";
 import { firebaseConfig } from "./constants/apikey.js";
 import firebase from "firebase/app";
 
@@ -20,10 +19,7 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App-header">
-          <CustomizedInputs />
-          <FetchData />
-
-          {/* <Answers /> */}
+        <Main />
         </header>
       </div>
     );
