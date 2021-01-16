@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { fade, makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import "./input.css";
+import firebase from "firebase";
 
 const useStylesReddit = makeStyles(theme => ({
   root: {
@@ -31,27 +32,39 @@ function RedditTextField(props) {
   );
 }
 
-const useStyles = makeStyles(theme => ({
-  root: {
-    display: "flex",
-    flexWrap: "wrap"
-  },
-  margin: {
-    margin: theme.spacing(1)
-  }
-}));
+export default function CustomizedInputs() {
+  const [value, setValue] = useState("");
 
-export default function CustomizedInputs(props) {
+  const handleSubmit = () => {
+    console.log("hamza: " + value);
+    const values = { name: value };
+    let carListRef = firebase.database().ref("car");
+    let newCarRef = carListRef.push();
+    newCarRef
+      .set(values)
+      .then(resp => {
+        console.log(resp);
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  };
+
+  const handleChange = e => {
+    setValue(e.target.value);
+  };
+
   return (
     <div className="input_container" align="center">
       <RedditTextField
         label="Enter your key"
-        defaultValue=""
+        defaultValue={value}
+        onChange={e => handleChange(e)}
         variant="filled"
         id="reddit-input"
       />
       <Button
-        onClick={props.handleSubmit}
+        onClick={handleSubmit}
         variant="contained"
         className="submitButton"
       >
