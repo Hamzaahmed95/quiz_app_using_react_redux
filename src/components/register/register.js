@@ -2,9 +2,8 @@ import React, { useState, useEffect } from "react";
 import { fade, makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
-import "./input.css";
+import "./register.css";
 import firebase from "firebase";
-import * as Actions from '../../actions/userActions';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
@@ -35,22 +34,29 @@ function RedditTextField(props) {
   );
 }
 
-const CustomizedInputs = ({ actions }) => {
+const Register = ({ isLoggedIn }) => {
   const [value, setValue] = useState("");
-
+  console.log("islogin: " + isLoggedIn);
   const handleSubmit = () => {
     console.log("hamza: " + value);
-    actions.getUserData(value);
-    /*  firebase
-      .database()
-      .ref("user")
-      .orderByChild("id")
-      .equalTo(value)
-      .on("value", snapshot => {
-        snapshot.forEach(function (data) {
-         console.log(data.val());
-        });
-      }); */
+    const randomString = Math.random().toString(36);
+    const date = new Date();
+    const randomNumber =  randomString+new Date(date).getTime();
+    const values = { 
+      id: randomNumber,
+      name: value,
+      role: 'admin'
+    };
+    let carListRef = firebase.database().ref("user");
+    let newCarRef = carListRef.push();
+    newCarRef
+      .set(values)
+      .then(resp => {
+        console.log(resp);
+      })
+      .catch(err => {
+        console.log(err);
+      });
   };
 
   const handleChange = e => {
@@ -78,12 +84,11 @@ const CustomizedInputs = ({ actions }) => {
 }
 
 const mapStateToProps = (props) => ({
-  isLoggedIn: props.userReducer.isLoggedIn,
-  user: props.userReducer.user,
+	isLoggedIn: props.userReducer.isLoggedIn,
 });
 
 const mapDispatchToProps = (dispatch) => ({
-	actions: bindActionCreators(Actions, dispatch),
+	//actions: bindActionCreators(Actions, dispatch),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(CustomizedInputs);
+export default connect(mapStateToProps, mapDispatchToProps)(Register);
