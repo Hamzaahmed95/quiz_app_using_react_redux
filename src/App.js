@@ -21,7 +21,6 @@ class App extends Component {
         <header className="App-header">
           <Main />
         </header>
-        <Answers />
       </div>
     );
   }

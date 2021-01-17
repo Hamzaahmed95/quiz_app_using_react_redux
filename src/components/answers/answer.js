@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
 import "./answer.css";
-import { CountdownCircleTimer } from "react-countdown-circle-timer";
+import CountDownWrapper from "../countdownwrapper/index";
 import Button from "@material-ui/core/Button";
 import Card from "@material-ui/core/Card";
 import { data } from "../../constants/dummyData";
 
 const Answers = () => {
   const [correctAnswer, setCorrectAnswer] = useState("B");
+  const [timer, setTimer] = useState(0);
   const [counter, setCounter] = useState(0);
   const [
     { answerColor1, answerColor2, answerColor3, answerColor4 },
@@ -43,11 +44,17 @@ const Answers = () => {
     // selectAnswer4(true);
     setAnswerColor({ answerColor4: "grey" });
   };
-  const children = ({ remainingTime }) => {
-    const minutes = Math.floor(remainingTime / 60);
-    const seconds = remainingTime % 60;
 
-    return `${minutes}:${seconds}`;
+  const onCompleteTimer = () => {
+    if (correctAnswer === "A") {
+      setAnswerColor({ answerColor1: "green" });
+    } else if (correctAnswer === "B") {
+      setAnswerColor({ answerColor2: "green" });
+    } else if (correctAnswer === "C") {
+      setAnswerColor({ answerColor3: "green" });
+    } else {
+      setAnswerColor({ answerColor4: "green" });
+    }
   };
 
   return (
@@ -57,26 +64,7 @@ const Answers = () => {
           Islamic Quiz
         </h1>
         <div className="timer" align="center">
-           
-          <CountdownCircleTimer
-            onComplete={() => {
-              if (correctAnswer === "A") {
-                setAnswerColor({ answerColor1: "green" });
-              } else if (correctAnswer === "B") {
-                setAnswerColor({ answerColor2: "green" });
-              } else if (correctAnswer === "C") {
-                setAnswerColor({ answerColor3: "green" });
-              } else {
-                setAnswerColor({ answerColor4: "green" });
-              }
-            }}
-            children={children}
-            isPlaying
-            duration={20}
-            size={100}
-            strokeWidth={4}
-            colors="#3b5998"
-          />
+          <CountDownWrapper onComplete={onCompleteTimer} timer={timer} />
         </div>
         <div align="center" className="question">
           <p>{data.question[counter].description}</p>
@@ -120,11 +108,12 @@ const Answers = () => {
           </div>
         </Card>
         <Button
-          onClick={() =>
+          onClick={() => {
+            setTimer(timer + 1);
             counter < data.question.length
               ? setCounter(counter + 1)
-              : setCounter(counter - 1)
-          }
+              : setCounter(counter - 1);
+          }}
           className="admin_button"
           variant="contained"
           color="primary"
