@@ -13,7 +13,6 @@ import Register from "../register/register";
 import * as Actions from '../../actions/userActions';
 
 const Main = ({ isLoggedIn, actions, user }) => {
-  const [value, setValue] = useState("");
   console.log(user,"islogin: " + isLoggedIn);
   useEffect(() => {
     console.log(localStorage.getItem('id'),"localStorage.getItem('id')");
@@ -21,7 +20,7 @@ const Main = ({ isLoggedIn, actions, user }) => {
       actions.getUserData(localStorage.getItem('id')); 
     }
   }, []);
-  const handleSubmit = () => {
+/*   const handleSubmit = () => {
     console.log("hamza: " + value);
     const values = { name: value };
     let carListRef = firebase.database().ref("car");
@@ -38,13 +37,13 @@ const Main = ({ isLoggedIn, actions, user }) => {
 
   const handleChange = e => {
     setValue(e.target.value);
-  };
+  }; */
 
   return (
     <div >
-        <CustomizedInputs />
-          <FetchData />
-          {/* <Answers /> */}
+       {!isLoggedIn &&<CustomizedInputs />
+          } 
+          {isLoggedIn && <Answers isAdmin={user.role == 'admin' ? true : false } user={user}/> }
     </div>
   );
 }

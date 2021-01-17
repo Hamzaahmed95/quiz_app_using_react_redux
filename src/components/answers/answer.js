@@ -5,7 +5,8 @@ import Button from "@material-ui/core/Button";
 import Box from "@material-ui/core/Box";
 import Card from "@material-ui/core/Card";
 
-const Answers = () => {
+const Answers = (props) => {
+  console.log(props.isAdmin,"propsss is admin");
   const [answer1, selectAnswer1] = useState(false);
   const [answerColor, setAnswerColor] = useState("purple");
   const [answer2, selectAnswer2] = useState(false);

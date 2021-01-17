@@ -13,16 +13,17 @@ import firebase from "firebase";
       .orderByChild("id")
       .equalTo(value)
       .on("value", snapshot => {
+        if (snapshot.exists()) {
         snapshot.forEach(function (data) {
          console.log(data.val());
-         if(data.val()){
           localStorage.setItem("id", data.child("id").val());
           dispatch({ type: LOGIN_SUCCESS, payload: data.val() });
+        });
          }
          else{
-           console.log(data.val(),"usereee");
+           console.log("errorss show toast invalid ID");
          }
-        });
+       
       });
   }
 }
