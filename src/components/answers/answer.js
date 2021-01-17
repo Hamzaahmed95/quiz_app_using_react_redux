@@ -1,28 +1,47 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./answer.css";
 import { CountdownCircleTimer } from "react-countdown-circle-timer";
 import Button from "@material-ui/core/Button";
-import Box from "@material-ui/core/Box";
 import Card from "@material-ui/core/Card";
+import { data } from "../../constants/dummyData";
 
 const Answers = () => {
-  const [answer1, selectAnswer1] = useState(false);
-  const [answerColor, setAnswerColor] = useState("purple");
-  const [answer2, selectAnswer2] = useState(false);
-  const [answer3, selectAnswer3] = useState(false);
-  const [answer4, selectAnswer4] = useState(false);
+  const [correctAnswer, setCorrectAnswer] = useState("B");
+  const [counter, setCounter] = useState(0);
+  const [
+    { answerColor1, answerColor2, answerColor3, answerColor4 },
+    setAnswerColor
+  ] = useState([
+    {
+      answerColor1: "purple",
+      answerColor2: "purple",
+      answerColor3: "purple",
+      answerColor4: "purple"
+    }
+  ]);
+  useEffect(() => {
+    console.log(data.question[0].description);
+    const answer = data.question.filter(e => {
+      e.answer.filter(e => e.isTrue === true);
+    });
+
+    //if(answer)
+  }, []);
 
   const colorChange1 = () => {
-    setAnswerColor("grey");
+    setAnswerColor({ answerColor1: "grey" });
   };
   const colorChange2 = () => {
-    selectAnswer2(true);
+    //selectAnswer2(true);
+    setAnswerColor({ answerColor2: "grey" });
   };
   const colorChange3 = () => {
-    selectAnswer3(true);
+    // selectAnswer3(true);
+    setAnswerColor({ answerColor3: "grey" });
   };
   const colorChange4 = () => {
-    selectAnswer4(true);
+    // selectAnswer4(true);
+    setAnswerColor({ answerColor4: "grey" });
   };
   const children = ({ remainingTime }) => {
     const minutes = Math.floor(remainingTime / 60);
@@ -41,9 +60,15 @@ const Answers = () => {
            
           <CountdownCircleTimer
             onComplete={() => {
-              // do your stuff here
-              setAnswerColor("green");
-              return [false, 1500]; // repeat animation in 1.5 seconds
+              if (correctAnswer === "A") {
+                setAnswerColor({ answerColor1: "green" });
+              } else if (correctAnswer === "B") {
+                setAnswerColor({ answerColor2: "green" });
+              } else if (correctAnswer === "C") {
+                setAnswerColor({ answerColor3: "green" });
+              } else {
+                setAnswerColor({ answerColor4: "green" });
+              }
             }}
             children={children}
             isPlaying
@@ -54,31 +79,58 @@ const Answers = () => {
           />
         </div>
         <div align="center" className="question">
-          <p>This is the first Question</p>
+          <p>{data.question[counter].description}</p>
         </div>
         <Card className="box_container" border={1}>
           <div align="center" className="answer_container">
             <Button
               onClick={colorChange1}
-              className={answerColor}
+              className={answerColor1}
               variant="contained"
               color="primary"
             >
-              This is answer 1
+              {data.question[counter].answer[0].details}
             </Button>
-            <Button variant="contained" color="primary">
-              This is answer 2
+            <Button
+              onClick={colorChange2}
+              className={answerColor2}
+              variant="contained"
+              color="primary"
+            >
+              {data.question[counter].answer[1].details}
             </Button>
           </div>
           <div className="answer_container">
-            <Button className="button1" variant="contained" color="primary">
-              This is answer 3
+            <Button
+              onClick={colorChange3}
+              className={answerColor3}
+              variant="contained"
+              color="primary"
+            >
+              {data.question[counter].answer[2].details}
             </Button>
-            <Button variant="contained" color="primary">
-              This is answer 4
+            <Button
+              onClick={colorChange4}
+              className={answerColor4}
+              variant="contained"
+              color="primary"
+            >
+              {data.question[counter].answer[3].details}
             </Button>
           </div>
         </Card>
+        <Button
+          onClick={() =>
+            counter < data.question.length
+              ? setCounter(counter + 1)
+              : setCounter(counter - 1)
+          }
+          className="admin_button"
+          variant="contained"
+          color="primary"
+        >
+          Next Question
+        </Button>
       </Card>
     </div>
   );

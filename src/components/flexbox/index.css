@@ -1,0 +1,19 @@
+.container-1 {
+    display: flex;
+}
+
+.container-1 div {
+    border: 1px #ccc solid
+}
+
+.box-1 {
+    width: 30%
+}
+
+.box-2 {
+    width: 60%
+}
+
+.box-3 {
+    width: 20%
+}

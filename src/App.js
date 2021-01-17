@@ -4,6 +4,7 @@ import Answers from "./components/answers/answer";
 import CustomizedInputs from "./components/input/input";
 import { useState } from "react";
 import FetchData from "./components/fetch/index";
+import FlexBox from "./components/flexbox/index";
 import { firebaseConfig } from "./constants/apikey.js";
 import firebase from "firebase/app";
 
@@ -20,11 +21,10 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App-header">
-          <CustomizedInputs />
-          <FetchData />
-
-          {/* <Answers /> */}
+          {/* <CustomizedInputs />
+          <FetchData /> <FlexBox />   */}
         </header>
+        <Answers />
       </div>
     );
   }
