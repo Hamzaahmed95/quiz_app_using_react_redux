@@ -4,6 +4,9 @@ import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import "./input.css";
 import firebase from "firebase";
+import * as Actions from '../../actions/userActions';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 
 const useStylesReddit = makeStyles(theme => ({
   root: {
@@ -32,12 +35,13 @@ function RedditTextField(props) {
   );
 }
 
-export default function CustomizedInputs() {
+const CustomizedInputs = ({ actions }) => {
   const [value, setValue] = useState("");
 
   const handleSubmit = () => {
     console.log("hamza: " + value);
-    firebase
+    actions.getUserData(value);
+    /*  firebase
       .database()
       .ref("user")
       .orderByChild("id")
@@ -46,7 +50,7 @@ export default function CustomizedInputs() {
         snapshot.forEach(function (data) {
          console.log(data.val());
         });
-      });
+      }); */
   };
 
   const handleChange = e => {
@@ -72,3 +76,14 @@ export default function CustomizedInputs() {
     </div>
   );
 }
+
+const mapStateToProps = (props) => ({
+  isLoggedIn: props.userReducer.isLoggedIn,
+  user: props.userReducer.user,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+	actions: bindActionCreators(Actions, dispatch),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(CustomizedInputs);

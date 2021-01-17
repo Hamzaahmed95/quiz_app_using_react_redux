@@ -10,11 +10,17 @@ import Answers from "../answers/answer";
 import CustomizedInputs from "../input/input";
 import FetchData from "../fetch/index";
 import Register from "../register/register";
+import * as Actions from '../../actions/userActions';
 
-
-const Main = ({ isLoggedIn }) => {
+const Main = ({ isLoggedIn, actions, user }) => {
   const [value, setValue] = useState("");
-  console.log("islogin: " + isLoggedIn);
+  console.log(user,"islogin: " + isLoggedIn);
+  useEffect(() => {
+    console.log(localStorage.getItem('id'),"localStorage.getItem('id')");
+    if(localStorage.getItem('id')){
+      actions.getUserData(localStorage.getItem('id')); 
+    }
+  }, []);
   const handleSubmit = () => {
     console.log("hamza: " + value);
     const values = { name: value };
@@ -44,11 +50,12 @@ const Main = ({ isLoggedIn }) => {
 }
 
 const mapStateToProps = (props) => ({
-	isLoggedIn: props.userReducer.isLoggedIn,
+  isLoggedIn: props.userReducer.isLoggedIn,
+  user: props.userReducer.user,
 });
 
 const mapDispatchToProps = (dispatch) => ({
-	//actions: bindActionCreators(Actions, dispatch),
+	actions: bindActionCreators(Actions, dispatch),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Main);
