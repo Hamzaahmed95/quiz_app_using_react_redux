@@ -7,7 +7,7 @@ import { data } from "../../constants/dummyData";
 import firebase from "firebase";
 
 const Answers = ({ isAdmin, user, appState }) => {
-  console.log(appState,"counter");
+  console.log(appState, "counter");
   const [correctAnswer, setCorrectAnswer] = useState("B");
   const [timer, setTimer] = useState(0);
   const [counter, setCounter] = useState(0);
@@ -46,20 +46,19 @@ const Answers = ({ isAdmin, user, appState }) => {
     // selectAnswer4(true);
     setAnswerColor({ answerColor4: "grey" });
   };
-  const onClickNextQuestion = () =>{
-    console.log(appState,"counter");
+  const onClickNextQuestion = () => {
+    console.log(appState, "counter");
     const counter = appState.state + 1;
     firebase
-    .database()
-    .ref("appState")
-    .orderByChild("state")
-    .once("value", snapshot => {
-      snapshot.forEach(function (data) {
-        data.ref.child("state").set(counter);
+      .database()
+      .ref("appState")
+      .orderByChild("state")
+      .once("value", snapshot => {
+        snapshot.forEach(function(data) {
+          data.ref.child("state").set(counter);
+        });
       });
-    });
-
-  }
+  };
   const onCompleteTimer = () => {
     if (correctAnswer === "A") {
       setAnswerColor({ answerColor1: "green" });
@@ -82,7 +81,7 @@ const Answers = ({ isAdmin, user, appState }) => {
           <CountDownWrapper onComplete={onCompleteTimer} timer={timer} />
         </div>
         <div align="center" className="question">
-          <p>{data.question[counter].description}</p>
+          <p>{data.question[appState.state].description}</p>
         </div>
         <Card className="box_container" border={1}>
           <div align="center" className="answer_container">
@@ -92,7 +91,7 @@ const Answers = ({ isAdmin, user, appState }) => {
               variant="contained"
               color="primary"
             >
-              {data.question[counter].answer[0].details}
+              {data.question[appState.state].answer[0].details}
             </Button>
             <Button
               onClick={colorChange2}
@@ -100,7 +99,7 @@ const Answers = ({ isAdmin, user, appState }) => {
               variant="contained"
               color="primary"
             >
-              {data.question[counter].answer[1].details}
+              {data.question[appState.state].answer[1].details}
             </Button>
           </div>
           <div className="answer_container">
@@ -110,7 +109,7 @@ const Answers = ({ isAdmin, user, appState }) => {
               variant="contained"
               color="primary"
             >
-              {data.question[counter].answer[2].details}
+              {data.question[appState.state].answer[2].details}
             </Button>
             <Button
               onClick={colorChange4}
@@ -118,18 +117,20 @@ const Answers = ({ isAdmin, user, appState }) => {
               variant="contained"
               color="primary"
             >
-              {data.question[counter].answer[3].details}
+              {data.question[appState.state].answer[3].details}
             </Button>
           </div>
         </Card>
-        {isAdmin && <Button
-          onClick={onClickNextQuestion}
-          className="admin_button"
-          variant="contained"
-          color="primary"
-        >
-          Next Question
-        </Button>}
+        {isAdmin && (
+          <Button
+            onClick={onClickNextQuestion}
+            className="admin_button"
+            variant="contained"
+            color="primary"
+          >
+            Next Question
+          </Button>
+        )}
       </div>
     </div>
   );
