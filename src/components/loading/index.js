@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-
+import "./index.css";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import Main from "../main/main";
@@ -22,7 +22,7 @@ const Loading = ({ isLoggedIn, actions, user }) => {
     <div>
       {!Loadingg ? (
         <div className="progress_bar" align="center">
-          <CircularProgress className="progress_barColor" color="#ffffff" />
+          <CircularProgress className="progress_barColor" color="primary" />
         </div>
       ) : (
         <Main user={user} isLoggedIn={isLoggedIn} />

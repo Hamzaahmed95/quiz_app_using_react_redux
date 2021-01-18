@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import Loading from "./components/loading/index";
 import { firebaseConfig } from "./constants/apikey.js";
 import firebase from "firebase/app";
+import Card from "@material-ui/core/Card";
 
 class App extends Component {
   constructor(props) {
@@ -17,9 +18,9 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <header className="App-header">
+        <Card align="center" className="parent_answer_container">
           <Loading />
-        </header>
+        </Card>
       </div>
     );
   }

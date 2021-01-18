@@ -4,8 +4,10 @@ import CountDownWrapper from "../countdownwrapper/index";
 import Button from "@material-ui/core/Button";
 import Card from "@material-ui/core/Card";
 import { data } from "../../constants/dummyData";
+import firebase from "firebase";
 
-const Answers = () => {
+const Answers = ({ isAdmin, user }) => {
+  console.log("hamzaahmed:" + user.name, " is ", isAdmin);
   const [correctAnswer, setCorrectAnswer] = useState("B");
   const [timer, setTimer] = useState(0);
   const [counter, setCounter] = useState(0);
@@ -25,6 +27,7 @@ const Answers = () => {
     const answer = data.question.filter(e => {
       e.answer.filter(e => e.isTrue === true);
     });
+    getData();
 
     //if(answer)
   }, []);
@@ -56,10 +59,21 @@ const Answers = () => {
       setAnswerColor({ answerColor4: "green" });
     }
   };
+  const getData = () => {
+    firebase
+      .database()
+      .ref("appState")
+      .orderByChild("state")
+      .on("value", snapshot => {
+        snapshot.forEach(function(data) {
+          alert(1);
+        });
+      });
+  };
 
   return (
     <div>
-      <Card align="center" className="parent_answer_container">
+      <div align="center" className="parent_answer_container">
         <h1 className=" " align="center">
           Islamic Quiz
         </h1>
@@ -120,7 +134,7 @@ const Answers = () => {
         >
           Next Question
         </Button>
-      </Card>
+      </div>
     </div>
   );
 };
