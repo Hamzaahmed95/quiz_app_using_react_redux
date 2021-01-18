@@ -1,11 +1,10 @@
 import {
   LOGIN_SUCCESS,
-  LOGUT_SUCCESS,
-  GET_USER
+  GET_APP_STATE
 } from "../constants/action-types";
 import firebase from "firebase";
 
- export const getUserData = (value) => {
+export const getUserData = (value) => {
   return (dispatch) => {
     firebase
       .database()
@@ -22,6 +21,26 @@ import firebase from "firebase";
          }
          else{
            console.log("errorss show toast invalid ID");
+         }
+       
+      });
+  }
+}
+
+export const getAppState = () => {
+  return (dispatch) => {
+    firebase
+      .database()
+      .ref("appState")
+      .on("value", snapshot => {
+        if (snapshot.exists()) {
+        snapshot.forEach(function (data) {
+         console.log(data.val(),"awssssawssssawssss");
+          dispatch({ type: GET_APP_STATE, payload: data.val() });
+        });
+         }
+         else{
+           console.log("asdasxzczxc show toast invalid ID");
          }
        
       });

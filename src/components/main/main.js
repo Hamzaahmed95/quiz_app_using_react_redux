@@ -3,13 +3,13 @@ import "./main.css";
 import Answers from "../answers/answer";
 import CustomizedInputs from "../input/input";
 
-const Main = ({ isLoggedIn, user }) => {
+const Main = ({ isLoggedIn, user, appState }) => {
   return (
     <div>
       {!isLoggedIn ? (
         <CustomizedInputs />
       ) : (
-        <Answers isAdmin={user.role === "admin" ? true : false} user={user} />
+        <Answers appState={appState} isAdmin={user.role === "admin" ? true : false} user={user} />
       )}
     </div>
   );

@@ -1,8 +1,9 @@
-import { LOGIN_SUCCESS, LOGUT_SUCCESS, GET_USER } from "../constants/action-types";
+import { LOGIN_SUCCESS, LOGUT_SUCCESS, GET_APP_STATE } from "../constants/action-types";
 
 const initialState = {
   user: {},
   isLoggedIn: false,
+  appState: null
 };
 
 const userReducer = (state = initialState, action) => {
@@ -13,10 +14,10 @@ const userReducer = (state = initialState, action) => {
       isLoggedIn: true,
     };
   }
-  if(action.type === LOGUT_SUCCESS) {
+  if(action.type === GET_APP_STATE) {
     return {
       ...state,
-      isLoggedIn: false,
+      appState: action.payload,
     }
   } 
   return state;

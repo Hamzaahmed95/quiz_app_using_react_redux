@@ -6,7 +6,8 @@ import Card from "@material-ui/core/Card";
 import { data } from "../../constants/dummyData";
 import firebase from "firebase";
 
-const Answers = ({ isAdmin, user }) => {
+const Answers = ({ isAdmin, user, appState }) => {
+  console.log(appState,"counter");
   const [correctAnswer, setCorrectAnswer] = useState("B");
   const [timer, setTimer] = useState(0);
   const [counter, setCounter] = useState(0);
@@ -45,7 +46,20 @@ const Answers = ({ isAdmin, user }) => {
     // selectAnswer4(true);
     setAnswerColor({ answerColor4: "grey" });
   };
+  const onClickNextQuestion = () =>{
+    console.log(appState,"counter");
+    const counter = appState.state + 1;
+    firebase
+    .database()
+    .ref("appState")
+    .orderByChild("state")
+    .once("value", snapshot => {
+      snapshot.forEach(function (data) {
+        data.ref.child("state").set(counter);
+      });
+    });
 
+  }
   const onCompleteTimer = () => {
     if (correctAnswer === "A") {
       setAnswerColor({ answerColor1: "green" });
@@ -108,19 +122,14 @@ const Answers = ({ isAdmin, user }) => {
             </Button>
           </div>
         </Card>
-        <Button
-          onClick={() => {
-            setTimer(timer + 1);
-            counter < data.question.length
-              ? setCounter(counter + 1)
-              : setCounter(counter - 1);
-          }}
+        {isAdmin && <Button
+          onClick={onClickNextQuestion}
           className="admin_button"
           variant="contained"
           color="primary"
         >
           Next Question
-        </Button>
+        </Button>}
       </div>
     </div>
   );

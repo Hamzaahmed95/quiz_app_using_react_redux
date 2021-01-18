@@ -43,11 +43,9 @@ const Register = ({ isLoggedIn }) => {
     const date = new Date();
     const randomNumber =  randomString+new Date(date).getTime();
     const values = { 
-      id: randomNumber,
-      name: value,
-      role: 'admin'
+      state: 0
     };
-    let carListRef = firebase.database().ref("user");
+    let carListRef = firebase.database().ref("appState");
     let newCarRef = carListRef.push();
     newCarRef
       .set(values)
