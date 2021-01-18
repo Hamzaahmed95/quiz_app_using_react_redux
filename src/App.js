@@ -1,8 +1,6 @@
 import "./App.css";
 import React, { Component } from "react";
-import Main from "./components/main/main";
-import Answers from "./components/answers/answer";
-import { useState } from "react";
+import Loading from "./components/loading/index";
 import { firebaseConfig } from "./constants/apikey.js";
 import firebase from "firebase/app";
 
@@ -15,11 +13,12 @@ class App extends Component {
       firebase.app(); // if already initialized, use that one
     }
   }
+
   render() {
     return (
       <div className="App">
         <header className="App-header">
-          <Main />
+          <Loading />
         </header>
       </div>
     );
