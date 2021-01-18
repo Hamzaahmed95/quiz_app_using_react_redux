@@ -1,7 +1,12 @@
+.answer_component {
+  padding: 5%;
+}
+
 .answer_container {
   display: flex;
-  padding: 10px;
   justify-content: space-around;
+  flex-wrap: wrap;
+  padding: 2%;
 }
 
 .box_container {
@@ -26,10 +31,6 @@
   align-content: center;
 }
 
-.timer {
-  margin-bottom: 50px;
-}
-
 .heading {
   padding: 20px;
 }
@@ -42,12 +43,12 @@
   background-color: green !important;
 }
 
-.parent_answer_container {
-  padding-top: 100px;
-  padding-bottom: 100px;
-  background-color: #ffffff;
-}
-
 .admin_button {
   margin-top: 30px !important;
+}
+
+@media screen and (max-width: 752px) {
+  .answer_container>div {
+    padding: 2.5%;
+  }
 }

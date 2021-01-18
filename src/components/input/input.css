@@ -1,14 +1,15 @@
 .submitButton {
   background-color: white !important;
 }
+
 .input_container {
   display: flex;
-  padding-top: 20%;
+  padding: 10%;
   justify-content: center;
   align-items: center;
-  width: 100%;
   flex-direction: column;
 }
-.input_container > div {
+
+.input_container>div {
   padding-bottom: 20px;
 }

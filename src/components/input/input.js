@@ -4,9 +4,9 @@ import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import "./input.css";
 import firebase from "firebase";
-import * as Actions from '../../actions/userActions';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
+import * as Actions from "../../actions/userActions";
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
 
 const useStylesReddit = makeStyles(theme => ({
   root: {
@@ -35,22 +35,20 @@ function RedditTextField(props) {
   );
 }
 
-const CustomizedInputs = ({ actions }) => {
+const CustomizedInputs = ({ actions, error }) => {
   const [value, setValue] = useState("");
+  const [errorValue, setErrorValue] = useState("Please Enter Value");
+  const [errors, isError] = useState(false);
 
   const handleSubmit = () => {
-    console.log("hamza: " + value);
-    actions.getUserData(value);
-    /*  firebase
-      .database()
-      .ref("user")
-      .orderByChild("id")
-      .equalTo(value)
-      .on("value", snapshot => {
-        snapshot.forEach(function (data) {
-         console.log(data.val());
-        });
-      }); */
+    if (value.length < 0) {
+      setErrorValue("Please Enter Value");
+    } else {
+      actions.getUserData(value);
+      setErrorValue("Please Enter Value");
+    }
+
+    isError(error);
   };
 
   const handleChange = e => {
@@ -73,17 +71,19 @@ const CustomizedInputs = ({ actions }) => {
       >
         submit
       </Button>
+      {errors && <p style={{ color: "red" }}>{errorValue}</p>}
     </div>
   );
-}
+};
 
-const mapStateToProps = (props) => ({
+const mapStateToProps = props => ({
   isLoggedIn: props.userReducer.isLoggedIn,
   user: props.userReducer.user,
+  error: props.userReducer.error
 });
 
-const mapDispatchToProps = (dispatch) => ({
-	actions: bindActionCreators(Actions, dispatch),
+const mapDispatchToProps = dispatch => ({
+  actions: bindActionCreators(Actions, dispatch)
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(CustomizedInputs);

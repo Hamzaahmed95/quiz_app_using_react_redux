@@ -59,7 +59,6 @@ const Answers = ({ isAdmin, user, appState }) => {
           setTimer(20);
         });
       });
-      
   };
   const onCompleteTimer = () => {
     if (correctAnswer === "A") {
@@ -74,66 +73,69 @@ const Answers = ({ isAdmin, user, appState }) => {
   };
 
   return (
-    <div>
-      <div align="center" className="parent_answer_container">
-        <h1 className=" " align="center">
-          Islamic Quiz
-        </h1>
-        <div className="timer" align="center">
-          <CountDownWrapper onComplete={onCompleteTimer} timer={timer} />
-        </div>
-        <div align="center" className="question">
-          <p>{data.question[appState.state].description}</p>
-        </div>
-        <Card className="box_container" border={1}>
-          <div align="center" className="answer_container">
-            <Button
-              onClick={colorChange1}
-              className={answerColor1}
-              variant="contained"
-              color="primary"
-            >
-              {data.question[appState.state].answer[0].details}
-            </Button>
-            <Button
-              onClick={colorChange2}
-              className={answerColor2}
-              variant="contained"
-              color="primary"
-            >
-              {data.question[appState.state].answer[1].details}
-            </Button>
-          </div>
-          <div className="answer_container">
-            <Button
-              onClick={colorChange3}
-              className={answerColor3}
-              variant="contained"
-              color="primary"
-            >
-              {data.question[appState.state].answer[2].details}
-            </Button>
-            <Button
-              onClick={colorChange4}
-              className={answerColor4}
-              variant="contained"
-              color="primary"
-            >
-              {data.question[appState.state].answer[3].details}
-            </Button>
-          </div>
-        </Card>
-        {isAdmin && (
+    <div className="answer_component">
+      <div className="timer" align="center">
+        <CountDownWrapper onComplete={onCompleteTimer} timer={timer} />
+      </div>
+      <div align="center" className="question">
+        <p>{data.question[appState.state].description}</p>
+      </div>
+
+      <div className="answer_container">
+        <div>
           <Button
-            onClick={onClickNextQuestion}
-            className="admin_button"
+            onClick={colorChange1}
+            className={answerColor1}
             variant="contained"
             color="primary"
           >
-            Next Question
+            {data.question[appState.state].answer[0].details}
           </Button>
-        )}
+        </div>
+        <div>
+          <Button
+            onClick={colorChange2}
+            className={answerColor2}
+            variant="contained"
+            color="primary"
+          >
+            {data.question[appState.state].answer[1].details}
+          </Button>
+        </div>
       </div>
+      <div className="answer_container">
+        <div>
+          <Button
+            onClick={colorChange3}
+            className={answerColor3}
+            variant="contained"
+            color="primary"
+          >
+            {data.question[appState.state].answer[2].details}
+          </Button>
+        </div>
+        <div>
+          <Button
+            onClick={colorChange4}
+            className={answerColor4}
+            variant="contained"
+            color="primary"
+          >
+            {data.question[appState.state].answer[3].details}
+          </Button>
+        </div>
+      </div>
+
+      {isAdmin && (
+        <Button
+          onClick={onClickNextQuestion}
+          className="admin_button"
+          variant="contained"
+          color="primary"
+        >
+          Next Question
+        </Button>
+      )}
     </div>
   );
 };

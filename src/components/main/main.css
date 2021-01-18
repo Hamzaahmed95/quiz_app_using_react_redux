@@ -1,14 +1,28 @@
-.submitButton {
-  background-color: white !important;
+.quiz_component {
+    display: flex;
+    flex-wrap: nowrap;
 }
-.input_container {
-  display: flex;
-  padding-top: 20%;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  flex-direction: column;
+
+.answers {
+    width: 75%;
 }
-.input_container > div {
-  padding-bottom: 20px;
+
+.result {
+    width: 25%;
+    border-left: double;
+}
+
+@media screen and (max-width: 752px) {
+    .quiz_component {
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .answers {
+        width: 100%;
+    }
+    .result {
+        width: 100%;
+        border-top: double;
+        border-left: none;
+    }
 }

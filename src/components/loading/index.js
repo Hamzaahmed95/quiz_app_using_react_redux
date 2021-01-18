@@ -24,7 +24,9 @@ const Loading = ({ isLoggedIn, actions, user, appState }) => {
           <CircularProgress className="progress_barColor" color="primary" />
         </div>
       ) : (
-        <Main appState={appState} user={user} isLoggedIn={isLoggedIn} />
+        <div className="progress_bar" align="center">
+          <Main appState={appState} user={user} isLoggedIn={isLoggedIn} />
+        </div>
       )}
     </div>
   );
@@ -33,7 +35,7 @@ const Loading = ({ isLoggedIn, actions, user, appState }) => {
 const mapStateToProps = props => ({
   isLoggedIn: props.userReducer.isLoggedIn,
   user: props.userReducer.user,
-  appState: props.userReducer.appState,
+  appState: props.userReducer.appState
 });
 
 const mapDispatchToProps = dispatch => ({
