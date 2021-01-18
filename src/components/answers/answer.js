@@ -56,8 +56,10 @@ const Answers = ({ isAdmin, user, appState }) => {
       .once("value", snapshot => {
         snapshot.forEach(function(data) {
           data.ref.child("state").set(counter);
+          setTimer(20);
         });
       });
+      
   };
   const onCompleteTimer = () => {
     if (correctAnswer === "A") {
