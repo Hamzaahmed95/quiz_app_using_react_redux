@@ -7,7 +7,6 @@ import { data } from "../../constants/dummyData";
 import firebase from "firebase";
 
 const Answers = ({ isAdmin, user }) => {
-  console.log("hamzaahmed:" + user.name, " is ", isAdmin);
   const [correctAnswer, setCorrectAnswer] = useState("B");
   const [timer, setTimer] = useState(0);
   const [counter, setCounter] = useState(0);
@@ -27,7 +26,6 @@ const Answers = ({ isAdmin, user }) => {
     const answer = data.question.filter(e => {
       e.answer.filter(e => e.isTrue === true);
     });
-    getData();
 
     //if(answer)
   }, []);
@@ -58,17 +56,6 @@ const Answers = ({ isAdmin, user }) => {
     } else {
       setAnswerColor({ answerColor4: "green" });
     }
-  };
-  const getData = () => {
-    firebase
-      .database()
-      .ref("appState")
-      .orderByChild("state")
-      .on("value", snapshot => {
-        snapshot.forEach(function(data) {
-          alert(1);
-        });
-      });
   };
 
   return (
