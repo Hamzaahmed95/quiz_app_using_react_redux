@@ -60,22 +60,22 @@ export const data = {
         {
           id: "1",
           details: "This is answer1 of third question",
-          isTrue: "true"
+          isTrue: true
         },
         {
           id: "2",
           details: "This is answer2 of third question",
-          isTrue: "false"
+          isTrue: false
         },
         {
           id: "3",
           details: "This is answer3 of third question",
-          isTrue: "false"
+          isTrue: false
         },
         {
           id: "4",
           details: "This is answer4 of third question",
-          isTrue: "false"
+          isTrue: false
         }
       ]
     },
@@ -86,22 +86,22 @@ export const data = {
         {
           id: "1",
           details: "This is answer1 of fourth question",
-          isTrue: "false"
+          isTrue: false
         },
         {
           id: "2",
           details: "This is answer2 of fourth question",
-          isTrue: "false"
+          isTrue: false
         },
         {
           id: "3",
           details: "This is answer3 of fourth question",
-          isTrue: "false"
+          isTrue: false
         },
         {
           id: "4",
           details: "This is answer4 of fourth question",
-          isTrue: "true"
+          isTrue: true
         }
       ]
     },
@@ -113,22 +113,22 @@ export const data = {
         {
           id: "1",
           details: "This is answer1",
-          isTrue: "false"
+          isTrue: false
         },
         {
           id: "2",
           details: "This is answer2",
-          isTrue: "false"
+          isTrue: false
         },
         {
           id: "3",
           details: "This is answer3",
-          isTrue: "true"
+          isTrue: true
         },
         {
           id: "4",
           details: "This is answer4",
-          isTrue: "false"
+          isTrue: false
         }
       ]
     }

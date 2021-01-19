@@ -8,9 +8,7 @@ import firebase from "firebase";
 
 const Answers = ({ isAdmin, user, appState }) => {
   console.log(appState, "counter");
-  const [correctAnswer, setCorrectAnswer] = useState("B");
   const [timer, setTimer] = useState(0);
-  const [counter, setCounter] = useState(0);
   const [
     { answerColor1, answerColor2, answerColor3, answerColor4 },
     setAnswerColor
@@ -22,14 +20,26 @@ const Answers = ({ isAdmin, user, appState }) => {
       answerColor4: "purple"
     }
   ]);
-  useEffect(() => {
-    console.log(data.question[0].description);
-    const answer = data.question.filter(e => {
-      e.answer.filter(e => e.isTrue === true);
+
+  const onCompleteTimer = () => {
+    let counter = 0;
+    data.question[appState.state].answer.forEach((e, i) => {
+      if (e.isTrue) {
+        if (i === 0) {
+          setAnswerColor({ answerColor1: "green" });
+        } else if (i === 1) {
+          setAnswerColor({ answerColor2: "green" });
+        } else if (i === 2) {
+          setAnswerColor({ answerColor3: "green" });
+        } else {
+          setAnswerColor({ answerColor4: "green" });
+        }
+        return;
+      }
     });
 
-    //if(answer)
-  }, []);
+    console.log(counter);
+  };
 
   const colorChange1 = () => {
     setAnswerColor({ answerColor1: "grey" });
@@ -47,6 +57,12 @@ const Answers = ({ isAdmin, user, appState }) => {
     setAnswerColor({ answerColor4: "grey" });
   };
   const onClickNextQuestion = () => {
+    setAnswerColor(
+      { answerColor1: "purple" },
+      { answerColor2: "purple" },
+      { answerColor3: "purple" },
+      { answerColor4: "purple" }
+    );
     console.log(appState, "counter");
     const counter = appState.state + 1;
     firebase
@@ -56,20 +72,9 @@ const Answers = ({ isAdmin, user, appState }) => {
       .once("value", snapshot => {
         snapshot.forEach(function(data) {
           data.ref.child("state").set(counter);
-          setTimer(20);
+          setTimer(3);
         });
       });
-  };
-  const onCompleteTimer = () => {
-    if (correctAnswer === "A") {
-      setAnswerColor({ answerColor1: "green" });
-    } else if (correctAnswer === "B") {
-      setAnswerColor({ answerColor2: "green" });
-    } else if (correctAnswer === "C") {
-      setAnswerColor({ answerColor3: "green" });
-    } else {
-      setAnswerColor({ answerColor4: "green" });
-    }
   };
 
   return (
