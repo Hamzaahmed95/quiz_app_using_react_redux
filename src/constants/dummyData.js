@@ -34,7 +34,7 @@ export const data = {
         {
           id: "1",
           details: "This is answer1 of second Question",
-          isTrue: true
+          isTrue: false
         },
         {
           id: "2",

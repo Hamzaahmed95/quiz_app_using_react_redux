@@ -5,6 +5,7 @@ import { bindActionCreators } from "redux";
 import Main from "../main/main";
 import * as Actions from "../../actions/userActions";
 import CircularProgress from "@material-ui/core/CircularProgress";
+
 const Loading = ({ isLoggedIn, actions, user, appState }) => {
   const [Loadingg, isLoadingg] = useState(false);
 
