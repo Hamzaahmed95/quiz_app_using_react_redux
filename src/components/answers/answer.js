@@ -2,8 +2,6 @@ import React, { useState } from "react";
 import "./answer.css";
 import CountDownWrapper from "../countdownwrapper/index";
 import Button from "@material-ui/core/Button";
-import { withStyles } from "@material-ui/core/styles";
-import CustomButton from "../custombutton/index";
 
 import { data } from "../../constants/dummyData";
 import firebase from "firebase";
@@ -16,10 +14,10 @@ const Answers = ({ isAdmin, user, appState }) => {
     setAnswerColor
   ] = useState([
     {
-      answerColor1: "black",
-      answerColor2: "black",
-      answerColor3: "black",
-      answerColor4: "black"
+      answerColor1: "purple",
+      answerColor2: "purple",
+      answerColor3: "purple",
+      answerColor4: "purple"
     }
   ]);
 
@@ -60,10 +58,10 @@ const Answers = ({ isAdmin, user, appState }) => {
   };
   const onClickNextQuestion = () => {
     setAnswerColor(
-      { answerColor1: "black" },
-      { answerColor2: "black" },
-      { answerColor3: "black" },
-      { answerColor4: "black" }
+      { answerColor1: "purple" },
+      { answerColor2: "purple" },
+      { answerColor3: "purple" },
+      { answerColor4: "purple" }
     );
     console.log(appState, "counter");
     const counter = appState.state + 1;
@@ -90,30 +88,46 @@ const Answers = ({ isAdmin, user, appState }) => {
 
       <div className="answer_container">
         <div>
-          <CustomButton
-            colorChange={colorChange1}
-            text={data.question[appState.state].answer[0].details}
-          />
+          <Button
+            onClick={colorChange1}
+            className={answerColor1}
+            variant="outlined"
+            color="primary"
+          >
+            {data.question[appState.state].answer[0].details}
+          </Button>
         </div>
         <div>
-          <CustomButton
-            colorChange={colorChange2}
-            text={data.question[appState.state].answer[0].details}
-          />
+          <Button
+            onClick={colorChange2}
+            className={answerColor2}
+            variant="outlined"
+            color="primary"
+          >
+            {data.question[appState.state].answer[1].details}
+          </Button>
         </div>
       </div>
       <div className="answer_container">
         <div>
-          <CustomButton
-            colorChange={colorChange3}
-            text={data.question[appState.state].answer[0].details}
-          />
+          <Button
+            onClick={colorChange3}
+            className={answerColor3}
+            variant="outlined"
+            color="primary"
+          >
+            {data.question[appState.state].answer[2].details}
+          </Button>
         </div>
         <div>
-          <CustomButton
-            colorChange={colorChange4}
-            text={data.question[appState.state].answer[0].details}
-          />
+          <Button
+            onClick={colorChange4}
+            className={answerColor4}
+            variant="outlined"
+            color="primary"
+          >
+            {data.question[appState.state].answer[3].details}
+          </Button>
         </div>
       </div>
 

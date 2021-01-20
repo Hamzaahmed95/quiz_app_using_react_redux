@@ -15,7 +15,7 @@ const CountDownWrapper = props => {
         children={children}
         key={props.timer}
         isPlaying
-        duration={3}
+        duration={20}
         size={100}
         strokeWidth={4}
         colors="#3b5998"

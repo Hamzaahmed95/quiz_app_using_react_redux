@@ -45,10 +45,10 @@ const Result = () => {
             {rows.map(row => (
               <TableRow key={row.name}>
                 <TableCell className="color" component="th" scope="row">
-                  {row.name}
+                  <p className="color">{row.name}</p>
                 </TableCell>
                 <TableCell className="color" align="right">
-                  {row.calories}
+                  <p className="color">{row.calories}</p>
                 </TableCell>
               </TableRow>
             ))}

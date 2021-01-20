@@ -36,15 +36,12 @@
 }
 
 .grey {
-  background-color: grey !important;
+  background-color: black !important;
+  color: white !important;
 }
 
 .green {
   background-color: green !important;
-}
-
-.default {
-  background-color: #2d3337 !important;
   color: white !important;
 }
 
