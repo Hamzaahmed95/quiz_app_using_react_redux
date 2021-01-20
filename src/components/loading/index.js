@@ -11,8 +11,8 @@ const Loading = ({ isLoggedIn, actions, user, appState }) => {
 
   useEffect(() => {
     actions.getAppState();
-    actions.getLoginState();
     if (localStorage.getItem("id")) {
+      actions.getLoginState();
       actions.getUserData(localStorage.getItem("id"));
     }
     setTimeout(function() {

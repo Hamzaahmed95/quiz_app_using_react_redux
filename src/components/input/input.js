@@ -47,9 +47,13 @@ const CustomizedInputs = ({
   const [errors, isError] = useState(false);
 
   useEffect(() => {
+    if(loginSuccess){
+      actions.getLoginState();
+    }
+  }, [user]);
+  useEffect(() => {
     isError(error);
   }, [error]);
-
   const handleSubmit = () => {
     actions.getUserData(value);
     console.log("Error: " + error);
