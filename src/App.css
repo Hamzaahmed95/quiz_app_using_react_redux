@@ -1,20 +1,27 @@
-.App {}
+.App {
+}
 
 .AppContainer {
-    margin-top: 2%;
-    display: flex;
-    background: #3090C7 !important;
-    align-items: center;
-    width: 70%;
+  margin-top: 2%;
+  display: flex;
+  background: #3090c7 !important;
+  align-items: center;
+  width: 70%;
 }
 
 .parent_answer_container {
-    background: white !important;
-    width: 75%;
-    position: relative;
-    box-shadow: 0 4px 8px 1 rgb(148, 117, 117) !;
+  background: white !important;
+  width: 75%;
+  position: relative;
+
+  box-shadow: 4px 8px rgba(130, 154, 221, 0.568);
 }
 
 .result {
-    width: 25%
+  width: 25%;
+}
+
+.app_heading {
+  color: white;
+  font-family: Georgia, "Times New Roman", Times, serif;
 }

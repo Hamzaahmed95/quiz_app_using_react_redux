@@ -1,28 +1,30 @@
 .quiz_component {
-    display: flex;
-    flex-wrap: nowrap;
+  display: flex;
+  flex-wrap: nowrap;
 }
 
 .answers {
-    width: 75%;
+  width: 75%;
 }
 
 .result {
-    width: 25%;
-    border-left: double;
+  width: 25%;
+  border-left: groove;
+  color: white;
+  background-color: #0a3459;
 }
 
 @media screen and (max-width: 752px) {
-    .quiz_component {
-        display: flex;
-        flex-wrap: wrap;
-    }
-    .answers {
-        width: 100%;
-    }
-    .result {
-        width: 100%;
-        border-top: double;
-        border-left: none;
-    }
+  .quiz_component {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .answers {
+    width: 100%;
+  }
+  .result {
+    width: 100%;
+    border-top: double;
+    border-left: none;
+  }
 }

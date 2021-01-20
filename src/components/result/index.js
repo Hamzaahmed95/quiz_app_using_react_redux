@@ -7,6 +7,7 @@ import TableContainer from "@material-ui/core/TableContainer";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
+import "./index.css";
 
 const useStyles = makeStyles({});
 
@@ -28,25 +29,27 @@ const Result = () => {
   return (
     <div>
       <h2>Results</h2>
-      <TableContainer component={Paper}>
-        <Table className={classes.table} aria-label="simple table">
+      <TableContainer>
+        <Table>
           <TableHead>
             <TableRow>
               <TableCell>
-                <b>Name</b>
+                <b className="color">Name</b>
               </TableCell>
               <TableCell align="right">
-                <b>Result</b>
+                <b className="color">Result</b>
               </TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
             {rows.map(row => (
               <TableRow key={row.name}>
-                <TableCell component="th" scope="row">
+                <TableCell className="color" component="th" scope="row">
                   {row.name}
                 </TableCell>
-                <TableCell align="right">{row.calories}</TableCell>
+                <TableCell className="color" align="right">
+                  {row.calories}
+                </TableCell>
               </TableRow>
             ))}
           </TableBody>

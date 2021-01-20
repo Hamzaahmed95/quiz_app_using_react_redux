@@ -1,12 +1,14 @@
 import {
   LOGIN_SUCCESS,
   LOGIN_FAILED,
-  GET_APP_STATE
+  GET_APP_STATE,
+  START_QUIZ
 } from "../constants/action-types";
 
 const initialState = {
   user: {},
   isLoggedIn: false,
+  loginSuccess: false,
   appState: null,
   error: false
 };
@@ -16,7 +18,7 @@ const userReducer = (state = initialState, action) => {
     return {
       ...state,
       user: action.payload,
-      isLoggedIn: true
+      loginSuccess: true
     };
   }
   if (action.type === LOGIN_FAILED) {
@@ -29,6 +31,12 @@ const userReducer = (state = initialState, action) => {
     return {
       ...state,
       appState: action.payload
+    };
+  }
+  if (action.type === START_QUIZ) {
+    return {
+      ...state,
+      isLoggedIn: true
     };
   }
   return state;

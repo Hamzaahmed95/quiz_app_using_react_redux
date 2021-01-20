@@ -35,7 +35,7 @@ function RedditTextField(props) {
   );
 }
 
-const CustomizedInputs = ({ actions, error }) => {
+const CustomizedInputs = ({ actions, error, loginSuccess, user, isLoggedIn }) => {
   const [value, setValue] = useState("");
   const [errorValue, setErrorValue] = useState("Please Enter Value");
   const [errors, isError] = useState(false);
@@ -55,8 +55,15 @@ const CustomizedInputs = ({ actions, error }) => {
     setValue(e.target.value);
   };
 
+  const startQuiz = () =>{
+    
+    actions.startQuiz();
+  }
   return (
     <div className="input_container" align="center">
+    {
+      !loginSuccess && !isLoggedIn &&
+      <>
       <RedditTextField
         label="Enter your key"
         defaultValue={value}
@@ -68,15 +75,40 @@ const CustomizedInputs = ({ actions, error }) => {
         onClick={handleSubmit}
         variant="contained"
         className="submitButton"
+        disabled={!value}
       >
         submit
       </Button>
-      {errors && <p style={{ color: "red" }}>{errorValue}</p>}
+      </>
+    }
+    {
+      loginSuccess && !isLoggedIn &&  user.role == 'user' && 
+      <>
+      <p>
+        Quiz will start soon
+      </p>
+      </>
+    }
+     {
+      loginSuccess && !isLoggedIn && user.role == 'admin' &&   
+      <>
+     <Button
+        onClick={startQuiz}
+        variant="contained"
+        className="submitButton"
+      >
+        Start Quiz
+      </Button>
+      </>
+    }
+     
+      {errors && <p style={{ color: "red" }}>Invalid User key</p>}
     </div>
   );
 };
 
 const mapStateToProps = props => ({
+  loginSuccess: props.userReducer.loginSuccess,
   isLoggedIn: props.userReducer.isLoggedIn,
   user: props.userReducer.user,
   error: props.userReducer.error

@@ -20,7 +20,7 @@ class App extends Component {
     return (
       <div align="center" className="App">
         <img src={logo} alt="logo" width={100} />
-        <h1>Master Mind </h1>
+        <h1 className="app_heading">Nawait Mastermind </h1>
         <Card variant="outlined" className="parent_answer_container">
           <Loading />
         </Card>
