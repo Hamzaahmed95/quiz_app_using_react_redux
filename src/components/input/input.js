@@ -35,73 +35,76 @@ function RedditTextField(props) {
   );
 }
 
-const CustomizedInputs = ({ actions, error, loginSuccess, user, isLoggedIn }) => {
+const CustomizedInputs = ({
+  actions,
+  error,
+  loginSuccess,
+  user,
+  isLoggedIn
+}) => {
   const [value, setValue] = useState("");
   const [errorValue, setErrorValue] = useState("Please Enter Value");
   const [errors, isError] = useState(false);
 
-  const handleSubmit = () => {
-    if (value.length < 0) {
-      setErrorValue("Please Enter Value");
-    } else {
-      actions.getUserData(value);
-      setErrorValue("Please Enter Value");
-    }
-
+  useEffect(() => {
     isError(error);
+  }, [error]);
+
+  const handleSubmit = () => {
+    actions.getUserData(value);
+    console.log("Error: " + error);
+    if (error) {
+      setErrorValue("Please Enter Value");
+      isError(error);
+    }
   };
 
   const handleChange = e => {
+    isError(false);
     setValue(e.target.value);
   };
 
-  const startQuiz = () =>{
-    
+  const startQuiz = () => {
     actions.startQuiz();
-  }
+  };
   return (
     <div className="input_container" align="center">
-    {
-      !loginSuccess && !isLoggedIn &&
-      <>
-      <RedditTextField
-        label="Enter your key"
-        defaultValue={value}
-        onChange={e => handleChange(e)}
-        variant="filled"
-        id="reddit-input"
-      />
-      <Button
-        onClick={handleSubmit}
-        variant="contained"
-        className="submitButton"
-        disabled={!value}
-      >
-        submit
-      </Button>
-      </>
-    }
-    {
-      loginSuccess && !isLoggedIn &&  user.role == 'user' && 
-      <>
-      <p>
-        Quiz will start soon
-      </p>
-      </>
-    }
-     {
-      loginSuccess && !isLoggedIn && user.role == 'admin' &&   
-      <>
-     <Button
-        onClick={startQuiz}
-        variant="contained"
-        className="submitButton"
-      >
-        Start Quiz
-      </Button>
-      </>
-    }
-     
+      {!loginSuccess && !isLoggedIn && (
+        <>
+          <RedditTextField
+            label="Enter your key"
+            defaultValue={value}
+            onChange={e => handleChange(e)}
+            variant="filled"
+            id="reddit-input"
+          />
+          <Button
+            onClick={handleSubmit}
+            variant="contained"
+            className="submitButton"
+            disabled={!value}
+          >
+            submit
+          </Button>
+        </>
+      )}
+      {loginSuccess && !isLoggedIn && user.role === "user" && (
+        <>
+          <p>Quiz will start soon</p>
+        </>
+      )}
+      {loginSuccess && !isLoggedIn && user.role === "admin" && (
+        <>
+          <Button
+            onClick={startQuiz}
+            variant="contained"
+            className="submitButton"
+          >
+            Start Quiz
+          </Button>
+        </>
+      )}
+
       {errors && <p style={{ color: "red" }}>Invalid User key</p>}
     </div>
   );

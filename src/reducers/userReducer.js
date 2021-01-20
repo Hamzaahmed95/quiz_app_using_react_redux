@@ -18,12 +18,14 @@ const userReducer = (state = initialState, action) => {
     return {
       ...state,
       user: action.payload,
+      error: false,
       loginSuccess: true
     };
   }
   if (action.type === LOGIN_FAILED) {
     return {
       ...state,
+
       error: true
     };
   }
