@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./answer.css";
 import CountDownWrapper from "../countdownwrapper/index";
 import Button from "@material-ui/core/Button";
@@ -8,7 +8,7 @@ import firebase from "firebase";
 
 const Answers = ({ isAdmin, user, appState }) => {
   console.log(appState, "counter");
-  const [timer, setTimer] = useState(0);
+  const [timer, setTimer] = useState(20);
   const [
     { answerColor1, answerColor2, answerColor3, answerColor4 },
     setAnswerColor
@@ -72,10 +72,19 @@ const Answers = ({ isAdmin, user, appState }) => {
       .once("value", snapshot => {
         snapshot.forEach(function(data) {
           data.ref.child("state").set(counter);
-          setTimer(3);
+          //setTimer(3);
         });
       });
   };
+  useEffect(() => {
+    firebase
+      .database()
+      .ref("appState")
+      .on("value", snapshot => {
+        console.log("hamza: state changes1?");
+        setTimer(timer => timer + 1);
+      });
+  }, []);
 
   return (
     <div className="answer_component">

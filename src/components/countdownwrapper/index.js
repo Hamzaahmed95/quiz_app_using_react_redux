@@ -8,6 +8,7 @@ const CountDownWrapper = props => {
 
     return `${minutes}:${seconds}`;
   };
+  console.log("hamza: timer -> " + props.timer);
   return (
     <div>
       <CountdownCircleTimer
