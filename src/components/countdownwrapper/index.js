@@ -2,18 +2,15 @@ import React from "react";
 import { CountdownCircleTimer } from "react-countdown-circle-timer";
 
 const CountDownWrapper = props => {
-  const children = ({ remainingTime }) => {
-    const minutes = Math.floor(remainingTime / 60);
-    const seconds = remainingTime % 60;
+  let seconds = 20;
+  let counter = 100;
 
-    return `${minutes}:${seconds}`;
-  };
   console.log("hamza: timer -> " + props.timer);
   return (
     <div>
       <CountdownCircleTimer
         onComplete={props.onComplete}
-        children={children}
+        children={props.children}
         key={props.timer}
         isPlaying
         duration={20}

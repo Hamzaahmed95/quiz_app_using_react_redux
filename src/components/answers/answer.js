@@ -7,8 +7,10 @@ import { data } from "../../constants/dummyData";
 import firebase from "firebase";
 
 const Answers = ({ isAdmin, user, appState }) => {
-  console.log(appState, "counter");
   const [timer, setTimer] = useState(20);
+  const [clickable, isClickable] = useState(true);
+  let counter = 100;
+  let seconds = 0;
   const [
     { answerColor1, answerColor2, answerColor3, answerColor4 },
     setAnswerColor
@@ -22,7 +24,7 @@ const Answers = ({ isAdmin, user, appState }) => {
   ]);
 
   const onCompleteTimer = () => {
-    let counter = 0;
+    counter = 0;
     data.question[appState.state].answer.forEach((e, i) => {
       if (e.isTrue) {
         if (i === 0) {
@@ -37,33 +39,41 @@ const Answers = ({ isAdmin, user, appState }) => {
         return;
       }
     });
-
-    console.log(counter);
   };
 
   const colorChange1 = () => {
-    setAnswerColor({ answerColor1: "grey" });
+    if (clickable) {
+      console.log("hello: " + seconds + ":" + counter);
+      setAnswerColor({ answerColor1: "grey" });
+    }
+
+    isClickable(false);
   };
   const colorChange2 = () => {
-    //selectAnswer2(true);
-    setAnswerColor({ answerColor2: "grey" });
+    if (clickable) {
+      console.log("hello: " + seconds + ":" + counter);
+      setAnswerColor({ answerColor2: "grey" });
+    }
+
+    isClickable(false);
   };
   const colorChange3 = () => {
-    // selectAnswer3(true);
-    setAnswerColor({ answerColor3: "grey" });
+    if (clickable) {
+      console.log("hello: " + seconds + ":" + counter);
+      setAnswerColor({ answerColor3: "grey" });
+    }
+
+    isClickable(false);
   };
   const colorChange4 = () => {
-    // selectAnswer4(true);
-    setAnswerColor({ answerColor4: "grey" });
+    if (clickable) {
+      console.log("hello: " + seconds + ":" + counter);
+      setAnswerColor({ answerColor4: "grey" });
+    }
+
+    isClickable(false);
   };
   const onClickNextQuestion = () => {
-    setAnswerColor(
-      { answerColor1: "purple" },
-      { answerColor2: "purple" },
-      { answerColor3: "purple" },
-      { answerColor4: "purple" }
-    );
-    console.log(appState, "counter");
     const counter = appState.state + 1;
     firebase
       .database()
@@ -72,7 +82,6 @@ const Answers = ({ isAdmin, user, appState }) => {
       .once("value", snapshot => {
         snapshot.forEach(function(data) {
           data.ref.child("state").set(counter);
-          //setTimer(3);
         });
       });
   };
@@ -81,15 +90,40 @@ const Answers = ({ isAdmin, user, appState }) => {
       .database()
       .ref("appState")
       .on("value", snapshot => {
-        console.log("hamza: state changes1?");
+        isClickable(true);
         setTimer(timer => timer + 1);
+        setAnswerColor(
+          { answerColor1: "purple" },
+          { answerColor2: "purple" },
+          { answerColor3: "purple" },
+          { answerColor4: "purple" }
+        );
       });
   }, []);
+
+  const children = ({ remainingTime }) => {
+    if (counter === 10) {
+      counter = 100;
+    } else {
+      counter--;
+    }
+    seconds = remainingTime % 1000;
+    if (seconds < 1) {
+      seconds = 0 + "0";
+      counter = 0 + "0";
+    }
+
+    return `${seconds}:${counter}`;
+  };
 
   return (
     <div className="answer_component">
       <div className="timer" align="center">
-        <CountDownWrapper onComplete={onCompleteTimer} timer={timer} />
+        <CountDownWrapper
+          children={children}
+          onComplete={onCompleteTimer}
+          timer={timer}
+        />
       </div>
       <div align="center" className="question">
         <p>{data.question[appState.state].description}</p>
