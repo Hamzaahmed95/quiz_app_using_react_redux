@@ -9,7 +9,7 @@ import { data } from "../../constants/dummyData";
 import firebase from "firebase";
 
 const Answers = ({ isAdmin, user, appState, userResult, actions }) => {
-  console.log(userResult,"userResultuserResult",actions);
+  console.log(userResult, "userResultuserResult", actions);
   const [timer, setTimer] = useState(20);
   const [clickable, isClickable] = useState(true);
   let counter = 100;
@@ -27,29 +27,29 @@ const Answers = ({ isAdmin, user, appState, userResult, actions }) => {
   ]);
 
   const correctAnswer = () => {
-    const answerTime = +(seconds+'.'+counter)
+    const answerTime = +(seconds + "." + counter);
     const questionTime = +data.question[appState.state].timer;
-    const correctTime =  questionTime - answerTime;
-    const score = (+userResult.score) + (correctTime);
+    const correctTime = questionTime - answerTime;
+    const score = +userResult.score + correctTime;
     const obj = {
       score: score.toFixed(2),
-      answerCount: userResult['answerCount'] + 1,
-    }
-    actions.storeAnswer(obj,userResult['id']);     
-  }
+      answerCount: userResult["answerCount"] + 1
+    };
+    actions.storeAnswer(obj, userResult["id"]);
+  };
   const inCorrectAnswer = () => {
-    const score = (+userResult.score) +  (+data.question[appState.state].timer);
-     const obj = {
+    const score = +userResult.score + +data.question[appState.state].timer;
+    const obj = {
       score: +score.toFixed(2),
-      answerCount: userResult['answerCount']
-    }
-    actions.storeAnswer(obj,userResult['id']);
-          
+      answerCount: userResult["answerCount"]
+    };
+    actions.storeAnswer(obj, userResult["id"]);
+
     console.log("in correct answer: " + seconds + ":" + counter);
-  }
+  };
   const onCompleteTimer = () => {
     counter = 0;
-    if(clickable){
+    if (clickable) {
       inCorrectAnswer();
     }
     data.question[appState.state].answer.forEach((e, i) => {
@@ -67,47 +67,57 @@ const Answers = ({ isAdmin, user, appState, userResult, actions }) => {
       }
     });
   };
-  const handleClickAnswerOne = (isTrue) => {
-    if (clickable && isTrue) {
-      correctAnswer();
-      console.log("hello: " + seconds + ":" + counter);
-      setAnswerColor({ answerColor1: "grey" });
-    }else{
-      inCorrectAnswer();
+  const handleClickAnswerOne = isTrue => {
+    if (clickable) {
+      if (isTrue) {
+        setAnswerColor({ answerColor1: "grey" });
+        correctAnswer();
+        console.log("hello: " + seconds + ":" + counter);
+      } else {
+        setAnswerColor({ answerColor1: "grey" });
+        inCorrectAnswer();
+      }
+      isClickable(false);
     }
-    isClickable(false);
-
   };
-  const handleClickAnswerTwo = (isTrue) => {
-    if (clickable && isTrue) {
-      correctAnswer();
-      console.log("hello: " + seconds + ":" + counter);
-      setAnswerColor({ answerColor2: "grey" });
-      //database send name id result and number of answer true
-    }else{
-      inCorrectAnswer();
+  const handleClickAnswerTwo = isTrue => {
+    if (clickable) {
+      if (isTrue) {
+        setAnswerColor({ answerColor2: "grey" });
+        correctAnswer();
+        console.log("hello: " + seconds + ":" + counter);
+      } else {
+        setAnswerColor({ answerColor2: "grey" });
+        inCorrectAnswer();
+      }
+      isClickable(false);
     }
-    isClickable(false);
   };
-  const handleClickAnswerThree = (isTrue) => {
-    if (clickable && isTrue) {
-      correctAnswer();
-      console.log("hello: " + seconds + ":" + counter);
-      setAnswerColor({ answerColor3: "grey" });
-    }else{
-      inCorrectAnswer();
+  const handleClickAnswerThree = isTrue => {
+    if (clickable) {
+      if (isTrue) {
+        setAnswerColor({ answerColor3: "grey" });
+        correctAnswer();
+        console.log("hello: " + seconds + ":" + counter);
+      } else {
+        setAnswerColor({ answerColor3: "grey" });
+        inCorrectAnswer();
+      }
+      isClickable(false);
     }
-    isClickable(false);
   };
-  const handleClickAnswerFour = (isTrue) => {
-    if (clickable && isTrue) {
-      correctAnswer();
-      console.log("hello: " + seconds + ":" + counter);
-      setAnswerColor({ answerColor4: "grey" });
-    }else{
-      inCorrectAnswer();
+  const handleClickAnswerFour = isTrue => {
+    if (clickable) {
+      if (isTrue) {
+        setAnswerColor({ answerColor4: "grey" });
+        correctAnswer();
+        console.log("hello: " + seconds + ":" + counter);
+      } else {
+        setAnswerColor({ answerColor4: "grey" });
+        inCorrectAnswer();
+      }
+      isClickable(false);
     }
-    isClickable(false);
   };
 
   const onClickNextQuestion = () => {
@@ -127,7 +137,7 @@ const Answers = ({ isAdmin, user, appState, userResult, actions }) => {
       .database()
       .ref("appState")
       .on("value", snapshot => {
-        //isClickable(true);
+        isClickable(true);
         setTimer(timer => timer + 1);
         setAnswerColor(
           { answerColor1: "purple" },
@@ -169,7 +179,11 @@ const Answers = ({ isAdmin, user, appState, userResult, actions }) => {
       <div className="answer_container">
         <div>
           <Button
-            onClick={e => handleClickAnswerOne(data.question[appState.state].answer[0].isTrue)}
+            onClick={e =>
+              handleClickAnswerOne(
+                data.question[appState.state].answer[0].isTrue
+              )
+            }
             className={answerColor1}
             variant="outlined"
             color="primary"
@@ -179,7 +193,11 @@ const Answers = ({ isAdmin, user, appState, userResult, actions }) => {
         </div>
         <div>
           <Button
-            onClick={e => handleClickAnswerTwo(data.question[appState.state].answer[1].isTrue)}
+            onClick={e =>
+              handleClickAnswerTwo(
+                data.question[appState.state].answer[1].isTrue
+              )
+            }
             className={answerColor2}
             variant="outlined"
             color="primary"
@@ -191,17 +209,26 @@ const Answers = ({ isAdmin, user, appState, userResult, actions }) => {
       <div className="answer_container">
         <div>
           <Button
-            onClick={e => handleClickAnswerThree(data.question[appState.state].answer[2].isTrue)}
+            onClick={e =>
+              handleClickAnswerThree(
+                data.question[appState.state].answer[2].isTrue
+              )
+            }
             className={answerColor3}
             variant="outlined"
             color="primary"
+            isD
           >
             {data.question[appState.state].answer[2].details}
           </Button>
         </div>
         <div>
           <Button
-            onClick={e => handleClickAnswerFour(data.question[appState.state].answer[3].isTrue)}
+            onClick={e =>
+              handleClickAnswerFour(
+                data.question[appState.state].answer[3].isTrue
+              )
+            }
             className={answerColor4}
             variant="outlined"
             color="primary"
@@ -224,9 +251,7 @@ const Answers = ({ isAdmin, user, appState, userResult, actions }) => {
     </div>
   );
 };
-const mapStateToProps = props => ({
-
-});
+const mapStateToProps = props => ({});
 
 const mapDispatchToProps = dispatch => ({
   actions: bindActionCreators(Actions, dispatch)
