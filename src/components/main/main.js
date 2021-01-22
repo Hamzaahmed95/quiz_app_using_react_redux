@@ -8,13 +8,8 @@ import Result from "../result/index";
 const Main = ({ isLoggedIn, user, appState, error }) => {
   return (
     <div>
-      <Register />
-      </div>
-   /*  <div>
-      <Register />
       {!isLoggedIn ? (
         <CustomizedInputs />
-        
       ) : (
         <div className="quiz_component">
           <div className="answers">
@@ -29,7 +24,7 @@ const Main = ({ isLoggedIn, user, appState, error }) => {
           </div>
         </div>
       )}
-    </div> */
+    </div>
   );
 };
 
