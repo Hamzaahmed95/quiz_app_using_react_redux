@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
@@ -8,6 +8,7 @@ import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
 import "./index.css";
+import { data } from "../../constants/dummyDataResult";
 
 const useStyles = makeStyles({});
 
@@ -26,6 +27,19 @@ const rows = [
 const Result = () => {
   const classes = useStyles();
 
+  useEffect(() => {
+    console.log(data);
+    data.sort((a, b) =>
+      a.isTrue < b.isTrue
+        ? 1
+        : a.isTrue === b.isTrue
+        ? a.score > b.score
+          ? 1
+          : -1
+        : -1
+    );
+    console.log(data);
+  });
   return (
     <div>
       <h2>Results</h2>
@@ -37,18 +51,24 @@ const Result = () => {
                 <b className="color">Name</b>
               </TableCell>
               <TableCell align="right">
-                <b className="color">Result</b>
+                <b className="color">True Answers</b>
+              </TableCell>
+              <TableCell align="right">
+                <b className="color">Total Time</b>
               </TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
-            {rows.map(row => (
-              <TableRow key={row.name}>
+            {data.map(result => (
+              <TableRow key={result.id}>
                 <TableCell className="color" component="th" scope="row">
-                  <p className="color">{row.name}</p>
+                  <p className="color">{result.name}</p>
                 </TableCell>
                 <TableCell className="color" align="right">
-                  <p className="color">{row.calories}</p>
+                  <p className="color">{result.isTrue}</p>
+                </TableCell>
+                <TableCell className="color" align="right">
+                  <p className="color">{result.score}</p>
                 </TableCell>
               </TableRow>
             ))}

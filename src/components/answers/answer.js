@@ -9,7 +9,7 @@ import firebase from "firebase";
 const Answers = ({ isAdmin, user, appState }) => {
   const [timer, setTimer] = useState(20);
   const [clickable, isClickable] = useState(true);
-  let counter = 100;
+  let milliseconds = 100;
   let seconds = 0;
   const [
     { answerColor1, answerColor2, answerColor3, answerColor4 },
@@ -24,7 +24,7 @@ const Answers = ({ isAdmin, user, appState }) => {
   ]);
 
   const onCompleteTimer = () => {
-    counter = 0;
+    milliseconds = 0;
     data.question[appState.state].answer.forEach((e, i) => {
       if (e.isTrue) {
         if (i === 0) {
@@ -43,24 +43,38 @@ const Answers = ({ isAdmin, user, appState }) => {
 
   const handleClickAnswerOne = () => {
     if (clickable) {
-      console.log("hello: " + seconds + ":" + counter);
+      console.log("hello: " + seconds + ":" + milliseconds);
       setAnswerColor({ answerColor1: "grey" });
     }
 
     isClickable(false);
   };
-  const handleClickAnswerTwo = (isTrue) => {
+  const handleClickAnswerTwo = isTrue => {
     if (clickable && isTrue) {
-      console.log("hello: " + seconds + ":" + counter);
+      // 10:55
+
+      console.log("hello: " + seconds + ":" + milliseconds);
+
+      // seconds = 10, milliseconds = 55
       setAnswerColor({ answerColor2: "grey" });
       //database send name id result and number of answer true
+
+      //final score  20 - 10.55 == 9.45
+
+      // {
+      //     userResult.score = userResult.score + finalScore
+      //     set ---> on ----> store
+
+      // }
+    } else {
+      // userResult.score = userResult.score +20
     }
 
     isClickable(false);
   };
   const handleClickAnswerThree = () => {
     if (clickable) {
-      console.log("hello: " + seconds + ":" + counter);
+      console.log("hello: " + seconds + ":" + milliseconds);
       setAnswerColor({ answerColor3: "grey" });
     }
 
@@ -68,7 +82,7 @@ const Answers = ({ isAdmin, user, appState }) => {
   };
   const handleClickAnswerFour = () => {
     if (clickable) {
-      console.log("hello: " + seconds + ":" + counter);
+      console.log("hello: " + seconds + ":" + milliseconds);
       setAnswerColor({ answerColor4: "grey" });
     }
 
@@ -76,14 +90,14 @@ const Answers = ({ isAdmin, user, appState }) => {
   };
 
   const onClickNextQuestion = () => {
-    const counter = appState.state + 1;
+    const milliseconds = appState.state + 1;
     firebase
       .database()
       .ref("appState")
       .orderByChild("state")
       .once("value", snapshot => {
         snapshot.forEach(function(data) {
-          data.ref.child("state").set(counter);
+          data.ref.child("state").set(milliseconds);
         });
       });
   };
@@ -104,18 +118,18 @@ const Answers = ({ isAdmin, user, appState }) => {
   }, []);
 
   const children = ({ remainingTime }) => {
-    if (counter === 10) {
-      counter = 100;
+    if (milliseconds === 10) {
+      milliseconds = 100;
     } else {
-      counter--;
+      milliseconds--;
     }
     seconds = remainingTime % 1000;
     if (seconds < 1) {
       seconds = 0 + "0";
-      counter = 0 + "0";
+      milliseconds = 0 + "0";
     }
 
-    return `${seconds}:${counter}`;
+    return `${seconds}:${milliseconds}`;
   };
 
   return (
