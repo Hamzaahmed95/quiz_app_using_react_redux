@@ -41,7 +41,7 @@ const Answers = ({ isAdmin, user, appState }) => {
     });
   };
 
-  const colorChange1 = () => {
+  const handleClickAnswerOne = () => {
     if (clickable) {
       console.log("hello: " + seconds + ":" + counter);
       setAnswerColor({ answerColor1: "grey" });
@@ -49,7 +49,7 @@ const Answers = ({ isAdmin, user, appState }) => {
 
     isClickable(false);
   };
-  const colorChange2 = () => {
+  const handleClickAnswerTwo = () => {
     if (clickable) {
       console.log("hello: " + seconds + ":" + counter);
       setAnswerColor({ answerColor2: "grey" });
@@ -57,7 +57,7 @@ const Answers = ({ isAdmin, user, appState }) => {
 
     isClickable(false);
   };
-  const colorChange3 = () => {
+  const handleClickAnswerThree = () => {
     if (clickable) {
       console.log("hello: " + seconds + ":" + counter);
       setAnswerColor({ answerColor3: "grey" });
@@ -65,7 +65,7 @@ const Answers = ({ isAdmin, user, appState }) => {
 
     isClickable(false);
   };
-  const colorChange4 = () => {
+  const handleClickAnswerFour = () => {
     if (clickable) {
       console.log("hello: " + seconds + ":" + counter);
       setAnswerColor({ answerColor4: "grey" });
@@ -73,6 +73,7 @@ const Answers = ({ isAdmin, user, appState }) => {
 
     isClickable(false);
   };
+
   const onClickNextQuestion = () => {
     const counter = appState.state + 1;
     firebase
@@ -132,7 +133,7 @@ const Answers = ({ isAdmin, user, appState }) => {
       <div className="answer_container">
         <div>
           <Button
-            onClick={colorChange1}
+            onClick={handleClickAnswerOne}
             className={answerColor1}
             variant="outlined"
             color="primary"
@@ -142,7 +143,7 @@ const Answers = ({ isAdmin, user, appState }) => {
         </div>
         <div>
           <Button
-            onClick={colorChange2}
+            onClick={handleClickAnswerTwo}
             className={answerColor2}
             variant="outlined"
             color="primary"
@@ -154,7 +155,7 @@ const Answers = ({ isAdmin, user, appState }) => {
       <div className="answer_container">
         <div>
           <Button
-            onClick={colorChange3}
+            onClick={handleClickAnswerThree}
             className={answerColor3}
             variant="outlined"
             color="primary"
@@ -164,7 +165,7 @@ const Answers = ({ isAdmin, user, appState }) => {
         </div>
         <div>
           <Button
-            onClick={colorChange4}
+            onClick={handleClickAnswerFour}
             className={answerColor4}
             variant="outlined"
             color="primary"
