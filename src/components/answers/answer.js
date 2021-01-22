@@ -54,68 +54,33 @@ const Answers = ({ isAdmin, user, appState, userResult, actions }) => {
     }
     data.question[appState.state].answer.forEach((e, i) => {
       if (e.isTrue) {
-        if (i === 0) {
-          setAnswerColor({ answerColor1: "green" });
-        } else if (i === 1) {
-          setAnswerColor({ answerColor2: "green" });
-        } else if (i === 2) {
-          setAnswerColor({ answerColor3: "green" });
-        } else {
-          setAnswerColor({ answerColor4: "green" });
-        }
+        answerSwitch(i + 1, "green");
         return;
       }
     });
   };
-  const handleClickAnswerOne = isTrue => {
-    if (clickable) {
-      if (isTrue) {
-        setAnswerColor({ answerColor1: "grey" });
-        correctAnswer();
-        console.log("hello: " + seconds + ":" + counter);
-      } else {
-        setAnswerColor({ answerColor1: "grey" });
-        inCorrectAnswer();
-      }
-      isClickable(false);
+  const answerSwitch = (answer, color) => {
+    switch (answer) {
+      case 1:
+        setAnswerColor({ answerColor1: color });
+        break;
+      case 2:
+        setAnswerColor({ answerColor2: color });
+        break;
+      case 3:
+        setAnswerColor({ answerColor3: color });
+        break;
+      default:
+        setAnswerColor({ answerColor4: color });
+        break;
     }
   };
-  const handleClickAnswerTwo = isTrue => {
+
+  const handleClickAnswerCommon = (isTrue, value) => {
     if (clickable) {
-      if (isTrue) {
-        setAnswerColor({ answerColor2: "grey" });
-        correctAnswer();
-        console.log("hello: " + seconds + ":" + counter);
-      } else {
-        setAnswerColor({ answerColor2: "grey" });
-        inCorrectAnswer();
-      }
-      isClickable(false);
-    }
-  };
-  const handleClickAnswerThree = isTrue => {
-    if (clickable) {
-      if (isTrue) {
-        setAnswerColor({ answerColor3: "grey" });
-        correctAnswer();
-        console.log("hello: " + seconds + ":" + counter);
-      } else {
-        setAnswerColor({ answerColor3: "grey" });
-        inCorrectAnswer();
-      }
-      isClickable(false);
-    }
-  };
-  const handleClickAnswerFour = isTrue => {
-    if (clickable) {
-      if (isTrue) {
-        setAnswerColor({ answerColor4: "grey" });
-        correctAnswer();
-        console.log("hello: " + seconds + ":" + counter);
-      } else {
-        setAnswerColor({ answerColor4: "grey" });
-        inCorrectAnswer();
-      }
+      isTrue ? correctAnswer() : inCorrectAnswer();
+      console.log("valuess: " + value);
+      answerSwitch(value, "grey");
       isClickable(false);
     }
   };
@@ -136,7 +101,7 @@ const Answers = ({ isAdmin, user, appState, userResult, actions }) => {
     firebase
       .database()
       .ref("appState")
-      .on("value", snapshot => {
+      .on("value", () => {
         isClickable(true);
         setTimer(timer => timer + 1);
         setAnswerColor(
@@ -179,9 +144,10 @@ const Answers = ({ isAdmin, user, appState, userResult, actions }) => {
       <div className="answer_container">
         <div>
           <Button
-            onClick={e =>
-              handleClickAnswerOne(
-                data.question[appState.state].answer[0].isTrue
+            onClick={() =>
+              handleClickAnswerCommon(
+                data.question[appState.state].answer[0].isTrue,
+                1
               )
             }
             className={answerColor1}
@@ -193,9 +159,10 @@ const Answers = ({ isAdmin, user, appState, userResult, actions }) => {
         </div>
         <div>
           <Button
-            onClick={e =>
-              handleClickAnswerTwo(
-                data.question[appState.state].answer[1].isTrue
+            onClick={() =>
+              handleClickAnswerCommon(
+                data.question[appState.state].answer[1].isTrue,
+                2
               )
             }
             className={answerColor2}
@@ -210,8 +177,9 @@ const Answers = ({ isAdmin, user, appState, userResult, actions }) => {
         <div>
           <Button
             onClick={e =>
-              handleClickAnswerThree(
-                data.question[appState.state].answer[2].isTrue
+              handleClickAnswerCommon(
+                data.question[appState.state].answer[2].isTrue,
+                3
               )
             }
             className={answerColor3}
@@ -225,8 +193,9 @@ const Answers = ({ isAdmin, user, appState, userResult, actions }) => {
         <div>
           <Button
             onClick={e =>
-              handleClickAnswerFour(
-                data.question[appState.state].answer[3].isTrue
+              handleClickAnswerCommon(
+                data.question[appState.state].answer[3].isTrue,
+                4
               )
             }
             className={answerColor4}
