@@ -49,10 +49,11 @@ const Answers = ({ isAdmin, user, appState }) => {
 
     isClickable(false);
   };
-  const handleClickAnswerTwo = () => {
-    if (clickable) {
+  const handleClickAnswerTwo = (isTrue) => {
+    if (clickable && isTrue) {
       console.log("hello: " + seconds + ":" + counter);
       setAnswerColor({ answerColor2: "grey" });
+      //database send name id result and number of answer true
     }
 
     isClickable(false);
@@ -143,7 +144,7 @@ const Answers = ({ isAdmin, user, appState }) => {
         </div>
         <div>
           <Button
-            onClick={handleClickAnswerTwo}
+            onClick={handleClickAnswerTwo(data.question[appState.state].answer[1].isTrue)}
             className={answerColor2}
             variant="outlined"
             color="primary"
