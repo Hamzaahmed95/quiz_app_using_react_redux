@@ -44,12 +44,28 @@ const Register = ({ isLoggedIn }) => {
   );
   const handleSubmit = () => {
     console.log(user,"userss")
-    let carListRef = firebase.database().ref("users");
-    let newCarRef = carListRef.push();
-    newCarRef
+    let userRef = firebase.database().ref("users");
+    let newUserRef = userRef.push();
+    newUserRef
       .set(user)
       .then(resp => {
         console.log(resp);
+        const result = {
+          id: user.id,
+          name: user.name + ' ' + user.familyName,
+          score: 0,
+          answerCount: 0
+        };
+        let userResultRef = firebase.database().ref("userResults");
+        let userResults = userResultRef.push();
+        userResults
+        .set(result)
+        .then(resp => {
+          console.log(resp);
+        })
+        .catch(err => {
+          console.log(err);
+        });
       })
       .catch(err => {
         console.log(err);

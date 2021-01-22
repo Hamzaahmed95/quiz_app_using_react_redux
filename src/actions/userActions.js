@@ -2,7 +2,9 @@ import {
   LOGIN_SUCCESS,
   GET_APP_STATE,
   LOGIN_FAILED,
-  START_QUIZ
+  START_QUIZ,
+  USER_RESULT,
+  USER_RESULT_FAILED
 } from "../constants/action-types";
 import firebase from "firebase";
 
@@ -70,16 +72,6 @@ export const getLoginState = () => {
 export const startQuiz = () => {
   console.log(START_QUIZ, "START_QUIZSTART_QUIZ");
   return dispatch => {
-    /*   let carListRef = firebase.database().ref("loginState");
-    let newCarRef = carListRef.push();
-    newCarRef
-      .set({state: false})
-      .then(resp => {
-        console.log(resp);
-      })
-      .catch(err => {
-        console.log(err);
-      }); */
     firebase
       .database()
       .ref("loginState")
@@ -89,6 +81,54 @@ export const startQuiz = () => {
           data.ref.child("state").set(true);
           dispatch({ type: START_QUIZ, payload: "" });
         });
+      });
+  };
+};
+
+export const getUserResult = value => {
+  return dispatch => {
+    firebase
+      .database()
+      .ref("userResults")
+      .orderByChild("id")
+      .equalTo(value)
+      .on("value", snapshot => {
+        if (snapshot.exists()) {
+          console.log("Error: passed");
+          snapshot.forEach(function(data) {
+            console.log(data.val(),"user ersuultss");
+            dispatch({ type: USER_RESULT, payload: data.val() });
+          });
+        } else {
+          console.log("Error: failed");
+          dispatch({ type: USER_RESULT_FAILED, payload: "" });
+        }
+      });
+  };
+};
+
+export const storeAnswer = (obj,value) => {
+  console.log(obj, "poo",value);
+   return dispatch => {
+    firebase
+      .database()
+      .ref("userResults")
+      .orderByChild("id")
+      .equalTo(value)
+      .once('value')
+      .then(snapshot => {
+        if (snapshot.exists()) {
+          console.log("Error: passed");
+          snapshot.forEach(function(data) {
+            console.log("Error: passed", data.val());
+            data.ref.child("score").set(obj.score);
+            data.ref.child("answerCount").set(obj.answerCount);
+          });
+        }
+        else {
+          console.log("Error: failed");
+          dispatch({ type: USER_RESULT_FAILED, payload: "" });
+        }
       });
   };
 };

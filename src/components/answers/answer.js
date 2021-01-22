@@ -2,11 +2,14 @@ import React, { useState, useEffect } from "react";
 import "./answer.css";
 import CountDownWrapper from "../countdownwrapper/index";
 import Button from "@material-ui/core/Button";
-
+import { bindActionCreators } from "redux";
+import * as Actions from "../../actions/userActions";
+import { connect } from "react-redux";
 import { data } from "../../constants/dummyData";
 import firebase from "firebase";
 
-const Answers = ({ isAdmin, user, appState }) => {
+const Answers = ({ isAdmin, user, appState, userResult, actions }) => {
+  console.log(userResult,"userResultuserResult",actions);
   const [timer, setTimer] = useState(20);
   const [clickable, isClickable] = useState(true);
   let counter = 100;
@@ -23,8 +26,32 @@ const Answers = ({ isAdmin, user, appState }) => {
     }
   ]);
 
+  const correctAnswer = () => {
+    const answerTime = +(seconds+'.'+counter)
+    const questionTime = +data.question[appState.state].timer;
+    const correctTime =  questionTime - answerTime;
+    const score = (+userResult.score) + (correctTime);
+    const obj = {
+      score: score.toFixed(2),
+      answerCount: userResult['answerCount'] + 1,
+    }
+    actions.storeAnswer(obj,userResult['id']);     
+  }
+  const inCorrectAnswer = () => {
+    const score = (+userResult.score) +  (+data.question[appState.state].timer);
+     const obj = {
+      score: +score.toFixed(2),
+      answerCount: userResult['answerCount']
+    }
+    actions.storeAnswer(obj,userResult['id']);
+          
+    console.log("in correct answer: " + seconds + ":" + counter);
+  }
   const onCompleteTimer = () => {
     counter = 0;
+    if(clickable){
+      inCorrectAnswer();
+    }
     data.question[appState.state].answer.forEach((e, i) => {
       if (e.isTrue) {
         if (i === 0) {
@@ -40,38 +67,46 @@ const Answers = ({ isAdmin, user, appState }) => {
       }
     });
   };
-
-  const handleClickAnswerOne = () => {
-    if (clickable) {
+  const handleClickAnswerOne = (isTrue) => {
+    if (clickable && isTrue) {
+      correctAnswer();
       console.log("hello: " + seconds + ":" + counter);
       setAnswerColor({ answerColor1: "grey" });
+    }else{
+      inCorrectAnswer();
     }
-
     isClickable(false);
+
   };
   const handleClickAnswerTwo = (isTrue) => {
     if (clickable && isTrue) {
+      correctAnswer();
       console.log("hello: " + seconds + ":" + counter);
       setAnswerColor({ answerColor2: "grey" });
       //database send name id result and number of answer true
+    }else{
+      inCorrectAnswer();
     }
-
     isClickable(false);
   };
-  const handleClickAnswerThree = () => {
-    if (clickable) {
+  const handleClickAnswerThree = (isTrue) => {
+    if (clickable && isTrue) {
+      correctAnswer();
       console.log("hello: " + seconds + ":" + counter);
       setAnswerColor({ answerColor3: "grey" });
+    }else{
+      inCorrectAnswer();
     }
-
     isClickable(false);
   };
-  const handleClickAnswerFour = () => {
-    if (clickable) {
+  const handleClickAnswerFour = (isTrue) => {
+    if (clickable && isTrue) {
+      correctAnswer();
       console.log("hello: " + seconds + ":" + counter);
       setAnswerColor({ answerColor4: "grey" });
+    }else{
+      inCorrectAnswer();
     }
-
     isClickable(false);
   };
 
@@ -92,7 +127,7 @@ const Answers = ({ isAdmin, user, appState }) => {
       .database()
       .ref("appState")
       .on("value", snapshot => {
-        isClickable(true);
+        //isClickable(true);
         setTimer(timer => timer + 1);
         setAnswerColor(
           { answerColor1: "purple" },
@@ -134,7 +169,7 @@ const Answers = ({ isAdmin, user, appState }) => {
       <div className="answer_container">
         <div>
           <Button
-            onClick={handleClickAnswerOne}
+            onClick={e => handleClickAnswerOne(data.question[appState.state].answer[0].isTrue)}
             className={answerColor1}
             variant="outlined"
             color="primary"
@@ -144,7 +179,7 @@ const Answers = ({ isAdmin, user, appState }) => {
         </div>
         <div>
           <Button
-            onClick={handleClickAnswerTwo}
+            onClick={e => handleClickAnswerTwo(data.question[appState.state].answer[1].isTrue)}
             className={answerColor2}
             variant="outlined"
             color="primary"
@@ -156,7 +191,7 @@ const Answers = ({ isAdmin, user, appState }) => {
       <div className="answer_container">
         <div>
           <Button
-            onClick={handleClickAnswerThree}
+            onClick={e => handleClickAnswerThree(data.question[appState.state].answer[2].isTrue)}
             className={answerColor3}
             variant="outlined"
             color="primary"
@@ -166,7 +201,7 @@ const Answers = ({ isAdmin, user, appState }) => {
         </div>
         <div>
           <Button
-            onClick={handleClickAnswerFour}
+            onClick={e => handleClickAnswerFour(data.question[appState.state].answer[3].isTrue)}
             className={answerColor4}
             variant="outlined"
             color="primary"
@@ -189,4 +224,12 @@ const Answers = ({ isAdmin, user, appState }) => {
     </div>
   );
 };
-export default Answers;
+const mapStateToProps = props => ({
+
+});
+
+const mapDispatchToProps = dispatch => ({
+  actions: bindActionCreators(Actions, dispatch)
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Answers);

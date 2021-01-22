@@ -49,6 +49,7 @@ const CustomizedInputs = ({
   useEffect(() => {
     if(loginSuccess){
       actions.getLoginState();
+      actions.getUserResult(localStorage.getItem("id"));
     }
   }, [user]);
   useEffect(() => {

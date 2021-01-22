@@ -4,6 +4,7 @@ export const data = {
     {
       id: "1",
       description: "This is first Question",
+      timer: 20.00,
       answer: [
         {
           id: "1",
@@ -30,6 +31,7 @@ export const data = {
     {
       id: "2",
       description: "This is second Question",
+      timer: 20.00,
       answer: [
         {
           id: "1",
@@ -56,6 +58,7 @@ export const data = {
     {
       id: "3",
       description: "This is third Question",
+      timer: 20.00,
       answer: [
         {
           id: "1",
@@ -82,6 +85,7 @@ export const data = {
     {
       id: "4",
       description: "This is fourth Question",
+      timer: 20.00,
       answer: [
         {
           id: "1",
@@ -109,6 +113,7 @@ export const data = {
     {
       id: "5",
       description: "This is first Question",
+      timer: 20.00,
       answer: [
         {
           id: "1",
