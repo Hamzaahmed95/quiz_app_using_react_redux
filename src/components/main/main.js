@@ -2,14 +2,16 @@ import React from "react";
 import "./main.css";
 import Answers from "../answers/answer";
 import CustomizedInputs from "../input/input";
+import Register from "../register/register";
 import Result from "../result/index";
 
 const Main = ({ isLoggedIn, user, appState, error }) => {
   return (
     <div>
       {!isLoggedIn ? (
-        <CustomizedInputs />
-      ) : (
+         <CustomizedInputs />
+/*         <Register />
+ */      ) : (
         /// New componenet
         <div className="quiz_component">
           <div className="answers">

@@ -35,20 +35,19 @@ function RedditTextField(props) {
 }
 
 const Register = ({ isLoggedIn }) => {
-  const [value, setValue] = useState("");
-  console.log("islogin: " + isLoggedIn);
+  const [user, setUser] = useState({
+    name : '',
+    familyName: '',
+    id: '',
+    role: 'user'
+  }
+  );
   const handleSubmit = () => {
-    console.log("hamza: " + value);
-    const randomString = Math.random().toString(36);
-    const date = new Date();
-    const randomNumber =  randomString+new Date(date).getTime();
-    const values = { 
-      state: 0
-    };
-    let carListRef = firebase.database().ref("appState");
+    console.log(user,"userss")
+    let carListRef = firebase.database().ref("users");
     let newCarRef = carListRef.push();
     newCarRef
-      .set(values)
+      .set(user)
       .then(resp => {
         console.log(resp);
       })
@@ -57,23 +56,43 @@ const Register = ({ isLoggedIn }) => {
       });
   };
 
-  const handleChange = e => {
-    setValue(e.target.value);
+  const handleChange  = (val,field) => {
+    setUser({
+      ...user,
+      [field]: val,
+    });
   };
 
   return (
     <div className="input_container" align="center">
       <RedditTextField
-        label="Enter your key"
-        defaultValue={value}
-        onChange={e => handleChange(e)}
+        label="Name"
+        defaultValue={user.name}
+        onChange={e => handleChange(e.target.value,'name')}
         variant="filled"
         id="reddit-input"
       />
+      <RedditTextField
+        label="Family Name"
+        defaultValue={user.familyName}
+        onChange={e => handleChange(e.target.value,'familyName')}
+        variant="filled"
+        id="reddit-input"
+      />
+      
+      <RedditTextField
+        label="ID"
+        defaultValue={user.id}
+        onChange={e => handleChange(e.target.value,'id')}
+        variant="filled"
+        id="reddit-input"
+      />
+      
       <Button
         onClick={handleSubmit}
         variant="contained"
         className="submitButton"
+        disabled={!user.name || !user.id || !user.familyName}
       >
         submit
       </Button>
