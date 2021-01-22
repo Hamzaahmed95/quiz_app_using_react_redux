@@ -7,11 +7,7 @@ import Result from "../result/index";
 
 const Main = ({ isLoggedIn, user, appState, error }) => {
   return (
-    <div>
-      <Register />
-      </div>
-   /*  <div>
-      <Register />
+       <div>
       {!isLoggedIn ? (
         <CustomizedInputs />
         
@@ -29,6 +25,9 @@ const Main = ({ isLoggedIn, user, appState, error }) => {
           </div>
         </div>
       )}
+    </div>
+/*     <div>
+    <Register />
     </div> */
   );
 };
