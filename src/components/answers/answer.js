@@ -144,7 +144,7 @@ const Answers = ({ isAdmin, user, appState }) => {
         </div>
         <div>
           <Button
-            onClick={handleClickAnswerTwo(data.question[appState.state].answer[1].isTrue)}
+            onClick={handleClickAnswerTwo}
             className={answerColor2}
             variant="outlined"
             color="primary"

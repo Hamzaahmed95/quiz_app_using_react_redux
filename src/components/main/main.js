@@ -25,6 +25,9 @@ const Main = ({ isLoggedIn, user, appState, error }) => {
         </div>
       )}
     </div>
+    /*     <div>
+    <Register />
+    </div> */
   );
 };
 
