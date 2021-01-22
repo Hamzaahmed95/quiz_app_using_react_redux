@@ -11,7 +11,6 @@ import firebase from "firebase";
 const Answers = ({ isAdmin, user, appState, userResult, actions }) => {
   const [timer, setTimer] = useState(20);
   const [clickable, isClickable] = useState(true);
-  let isAnswerSelected = false;
   let milliseconds = 100;
   let seconds = 0;
   const [answerColors, setAnswerColor] = useState([
@@ -35,20 +34,9 @@ const Answers = ({ isAdmin, user, appState, userResult, actions }) => {
     actions.storeAnswer(obj, userResult["id"]);
   };
 
-  const inCorrectAnswer = () => {
-    const score = +userResult.score + +data.question[appState.state].timer;
-    const obj = {
-      score: +score.toFixed(2),
-      answerCount: userResult["answerCount"]
-    };
-    actions.storeAnswer(obj, userResult["id"]);
-  };
-
   const onCompleteTimer = () => {
+    isClickable(false);
     milliseconds = 0;
-    if (!isAnswerSelected) {
-      inCorrectAnswer();
-    }
     data.question[appState.state].answer.forEach((e, i) => {
       if (e.isTrue) {
         answerSwitch(i + 1, "green");
@@ -75,8 +63,7 @@ const Answers = ({ isAdmin, user, appState, userResult, actions }) => {
 
   const handleClickAnswerCommon = (isTrue, value) => {
     if (clickable) {
-      isAnswerSelected = true;
-      isTrue ? correctAnswer() : inCorrectAnswer();
+      if (isTrue) correctAnswer();
       answerSwitch(value, "grey");
       isClickable(false);
     }
