@@ -28,7 +28,12 @@ const Loading = ({ isLoggedIn, actions, user, appState, userResult }) => {
         </div>
       ) : (
         <div className="progress_bar" align="center">
-          <Main userResult={userResult} appState={appState} user={user} isLoggedIn={isLoggedIn} />
+          <Main
+            userResult={userResult}
+            appState={appState}
+            user={user}
+            isLoggedIn={isLoggedIn}
+          />
         </div>
       )}
     </div>

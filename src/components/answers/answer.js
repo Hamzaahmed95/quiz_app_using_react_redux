@@ -9,6 +9,7 @@ import { data } from "../../constants/dummyData";
 import firebase from "firebase";
 
 const Answers = ({ isAdmin, user, appState, userResult, actions }) => {
+  console.log("USER:" + JSON.stringify(user.name));
   const [timer, setTimer] = useState(20);
   const [clickable, isClickable] = useState(true);
   let milliseconds = 100;
