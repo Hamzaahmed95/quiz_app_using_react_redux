@@ -82,7 +82,6 @@ const Answers = ({ isAdmin, user, appState, userResult, actions }) => {
       .database()
       .ref("appState")
       .on("value", () => {
-        console.log(appState, "user effect");
         isClickable(true);
         setTimer(timer => timer + 1);
         setAnswerColor1("purple");
