@@ -13,14 +13,18 @@ const Answers = ({ isAdmin, user, appState, userResult, actions }) => {
   const [clickable, isClickable] = useState(true);
   let milliseconds = 100;
   let seconds = 0;
-  const [answerColors, setAnswerColor] = useState([
-    {
-      answerColor1: "purple",
-      answerColor2: "purple",
-      answerColor3: "purple",
-      answerColor4: "purple"
-    }
-  ]);
+  // const [answerColors, setAnswerColor] = useState([
+  //   {
+  //     answerColor1: "purple",
+  //     answerColor2: "purple",
+  //     answerColor3: "purple",
+  //     answerColor4: "purple"
+  //   }
+  // ]);
+  const [answerColor1, setAnswerColor1] = useState("purple");
+  const [answerColor2, setAnswerColor2] = useState("purple");
+  const [answerColor3, setAnswerColor3] = useState("purple");
+  const [answerColor4, setAnswerColor4] = useState("purple");
 
   const correctAnswer = () => {
     const answerTime = +(seconds + "." + milliseconds);
@@ -47,16 +51,16 @@ const Answers = ({ isAdmin, user, appState, userResult, actions }) => {
   const answerSwitch = (answer, color) => {
     switch (answer) {
       case 1:
-        setAnswerColor({ answerColor1: color });
+        setAnswerColor1(color);
         break;
       case 2:
-        setAnswerColor({ answerColor2: color });
+        setAnswerColor2(color);
         break;
       case 3:
-        setAnswerColor({ answerColor3: color });
+        setAnswerColor3(color);
         break;
       default:
-        setAnswerColor({ answerColor4: color });
+        setAnswerColor4(color);
         break;
     }
   };
@@ -88,12 +92,10 @@ const Answers = ({ isAdmin, user, appState, userResult, actions }) => {
       .on("value", () => {
         isClickable(true);
         setTimer(timer => timer + 1);
-        setAnswerColor(
-          { answerColor1: "purple" },
-          { answerColor2: "purple" },
-          { answerColor3: "purple" },
-          { answerColor4: "purple" }
-        );
+        setAnswerColor1("purple");
+        setAnswerColor2("purple");
+        setAnswerColor3("purple");
+        setAnswerColor4("purple");
       });
   }, []);
 
@@ -134,7 +136,7 @@ const Answers = ({ isAdmin, user, appState, userResult, actions }) => {
                 1
               )
             }
-            className={answerColors.answerColor1}
+            className={answerColor1}
             variant="outlined"
             color="primary"
           >
@@ -149,7 +151,7 @@ const Answers = ({ isAdmin, user, appState, userResult, actions }) => {
                 2
               )
             }
-            className={answerColors.answerColor2}
+            className={answerColor2}
             variant="outlined"
             color="primary"
           >
@@ -166,7 +168,7 @@ const Answers = ({ isAdmin, user, appState, userResult, actions }) => {
                 3
               )
             }
-            className={answerColors.answerColor3}
+            className={answerColor3}
             variant="outlined"
             color="primary"
             isD
@@ -182,7 +184,7 @@ const Answers = ({ isAdmin, user, appState, userResult, actions }) => {
                 4
               )
             }
-            className={answerColors.answerColor4}
+            className={answerColor4}
             variant="outlined"
             color="primary"
           >

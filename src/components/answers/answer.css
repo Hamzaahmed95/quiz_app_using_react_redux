@@ -36,12 +36,17 @@
 }
 
 .grey {
-  background-color: black !important;
-  color: white !important;
+  background-color: white !important;
+  border-color: aliceblue !important;
+  color: black !important;
 }
 
 .green {
   background-color: green !important;
+  color: white !important;
+}
+
+.purple {
   color: white !important;
 }
 
@@ -50,7 +55,7 @@
 }
 
 @media screen and (max-width: 752px) {
-  .answer_container > div {
+  .answer_container>div {
     padding: 2.5%;
   }
 }
