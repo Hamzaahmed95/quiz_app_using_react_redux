@@ -15,21 +15,34 @@ export const getUserData = value => {
       .ref("users")
       .orderByChild("id")
       .equalTo(value)
-      .on("value", snapshot => {
+      .once("value")
+      .then(snapshot => {
         if (snapshot.exists()) {
-          console.log("Error: passed");
           snapshot.forEach(function(data) {
+<<<<<<< HEAD
             console.log(data.val());
             if (!data.child("login")) {
               localStorage.setItem("id", data.child("id").val());
               dispatch({ type: LOGIN_SUCCESS, payload: data.val() });
             } else {
               dispatch({ type: LOGIN_FAILED, payload: "" });
+=======
+            console.log(data.child("login").val(),"Error: passed snapsot");
+          
+            if(data.child("login").val() && !localStorage.getItem("id") && data.child('role').val().toLowerCase() == 'user'){
+              console.log("Error: already login failed");
+              dispatch({ type: LOGIN_FAILED, payload: "User is already login to another device" });    
+            }else{
+              console.log("login sucess",data.val());
+              data.ref.child("login").set(true);
+              localStorage.setItem("id", data.child("id").val());
+              dispatch({ type: LOGIN_SUCCESS, payload: data.val() });
+>>>>>>> 9f13e158d1d64a0c60e5bb2c7edd8bf1dc3cc006
             }
           });
         } else {
           console.log("Error: failed");
-          dispatch({ type: LOGIN_FAILED, payload: "" });
+          dispatch({ type: LOGIN_FAILED, payload: "Invalid User key" });
         }
       });
   };

@@ -6,6 +6,8 @@ import firebase from "firebase/app";
 import Card from "@material-ui/core/Card";
 import Result from "./components/result/index";
 import logo from "./assets/logo.png";
+import bgWhite from "./assets/bgWhite.png";
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -20,7 +22,7 @@ class App extends Component {
     return (
       <div align="center" className="App">
         <img src={logo} alt="logo" width={100} />
-        <h1 className="app_heading">Nawait Mastermind </h1>
+        <img src={bgWhite} alt="logo" width={300} />
         <Card variant="outlined" className="parent_answer_container">
           <Loading />
         </Card>
