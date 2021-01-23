@@ -33,6 +33,19 @@ const Answers = ({ isAdmin, user, appState, userResult, actions }) => {
   const onCompleteTimer = () => {
     isClickable(false);
     milliseconds = 0;
+    console.log(user, "userss");
+    if (user.role == "admin" || JSON.stringify(user.role == "admin")) {
+      console.log("completessd timer asdasd");
+      firebase
+        .database()
+        .ref("appState")
+        .orderByChild("questionStatus")
+        .once("value", snapshot => {
+          snapshot.forEach(function(data) {
+            data.ref.child("questionStatus").set(false);
+          });
+        });
+    }
     data.question[appState.state].answer.forEach((e, i) => {
       if (e.isTrue) {
         answerSwitch(i + 1, "green");
@@ -56,7 +69,21 @@ const Answers = ({ isAdmin, user, appState, userResult, actions }) => {
         break;
     }
   };
-
+  useEffect(() => {
+    console.log(appState, "appStateAsd");
+    if (!appState.questionStatus) {
+      isClickable(false);
+    }
+  }, [appState]);
+  useEffect(() => {
+    console.log(appState, "appStateAsd");
+    isClickable(true);
+    setTimer(timer => timer + 1);
+    setAnswerColor1("purple");
+    setAnswerColor2("purple");
+    setAnswerColor3("purple");
+    setAnswerColor4("purple");
+  }, [appState.state]);
   const handleClickAnswerCommon = (isTrue, value) => {
     if (clickable) {
       if (isTrue) correctAnswer();
@@ -74,6 +101,7 @@ const Answers = ({ isAdmin, user, appState, userResult, actions }) => {
       .once("value", snapshot => {
         snapshot.forEach(function(data) {
           data.ref.child("state").set(milliseconds);
+          data.ref.child("questionStatus").set(true);
         });
       });
   };
@@ -81,14 +109,7 @@ const Answers = ({ isAdmin, user, appState, userResult, actions }) => {
     firebase
       .database()
       .ref("appState")
-      .on("value", () => {
-        isClickable(true);
-        setTimer(timer => timer + 1);
-        setAnswerColor1("purple");
-        setAnswerColor2("purple");
-        setAnswerColor3("purple");
-        setAnswerColor4("purple");
-      });
+      .on("value", () => {});
   }, []);
 
   const children = ({ remainingTime }) => {
