@@ -81,19 +81,14 @@ const Answers = ({ isAdmin, user, appState, userResult, actions }) => {
     firebase
       .database()
       .ref("appState")
-      .on("value", snapshot => {
-        console.log(snapshot.key, "keyssss");
-        snapshot.forEach(function(data) {
-          if (data.child("state").val()) {
-            isClickable(true);
-            setTimer(timer => timer + 1);
-            setAnswerColor1("purple");
-            setAnswerColor2("purple");
-            setAnswerColor3("purple");
-            setAnswerColor4("purple");
-          }
-          console.log(data.child("state").val(), "statestatestate");
-        });
+      .on("value", () => {
+        console.log(appState, "user effect");
+        isClickable(true);
+        setTimer(timer => timer + 1);
+        setAnswerColor1("purple");
+        setAnswerColor2("purple");
+        setAnswerColor3("purple");
+        setAnswerColor4("purple");
       });
   }, []);
 
