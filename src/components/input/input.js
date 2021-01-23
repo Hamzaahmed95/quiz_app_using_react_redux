@@ -47,14 +47,16 @@ const CustomizedInputs = ({
   const [errors, isError] = useState(false);
 
   useEffect(() => {
-    if(loginSuccess){
+    if (loginSuccess) {
       actions.getLoginState();
       actions.getUserResult(localStorage.getItem("id"));
     }
   }, [user]);
+
   useEffect(() => {
     isError(error);
   }, [error]);
+
   const handleSubmit = () => {
     actions.getUserData(value);
     console.log("Error: " + error);
@@ -95,7 +97,7 @@ const CustomizedInputs = ({
       )}
       {loginSuccess && !isLoggedIn && user.role === "user" && (
         <>
-          <p>Quiz will start soon</p>
+          <p style={{ color: "white" }}>Quiz will start soon</p>
         </>
       )}
       {loginSuccess && !isLoggedIn && user.role === "admin" && (

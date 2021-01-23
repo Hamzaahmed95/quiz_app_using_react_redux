@@ -5,12 +5,14 @@ import CustomizedInputs from "../input/input";
 import Register from "../register/register";
 import Result from "../result/index";
 
-const Main = ({ isLoggedIn, user, appState,userResult, error }) => {
+const Main = ({ isLoggedIn, user, appState, userResult, error }) => {
   return (
-       <div>
+    // <div>
+    //   <Register />
+    // </div>
+    <div>
       {!isLoggedIn ? (
         <CustomizedInputs />
-        
       ) : (
         <div className="quiz_component">
           <div className="answers">
@@ -27,9 +29,6 @@ const Main = ({ isLoggedIn, user, appState,userResult, error }) => {
         </div>
       )}
     </div>
-/*     <div>
-    <Register />
-    </div> */
   );
 };
 

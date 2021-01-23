@@ -13,14 +13,6 @@ const Answers = ({ isAdmin, user, appState, userResult, actions }) => {
   const [clickable, isClickable] = useState(true);
   let milliseconds = 100;
   let seconds = 0;
-  // const [answerColors, setAnswerColor] = useState([
-  //   {
-  //     answerColor1: "purple",
-  //     answerColor2: "purple",
-  //     answerColor3: "purple",
-  //     answerColor4: "purple"
-  //   }
-  // ]);
   const [answerColor1, setAnswerColor1] = useState("purple");
   const [answerColor2, setAnswerColor2] = useState("purple");
   const [answerColor3, setAnswerColor3] = useState("purple");
@@ -33,7 +25,7 @@ const Answers = ({ isAdmin, user, appState, userResult, actions }) => {
     const score = +userResult.score + correctTime;
     const obj = {
       score: score.toFixed(2),
-      answerCount: userResult["answerCount"] + 1
+      totalCorrectAnswers: userResult["totalCorrectAnswers"] + 1
     };
     actions.storeAnswer(obj, userResult["id"]);
   };

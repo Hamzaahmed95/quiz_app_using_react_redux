@@ -12,7 +12,7 @@ export const getUserData = value => {
   return dispatch => {
     firebase
       .database()
-      .ref("user")
+      .ref("users")
       .orderByChild("id")
       .equalTo(value)
       .on("value", snapshot => {
@@ -96,7 +96,7 @@ export const getUserResult = value => {
         if (snapshot.exists()) {
           console.log("Error: passed");
           snapshot.forEach(function(data) {
-            console.log(data.val(),"user ersuultss");
+            console.log(data.val(), "user ersuultss");
             dispatch({ type: USER_RESULT, payload: data.val() });
           });
         } else {
@@ -107,25 +107,24 @@ export const getUserResult = value => {
   };
 };
 
-export const storeAnswer = (obj,value) => {
-  console.log(obj, "poo",value);
-   return dispatch => {
+export const storeAnswer = (obj, value) => {
+  console.log(obj, "poo", value);
+  return dispatch => {
     firebase
       .database()
       .ref("userResults")
       .orderByChild("id")
       .equalTo(value)
-      .once('value')
+      .once("value")
       .then(snapshot => {
         if (snapshot.exists()) {
           console.log("Error: passed");
           snapshot.forEach(function(data) {
             console.log("Error: passed", data.val());
             data.ref.child("score").set(obj.score);
-            data.ref.child("answerCount").set(obj.answerCount);
+            data.ref.child("totalCorrectAnswers").set(obj.totalCorrectAnswers);
           });
-        }
-        else {
+        } else {
           console.log("Error: failed");
           dispatch({ type: USER_RESULT_FAILED, payload: "" });
         }
