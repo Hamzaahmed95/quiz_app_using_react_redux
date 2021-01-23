@@ -9,7 +9,6 @@ import { data } from "../../constants/dummyData";
 import firebase from "firebase";
 
 const Answers = ({ isAdmin, user, appState, userResult, actions }) => {
-  console.log("USER:" + JSON.stringify(user.name));
   const [timer, setTimer] = useState(20);
   const [clickable, isClickable] = useState(true);
   let milliseconds = 100;
@@ -33,19 +32,7 @@ const Answers = ({ isAdmin, user, appState, userResult, actions }) => {
 
   const onCompleteTimer = () => {
     isClickable(false);
-    console.log(user,"userss")
-    if(user.role == 'admin' || JSON.stringify(user.role == 'admin')){
-      console.log("completessd timer")
-      firebase
-      .database()
-      .ref("appState")
-      .orderByChild("questionStatus")
-      .once("value", snapshot => {
-        snapshot.forEach(function(data) {
-          data.ref.child("questionStatus").set(false);
-        });
-      });
-    }
+    milliseconds = 0;
     data.question[appState.state].answer.forEach((e, i) => {
       if (e.isTrue) {
         answerSwitch(i + 1, "green");
@@ -77,12 +64,7 @@ const Answers = ({ isAdmin, user, appState, userResult, actions }) => {
       isClickable(false);
     }
   };
-  useEffect(() => {
-    console.log(appState,"appStateAsd");
-    if(!appState.questionStatus){
-      isClickable(false);
-    }
-  }, [appState]);
+
   const onClickNextQuestion = () => {
     const milliseconds = appState.state + 1;
     firebase
@@ -92,7 +74,6 @@ const Answers = ({ isAdmin, user, appState, userResult, actions }) => {
       .once("value", snapshot => {
         snapshot.forEach(function(data) {
           data.ref.child("state").set(milliseconds);
-          data.ref.child("questionStatus").set(true);
         });
       });
   };
@@ -101,7 +82,6 @@ const Answers = ({ isAdmin, user, appState, userResult, actions }) => {
       .database()
       .ref("appState")
       .on("value", () => {
-        console.log(appState,"user effect")
         isClickable(true);
         setTimer(timer => timer + 1);
         setAnswerColor1("purple");
@@ -218,9 +198,7 @@ const Answers = ({ isAdmin, user, appState, userResult, actions }) => {
     </div>
   );
 };
-const mapStateToProps = props => ({
-  user: props.userReducer.user
-});
+const mapStateToProps = props => ({});
 
 const mapDispatchToProps = dispatch => ({
   actions: bindActionCreators(Actions, dispatch)
