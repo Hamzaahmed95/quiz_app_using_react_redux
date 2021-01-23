@@ -33,7 +33,8 @@ const Answers = ({ isAdmin, user, appState, userResult, actions }) => {
 
   const onCompleteTimer = () => {
     isClickable(false);
-    if(user && user.role == 'admin'){
+    console.log(user,"userss")
+    if(user.role == 'admin' || JSON.stringify(user.role == 'admin')){
       console.log("completessd timer")
       firebase
       .database()
@@ -100,6 +101,7 @@ const Answers = ({ isAdmin, user, appState, userResult, actions }) => {
       .database()
       .ref("appState")
       .on("value", () => {
+        console.log(appState,"user effect")
         isClickable(true);
         setTimer(timer => timer + 1);
         setAnswerColor1("purple");
@@ -216,7 +218,9 @@ const Answers = ({ isAdmin, user, appState, userResult, actions }) => {
     </div>
   );
 };
-const mapStateToProps = props => ({});
+const mapStateToProps = props => ({
+  user: props.userReducer.user
+});
 
 const mapDispatchToProps = dispatch => ({
   actions: bindActionCreators(Actions, dispatch)

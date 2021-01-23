@@ -25,10 +25,8 @@ export const getUserData = value => {
               console.log("Error: already login failed");
               dispatch({ type: LOGIN_FAILED, payload: "User is already login to another device" });    
             }else{
-              console.log("login sucess");
-          
+              console.log("login sucess",data.val());
               data.ref.child("login").set(true);
-              localStorage.setItem("id", data.child("id").val()); 
               localStorage.setItem("id", data.child("id").val());
               dispatch({ type: LOGIN_SUCCESS, payload: data.val() });
             }
