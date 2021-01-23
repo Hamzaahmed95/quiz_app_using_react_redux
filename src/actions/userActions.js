@@ -20,8 +20,12 @@ export const getUserData = value => {
           console.log("Error: passed");
           snapshot.forEach(function(data) {
             console.log(data.val());
-            localStorage.setItem("id", data.child("id").val());
-            dispatch({ type: LOGIN_SUCCESS, payload: data.val() });
+            if (!data.child("login")) {
+              localStorage.setItem("id", data.child("id").val());
+              dispatch({ type: LOGIN_SUCCESS, payload: data.val() });
+            } else {
+              dispatch({ type: LOGIN_FAILED, payload: "" });
+            }
           });
         } else {
           console.log("Error: failed");
