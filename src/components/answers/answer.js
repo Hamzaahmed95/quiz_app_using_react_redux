@@ -33,7 +33,18 @@ const Answers = ({ isAdmin, user, appState, userResult, actions }) => {
 
   const onCompleteTimer = () => {
     isClickable(false);
-    milliseconds = 0;
+    if(user && user.role == 'admin'){
+      console.log("completessd timer")
+      firebase
+      .database()
+      .ref("appState")
+      .orderByChild("questionStatus")
+      .once("value", snapshot => {
+        snapshot.forEach(function(data) {
+          data.ref.child("questionStatus").set(false);
+        });
+      });
+    }
     data.question[appState.state].answer.forEach((e, i) => {
       if (e.isTrue) {
         answerSwitch(i + 1, "green");
@@ -65,7 +76,12 @@ const Answers = ({ isAdmin, user, appState, userResult, actions }) => {
       isClickable(false);
     }
   };
-
+  useEffect(() => {
+    console.log(appState,"appStateAsd");
+    if(!appState.questionStatus){
+      isClickable(false);
+    }
+  }, [appState]);
   const onClickNextQuestion = () => {
     const milliseconds = appState.state + 1;
     firebase
@@ -75,6 +91,7 @@ const Answers = ({ isAdmin, user, appState, userResult, actions }) => {
       .once("value", snapshot => {
         snapshot.forEach(function(data) {
           data.ref.child("state").set(milliseconds);
+          data.ref.child("questionStatus").set(true);
         });
       });
   };

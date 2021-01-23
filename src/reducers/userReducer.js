@@ -12,6 +12,7 @@ const initialState = {
   loginSuccess: false,
   appState: null,
   error: false,
+  errorMessage: '',
   userResult: {}
 };
 
@@ -22,12 +23,13 @@ const userReducer = (state = initialState, action) => {
       user: action.payload,
       error: false,
       loginSuccess: true,
+      errorMessage: ''
     };
   }
   if (action.type === LOGIN_FAILED) {
     return {
       ...state,
-
+      errorMessage: action.payload,
       error: true
     };
   }

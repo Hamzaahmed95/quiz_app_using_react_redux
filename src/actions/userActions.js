@@ -15,17 +15,27 @@ export const getUserData = value => {
       .ref("users")
       .orderByChild("id")
       .equalTo(value)
-      .on("value", snapshot => {
+      .once("value")
+      .then(snapshot => {
         if (snapshot.exists()) {
-          console.log("Error: passed");
           snapshot.forEach(function(data) {
-            console.log(data.val());
-            localStorage.setItem("id", data.child("id").val());
-            dispatch({ type: LOGIN_SUCCESS, payload: data.val() });
+            console.log(data.child("login").val(),"Error: passed snapsot");
+          
+            if(data.child("login").val() && !localStorage.getItem("id") && data.child('role').val().toLowerCase() == 'user'){
+              console.log("Error: already login failed");
+              dispatch({ type: LOGIN_FAILED, payload: "User is already login to another device" });    
+            }else{
+              console.log("login sucess");
+          
+              data.ref.child("login").set(true);
+              localStorage.setItem("id", data.child("id").val()); 
+              localStorage.setItem("id", data.child("id").val());
+              dispatch({ type: LOGIN_SUCCESS, payload: data.val() });
+            }
           });
         } else {
           console.log("Error: failed");
-          dispatch({ type: LOGIN_FAILED, payload: "" });
+          dispatch({ type: LOGIN_FAILED, payload: "Invalid User key" });
         }
       });
   };

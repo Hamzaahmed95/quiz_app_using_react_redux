@@ -40,7 +40,8 @@ const CustomizedInputs = ({
   error,
   loginSuccess,
   user,
-  isLoggedIn
+  isLoggedIn,
+  errorMessage
 }) => {
   const [value, setValue] = useState("");
   const [errorValue, setErrorValue] = useState("Please Enter Value");
@@ -112,7 +113,7 @@ const CustomizedInputs = ({
         </>
       )}
 
-      {errors && <p style={{ color: "red" }}>Invalid User key</p>}
+      {errors && <p style={{ color: "red" }}>{errorMessage}</p>}
     </div>
   );
 };
@@ -121,7 +122,8 @@ const mapStateToProps = props => ({
   loginSuccess: props.userReducer.loginSuccess,
   isLoggedIn: props.userReducer.isLoggedIn,
   user: props.userReducer.user,
-  error: props.userReducer.error
+  error: props.userReducer.error,
+  errorMessage: props.userReducer.errorMessage
 });
 
 const mapDispatchToProps = dispatch => ({
