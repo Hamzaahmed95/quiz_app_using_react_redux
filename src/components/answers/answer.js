@@ -35,7 +35,7 @@ const Answers = ({ isAdmin, user, appState, userResult, actions }) => {
     isClickable(false);
     console.log(user,"userss")
     if(user.role == 'admin' || JSON.stringify(user.role == 'admin')){
-      console.log("completessd timer")
+      console.log("completessd timer asdasd")
       firebase
       .database()
       .ref("appState")
