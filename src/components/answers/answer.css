@@ -36,17 +36,24 @@
 }
 
 .grey {
+  margin-top: 15px !important;
+  width: 300px;
   background-color: white !important;
   border-color: aliceblue !important;
   color: black !important;
 }
 
 .green {
+  margin-top: 15px !important;
+  width: 300px;
   background-color: green !important;
   color: white !important;
 }
 
 .purple {
+  margin-top: 15px !important;
+  border-color: aliceblue !important;
+  width: 300px;
   color: white !important;
 }
 
@@ -55,8 +62,24 @@
 }
 
 @media screen and (max-width: 752px) {
-  .answer_container>div {
-    padding: 2.5%;
+  .grey {
+    margin-top: 15px !important;
+    width: 250px;
+    background-color: white !important;
+    border-color: aliceblue !important;
+    color: black !important;
+  }
+  .green {
+    margin-top: 15px !important;
+    width: 250px;
+    background-color: green !important;
+    color: white !important;
+  }
+  .purple {
+    margin-top: 15px !important;
+    border-color: aliceblue !important;
+    width: 250px;
+    color: white !important;
   }
 }
 
