@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
@@ -7,6 +7,7 @@ import TableContainer from "@material-ui/core/TableContainer";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
+import firebase from "firebase";
 import "./index.css";
 import { data } from "../../constants/dummyDataResult";
 
@@ -26,6 +27,32 @@ const rows = [
 
 const Result = () => {
   const classes = useStyles();
+  const [data, setData] = useState([]);
+  let datas = [];
+  useEffect(() => {
+    firebase
+      .database()
+      .ref("userResults")
+      .orderByChild("totalCorrectAnswers")
+      .limitToLast(15)
+      .once("value", snapshot => {
+        snapshot.forEach(function(data) {
+          datas.push(data.val());
+        });
+        datas.sort((a, b) =>
+          a.totalCorrectAnswers < b.totalCorrectAnswers
+            ? 1
+            : a.totalCorrectAnswers === b.totalCorrectAnswers
+            ? a.score < b.score
+              ? 1
+              : -1
+            : -1
+        );
+
+        setData(datas);
+      });
+  }, []);
+  console.log(JSON.stringify(data));
 
   useEffect(() => {
     console.log(data);
@@ -43,7 +70,7 @@ const Result = () => {
   return (
     <div>
       <h2>Results</h2>
-      <TableContainer>
+      <TableContainer className="container">
         <Table>
           <TableHead>
             <TableRow>
@@ -51,10 +78,10 @@ const Result = () => {
                 <b className="color">Name</b>
               </TableCell>
               <TableCell align="right">
-                <b className="color">True Answers</b>
+                <b className="color">Correct Answers</b>
               </TableCell>
               <TableCell align="right">
-                <b className="color">Total Time</b>
+                <b className="color">Score</b>
               </TableCell>
             </TableRow>
           </TableHead>
@@ -65,7 +92,7 @@ const Result = () => {
                   <p className="color">{result.name}</p>
                 </TableCell>
                 <TableCell className="color" align="right">
-                  <p className="color">{result.isTrue}</p>
+                  <p className="color">{result.totalCorrectAnswers}</p>
                 </TableCell>
                 <TableCell className="color" align="right">
                   <p className="color">{result.score}</p>

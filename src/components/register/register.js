@@ -4,8 +4,8 @@ import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import "./register.css";
 import firebase from "firebase";
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
 
 const useStylesReddit = makeStyles(theme => ({
   root: {
@@ -36,30 +36,46 @@ function RedditTextField(props) {
 
 const Register = ({ isLoggedIn }) => {
   const [user, setUser] = useState({
-    name : '',
-    familyName: '',
-    id: '',
-    role: 'user'
-  }
-  );
+    name: "",
+    familyName: "",
+    id: "",
+    role: "admin"
+  });
   const handleSubmit = () => {
-    console.log(user,"userss")
-    let carListRef = firebase.database().ref("users");
-    let newCarRef = carListRef.push();
-    newCarRef
+    console.log(user, "userss");
+    let userRef = firebase.database().ref("users");
+    let newUserRef = userRef.push();
+    newUserRef
       .set(user)
       .then(resp => {
         console.log(resp);
+        const result = {
+          id: user.id,
+          name: user.name + " " + user.familyName,
+          score: 0,
+          totalCorrectAnswers: 0,
+          rank: 0
+        };
+        let userResultRef = firebase.database().ref("userResults");
+        let userResults = userResultRef.push();
+        userResults
+          .set(result)
+          .then(resp => {
+            console.log(resp);
+          })
+          .catch(err => {
+            console.log(err);
+          });
       })
       .catch(err => {
         console.log(err);
       });
   };
 
-  const handleChange  = (val,field) => {
+  const handleChange = (val, field) => {
     setUser({
       ...user,
-      [field]: val,
+      [field]: val
     });
   };
 
@@ -68,26 +84,26 @@ const Register = ({ isLoggedIn }) => {
       <RedditTextField
         label="Name"
         defaultValue={user.name}
-        onChange={e => handleChange(e.target.value,'name')}
+        onChange={e => handleChange(e.target.value, "name")}
         variant="filled"
         id="reddit-input"
       />
       <RedditTextField
         label="Family Name"
         defaultValue={user.familyName}
-        onChange={e => handleChange(e.target.value,'familyName')}
+        onChange={e => handleChange(e.target.value, "familyName")}
         variant="filled"
         id="reddit-input"
       />
-      
+
       <RedditTextField
         label="ID"
         defaultValue={user.id}
-        onChange={e => handleChange(e.target.value,'id')}
+        onChange={e => handleChange(e.target.value, "id")}
         variant="filled"
         id="reddit-input"
       />
-      
+
       <Button
         onClick={handleSubmit}
         variant="contained"
@@ -98,14 +114,14 @@ const Register = ({ isLoggedIn }) => {
       </Button>
     </div>
   );
-}
+};
 
-const mapStateToProps = (props) => ({
-	isLoggedIn: props.userReducer.isLoggedIn,
+const mapStateToProps = props => ({
+  isLoggedIn: props.userReducer.isLoggedIn
 });
 
-const mapDispatchToProps = (dispatch) => ({
-	//actions: bindActionCreators(Actions, dispatch),
+const mapDispatchToProps = dispatch => ({
+  //actions: bindActionCreators(Actions, dispatch),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Register);

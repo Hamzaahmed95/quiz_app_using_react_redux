@@ -40,20 +40,24 @@ const CustomizedInputs = ({
   error,
   loginSuccess,
   user,
-  isLoggedIn
+  isLoggedIn,
+  errorMessage
 }) => {
   const [value, setValue] = useState("");
   const [errorValue, setErrorValue] = useState("Please Enter Value");
   const [errors, isError] = useState(false);
 
   useEffect(() => {
-    if(loginSuccess){
+    if (loginSuccess) {
       actions.getLoginState();
+      actions.getUserResult(localStorage.getItem("id"));
     }
   }, [user]);
+
   useEffect(() => {
     isError(error);
   }, [error]);
+
   const handleSubmit = () => {
     actions.getUserData(value);
     console.log("Error: " + error);
@@ -94,7 +98,7 @@ const CustomizedInputs = ({
       )}
       {loginSuccess && !isLoggedIn && user.role === "user" && (
         <>
-          <p>Quiz will start soon</p>
+          <p style={{ color: "white" }}>Quiz will start soon</p>
         </>
       )}
       {loginSuccess && !isLoggedIn && user.role === "admin" && (
@@ -109,7 +113,7 @@ const CustomizedInputs = ({
         </>
       )}
 
-      {errors && <p style={{ color: "red" }}>Invalid User key</p>}
+      {errors && <p style={{ color: "red" }}>{errorMessage}</p>}
     </div>
   );
 };
@@ -118,7 +122,8 @@ const mapStateToProps = props => ({
   loginSuccess: props.userReducer.loginSuccess,
   isLoggedIn: props.userReducer.isLoggedIn,
   user: props.userReducer.user,
-  error: props.userReducer.error
+  error: props.userReducer.error,
+  errorMessage: props.userReducer.errorMessage
 });
 
 const mapDispatchToProps = dispatch => ({

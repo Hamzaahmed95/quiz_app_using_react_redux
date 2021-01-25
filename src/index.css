@@ -1,3 +1,5 @@
 body {
-  background: url("./assets/vs.jpg");
+  /* background: url("./assets/vs.jpg"); */
+  background: linear-gradient(to bottom, #000, #000, #000, #000, #3b5998) no-repeat center center fixed;
+  height: 100% !important;
 }

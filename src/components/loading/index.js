@@ -6,13 +6,14 @@ import Main from "../main/main";
 import * as Actions from "../../actions/userActions";
 import CircularProgress from "@material-ui/core/CircularProgress";
 
-const Loading = ({ isLoggedIn, actions, user, appState }) => {
+const Loading = ({ isLoggedIn, actions, user, appState, userResult }) => {
   const [Loadingg, isLoadingg] = useState(false);
 
   useEffect(() => {
     actions.getAppState();
     if (localStorage.getItem("id")) {
       actions.getLoginState();
+      actions.getUserResult(localStorage.getItem("id"));
       actions.getUserData(localStorage.getItem("id"));
     }
     setTimeout(function() {
@@ -27,7 +28,12 @@ const Loading = ({ isLoggedIn, actions, user, appState }) => {
         </div>
       ) : (
         <div className="progress_bar" align="center">
-          <Main appState={appState} user={user} isLoggedIn={isLoggedIn} />
+          <Main
+            userResult={userResult}
+            appState={appState}
+            user={user}
+            isLoggedIn={isLoggedIn}
+          />
         </div>
       )}
     </div>
@@ -37,6 +43,7 @@ const Loading = ({ isLoggedIn, actions, user, appState }) => {
 const mapStateToProps = props => ({
   isLoggedIn: props.userReducer.isLoggedIn,
   user: props.userReducer.user,
+  userResult: props.userReducer.userResult,
   appState: props.userReducer.appState
 });
 

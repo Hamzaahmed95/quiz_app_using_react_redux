@@ -4,17 +4,23 @@
 .AppContainer {
   margin-top: 2%;
   display: flex;
-  background: #3090c7 !important;
   align-items: center;
   width: 70%;
 }
 
 .parent_answer_container {
-  background: white !important;
+  background-image: linear-gradient(
+    to top,
+    #3b5998,
+    #000,
+    #000,
+    #000,
+    #000000,
+    #000000,
+    #000000
+  );
   width: 75%;
   position: relative;
-
-  box-shadow: 4px 8px rgba(130, 154, 221, 0.568);
 }
 
 .result {
@@ -23,5 +29,5 @@
 
 .app_heading {
   color: white;
-  font-family: Georgia, "Times New Roman", Times, serif;
+  font-family: "gotham ssm a", "gotham ssm b", sans-serif;
 }
