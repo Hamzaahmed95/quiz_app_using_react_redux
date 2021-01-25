@@ -17,7 +17,7 @@ const Answers = ({ isAdmin, user, appState, userResult, actions }) => {
   const [answerColor2, setAnswerColor2] = useState("purple");
   const [answerColor3, setAnswerColor3] = useState("purple");
   const [answerColor4, setAnswerColor4] = useState("purple");
-
+  const [duration, setDuration] = useState(19)
   const correctAnswer = () => {
     const answerTime = +(seconds + "." + milliseconds);
     const questionTime = +data.question[appState.state].timer;
@@ -73,6 +73,12 @@ const Answers = ({ isAdmin, user, appState, userResult, actions }) => {
     console.log(appState, "appStateAsd");
     if (!appState.questionStatus) {
       isClickable(false);
+      setDuration(0);
+      setTimer(timer => timer + 1);
+    }else{
+      setDuration(19);
+      isClickable(true);
+      setTimer(timer => timer + 1);
     }
   }, [appState]);
   useEffect(() => {
@@ -109,7 +115,10 @@ const Answers = ({ isAdmin, user, appState, userResult, actions }) => {
     firebase
       .database()
       .ref("appState")
-      .on("value", () => {});
+      .on("value", () => {
+        console.log(appState,"appstare")
+
+      });
   }, []);
 
   const children = ({ remainingTime }) => {
@@ -134,6 +143,7 @@ const Answers = ({ isAdmin, user, appState, userResult, actions }) => {
           children={children}
           onComplete={onCompleteTimer}
           timer={timer}
+          duration={duration}
         />
       </div>
       <div align="center" className="question">
@@ -152,6 +162,7 @@ const Answers = ({ isAdmin, user, appState, userResult, actions }) => {
             className={answerColor1}
             variant="outlined"
             color="primary"
+            disabled={!appState.questionStatus}
           >
             {data.question[appState.state].answer[0].details}
           </Button>
@@ -167,6 +178,7 @@ const Answers = ({ isAdmin, user, appState, userResult, actions }) => {
             className={answerColor2}
             variant="outlined"
             color="primary"
+            disabled={!appState.questionStatus}
           >
             {data.question[appState.state].answer[1].details}
           </Button>
@@ -184,7 +196,7 @@ const Answers = ({ isAdmin, user, appState, userResult, actions }) => {
             className={answerColor3}
             variant="outlined"
             color="primary"
-            isD
+            disabled={!appState.questionStatus}
           >
             {data.question[appState.state].answer[2].details}
           </Button>
@@ -200,6 +212,7 @@ const Answers = ({ isAdmin, user, appState, userResult, actions }) => {
             className={answerColor4}
             variant="outlined"
             color="primary"
+            disabled={!appState.questionStatus}
           >
             {data.question[appState.state].answer[3].details}
           </Button>
