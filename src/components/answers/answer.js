@@ -17,7 +17,7 @@ const Answers = ({ isAdmin, user, appState, userResult, actions }) => {
   const [answerColor2, setAnswerColor2] = useState("purple");
   const [answerColor3, setAnswerColor3] = useState("purple");
   const [answerColor4, setAnswerColor4] = useState("purple");
-  const [duration, setDuration] = useState(19)
+  const [duration, setDuration] = useState(19);
   const correctAnswer = () => {
     const answerTime = +(seconds + "." + milliseconds);
     const questionTime = +data.question[appState.state].timer;
@@ -70,12 +70,11 @@ const Answers = ({ isAdmin, user, appState, userResult, actions }) => {
     }
   };
   useEffect(() => {
-    console.log(appState, "appStateAsd");
     if (!appState.questionStatus) {
       isClickable(false);
       setDuration(0);
       setTimer(timer => timer + 1);
-    }else{
+    } else {
       setDuration(19);
       isClickable(true);
       setTimer(timer => timer + 1);
@@ -116,8 +115,7 @@ const Answers = ({ isAdmin, user, appState, userResult, actions }) => {
       .database()
       .ref("appState")
       .on("value", () => {
-        console.log(appState,"appstare")
-
+        console.log(appState, "appstare");
       });
   }, []);
 
