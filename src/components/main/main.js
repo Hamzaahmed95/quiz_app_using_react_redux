@@ -1,7 +1,7 @@
 import React from "react";
 import "./main.css";
 import Answers from "../answers/answer";
-import CustomizedInputs from "../input/input";
+import CustomizedInputs from "../input/index";
 import Register from "../register/register";
 import Result from "../result/index";
 
@@ -20,6 +20,7 @@ const Main = ({ isLoggedIn, user, appState, userResult, error }) => {
               display: "flex",
               justifyContent: "space-between",
               flexWrap: "wrap",
+              borderColor: "#191919",
               borderBottom: "groove",
               paddingLeft: "20px",
               paddingRight: "20px"

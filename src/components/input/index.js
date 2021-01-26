@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { fade, makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
-import "./input.css";
+import "./index.css";
 import firebase from "firebase";
 import * as Actions from "../../actions/userActions";
 import { connect } from "react-redux";
@@ -98,7 +98,7 @@ const CustomizedInputs = ({
       )}
       {loginSuccess && !isLoggedIn && user.role === "user" && (
         <>
-          <p style={{ color: "white" }}>Quiz will start soon</p>
+          <p className="quiz_start_text">Quiz will start soon</p>
         </>
       )}
       {loginSuccess && !isLoggedIn && user.role === "admin" && (

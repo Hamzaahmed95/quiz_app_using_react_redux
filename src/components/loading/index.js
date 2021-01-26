@@ -24,7 +24,11 @@ const Loading = ({ isLoggedIn, actions, user, appState, userResult }) => {
     <div>
       {!Loadingg ? (
         <div className="progress_bar" align="center">
-          <CircularProgress className="progress_barColor" color="primary" />
+          <CircularProgress
+            style={{ color: "#fff" }}
+            className="progress_barColor"
+            color="primary"
+          />
         </div>
       ) : (
         <div className="progress_bar" align="center">

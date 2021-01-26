@@ -21,8 +21,10 @@ class App extends Component {
   render() {
     return (
       <div align="center" className="App">
-        <img src={logo} alt="logo" width={100} />
-        <img src={bgWhite} alt="logo" width={300} />
+        <div className="logo_text_container">
+          <img className="logo_image" src={logo} alt="logo" />
+          <span className="text_heading"> & Mursaleen Mehmood</span>
+        </div>
         <Card variant="outlined" className="parent_answer_container">
           <Loading />
         </Card>

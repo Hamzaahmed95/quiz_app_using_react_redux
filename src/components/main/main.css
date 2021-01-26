@@ -9,12 +9,12 @@
 
 .result {
   width: 25%;
-
+  border-color: #191919 !important;
   border-left: groove;
   color: white;
   background-image: linear-gradient(
     to top,
-    #3b5998,
+    #191919,
     #000,
     #000,
     #000,

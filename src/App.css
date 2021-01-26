@@ -11,7 +11,7 @@
 .parent_answer_container {
   background-image: linear-gradient(
     to top,
-    #3b5998,
+    #191919,
     #000,
     #000,
     #000,
@@ -30,4 +30,40 @@
 .app_heading {
   color: white;
   font-family: "gotham ssm a", "gotham ssm b", sans-serif;
+}
+
+.logo_image {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  width: 100px;
+}
+.text_heading {
+  color: white;
+  padding-left: 30px;
+  font-size: 40px;
+  font-family: monospace;
+}
+.logo_text_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@media screen and (max-width: 752px) {
+  .logo_image {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    width: 50px;
+  }
+  .text_heading {
+    color: white;
+    padding-left: 10px;
+    font-size: 20px;
+    font-family: monospace;
+  }
+  .logo_text_container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 }
