@@ -261,8 +261,10 @@ export const data = {
     },
     {
       id: "12",
-      description: "Who was cited with the first Nishan-i-Haider for his gallant and actions of valor?",
-      description2 : "کونسے فوجی کو سب سے پہلے انکی بہادری اور دلیری پر نشان حیدرسے نوازا گیا؟",
+      description:
+        "Who was cited with the first Nishan-i-Haider for his gallant and actions of valor?",
+      description2:
+        "کونسے فوجی کو سب سے پہلے انکی بہادری اور دلیری پر نشان حیدرسے نوازا گیا؟",
       timer: 20.0,
       answer: [
         {
@@ -289,8 +291,10 @@ export const data = {
     },
     {
       id: "13",
-      description: "Abdus Salam became the first Pakistani and the first Muslim to be awarded the Nobel Prize in the sciences in year ?",
-      description2 : "عبد السلام کس سن میں سب سے پہلے نوبل پرائز جیتنے والے مسلمان اور پاکستانی بنے؟",
+      description:
+        "In which year Abdus Salam became the first Pakistani and the first Muslim to be awarded the Nobel Prize in the sciences?",
+      description2:
+        "عبد السلام کس سن میں سب سے پہلے نوبل پرائز جیتنے والے مسلمان اور پاکستانی بنے؟",
       timer: 20.0,
       answer: [
         {
@@ -317,8 +321,9 @@ export const data = {
     },
     {
       id: "14",
-      description : "Pakistan's largest coal reserves are found in which area?",
-      description2 : "پاکستان کے کوئلے کے سب سے بڑے ذخائر کس علاقے میں پائے جاتے ہیں؟",
+      description: "Pakistan's largest coal reserves are found in which area?",
+      description2:
+        "پاکستان کے کوئلے کے سب سے بڑے ذخائر کس علاقے میں پائے جاتے ہیں؟",
       timer: 20.0,
       answer: [
         {
@@ -374,7 +379,8 @@ export const data = {
     {
       id: "16",
       description: "In which year, Pakistan was champion in 4 different games?",
-      description2: "پاکستان کس سال بیک وقت  4 مختلف کھیلوں میں عالمی چیمپیئن تھا؟",
+      description2:
+        "پاکستان کس سال بیک وقت  4 مختلف کھیلوں میں عالمی چیمپیئن تھا؟",
       timer: 20.0,
       answer: [
         {
@@ -401,8 +407,9 @@ export const data = {
     },
     {
       id: "17",
-      description:"Who had the shortest tenure as President of Pakistan?",
-      description2:"پاکستان کے صدر کی حیثیت سے سب سے کم دور حکومت کس کے پاس رہی؟",
+      description: "Who had the shortest tenure as President of Pakistan?",
+      description2:
+        "پاکستان کے صدر کی حیثیت سے سب سے کم دور حکومت کس کے پاس رہی؟",
       timer: 20.0,
       answer: [
         {
@@ -457,8 +464,10 @@ export const data = {
     },
     {
       id: "19",
-      description: "Which from the following countries is not bordered by Pakistan?",
-      description2: "مندرجہ ذیل ممالک میں سے کون سے ملک کی سرحد پاکستان کی سرحد سے متصل نہیں ہے؟",
+      description:
+        "Which of the following countries is not bordered by Pakistan?",
+      description2:
+        "مندرجہ ذیل ممالک میں سے کون سے ملک کی سرحد پاکستان کی سرحد سے متصل نہیں ہے؟",
       timer: 20.0,
       answer: [
         {

@@ -9,18 +9,16 @@
 
 .result {
   width: 25%;
-  border-color: #191919 !important;
+  border-color: #ffffff !important;
   border-left: groove;
   color: white;
   background-image: linear-gradient(
-    to top,
-    #191919,
-    #000,
-    #000,
-    #000,
-    #000000,
-    #000000,
-    #000000
+    to bottom,
+    #1a4173,
+    #102747,
+    #102747,
+    #102747,
+    #102747
   );
 }
 

@@ -21,11 +21,16 @@ class App extends Component {
   render() {
     return (
       <div align="center" className="App">
-        <div className="logo_text_container">
-          <img className="logo_image" src={logo} alt="logo" />
-          <span className="text_heading"> & Mursaleen Mehmood</span>
-        </div>
         <Card variant="outlined" className="parent_answer_container">
+          <div className="logo_text_container">
+            <img className="logo_image" src={logo} alt="logo" />
+            <span className="text_heading">
+              <span style={{ fontSize: "15px" }}>Presents</span>
+              <br />
+              <span style={{ fontSize: "45px" }}>NAWAIT MASTERMIND</span>
+            </span>
+            <span className="text_heading">Mursaleen Mehmood</span>
+          </div>
           <Loading />
         </Card>
       </div>
