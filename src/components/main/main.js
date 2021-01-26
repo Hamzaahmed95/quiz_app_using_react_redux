@@ -25,7 +25,9 @@ const Main = ({ isLoggedIn, user, appState, userResult, error }) => {
               paddingRight: "20px"
             }}
           >
-            <h3 style={{ color: "white" }}>Name: {user.name}</h3>
+          <h3 style={{ color: "white" }}>Name: {user.name}</h3>
+          <h3 style={{ color: "white" }}>Category: Islamic</h3>  
+            <h3 style={{ color: "white" }}>Questiom: {appState.state + 1} / 40  &ensp;</h3>
             <h3 style={{ color: "white" }}>Rank: 0</h3>
           </div>
 

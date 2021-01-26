@@ -73,11 +73,12 @@ const Answers = ({ isAdmin, user, appState, userResult, actions }) => {
     console.log(appState, "appStateAsd");
     if (!appState.questionStatus) {
       isClickable(false);
+      localStorage.setItem("click",false);
       setDuration(0);
       setTimer(timer => timer + 1);
     }else{
       setDuration(19);
-      isClickable(true);
+      if (!localStorage.getItem("click")) isClickable(true);
       setTimer(timer => timer + 1);
     }
   }, [appState]);
@@ -96,10 +97,12 @@ const Answers = ({ isAdmin, user, appState, userResult, actions }) => {
       answerSwitch(value, "grey");
       isClickable(false);
     }
+    localStorage.setItem("click",true);
   };
 
   const onClickNextQuestion = () => {
     const milliseconds = appState.state + 1;
+    localStorage.setItem("click",false);
     firebase
       .database()
       .ref("appState")
@@ -112,6 +115,11 @@ const Answers = ({ isAdmin, user, appState, userResult, actions }) => {
       });
   };
   useEffect(() => {
+    if (!localStorage.getItem("click")){
+      isClickable(true);
+    }else{
+      isClickable(false);
+    }
     firebase
       .database()
       .ref("appState")
@@ -137,6 +145,7 @@ const Answers = ({ isAdmin, user, appState, userResult, actions }) => {
   };
 
   return (
+    
     <div className="answer_component">
       <div className="timer" align="center">
         <CountDownWrapper
@@ -148,6 +157,7 @@ const Answers = ({ isAdmin, user, appState, userResult, actions }) => {
       </div>
       <div align="center" className="question">
         <p>{data.question[appState.state].description}</p>
+        <p>{data.question[appState.state].description2}</p>
       </div>
 
       <div className="answer_container">
