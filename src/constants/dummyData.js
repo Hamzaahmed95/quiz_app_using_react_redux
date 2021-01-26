@@ -482,6 +482,34 @@ export const data = {
           isTrue: false
         }
       ]
+    },
+    {
+      id: "20",
+      description: "Which tree is the national tree of Pakistan?",
+      description2: "پاکستان کا قومی درخت کونسا ہے؟",
+      timer: 20.0,
+      answer: [
+        {
+          id: "1",
+          details: "Neem / نیم",
+          isTrue: false
+        },
+        {
+          id: "2",
+          details: "Sheeshum / شیشم",
+          isTrue: false
+        },
+        {
+          id: "3",
+          details: "Diyodar / دیودار",
+          isTrue: true
+        },
+        {
+          id: "4",
+          details: "Date Palm / کھجور کا درخت",
+          isTrue: false
+        }
+      ]
     }
   ]
 };
