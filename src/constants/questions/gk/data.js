@@ -1,4 +1,4 @@
-export const data = {
+export const gkData = {
   category: "General Knowledge",
   question: [
     {
@@ -227,7 +227,7 @@ export const data = {
         },
         {
           id: "4",
-          details: "",
+          details: "Koteshwer Hafeez / کوٹیشور حفیظ",
           isTrue: false
         }
       ]
@@ -264,6 +264,34 @@ export const data = {
     },
     {
       id: "10",
+      description: "Which tree is the national tree of Pakistan?",
+      description2: "پاکستان کا قومی درخت کونسا ہے؟",
+      timer: 20.0,
+      answer: [
+        {
+          id: "1",
+          details: "Neem / نیم",
+          isTrue: false
+        },
+        {
+          id: "2",
+          details: "Sheeshum / شیشم",
+          isTrue: false
+        },
+        {
+          id: "3",
+          details: "Diyodar / دیودار",
+          isTrue: true
+        },
+        {
+          id: "4",
+          details: "Date Palm / کھجور کا درخت",
+          isTrue: false
+        }
+      ]
+    },
+    {
+      id: "11",
       description: "Which tree is the national tree of Pakistan?",
       description2: "پاکستان کا قومی درخت کونسا ہے؟",
       timer: 20.0,

@@ -1,8 +1,8 @@
-export const data = {
+export const nawaitData = {
   category: "Nawait Community",
   question: [
     {
-      id: "1",
+      id: "31",
       description: "Which indian village do we originate from?",
       description2: "ہندوستان میں ہمارے گاؤں کا کیا نام ہے؟",
       timer: 20.0,
@@ -30,7 +30,7 @@ export const data = {
       ]
     },
     {
-      id: "2",
+      id: "32",
       description:
         "Which word is used to describe drawing room in Nawaithy Language?",
       description2: " ہماری زبان میں ڈرائینگ روم کو کیا کہتے ہیں ؟",
@@ -59,7 +59,7 @@ export const data = {
       ]
     },
     {
-      id: "3",
+      id: "33",
       description: "Who was the first president of Nawait Jamiat ul Muslimeen?",
       description2: " ہمارے جمیعت کے پہلے صدر کا کیا نام تھا؟ ",
       timer: 20.0,
@@ -87,7 +87,7 @@ export const data = {
       ]
     },
     {
-      id: "4",
+      id: "34",
       description:
         "Out of below, Bidchol shaikh served as what for Nawait jamat ul muslimeen?",
       description2:
@@ -117,7 +117,7 @@ export const data = {
       ]
     },
     {
-      id: "5",
+      id: "35",
       description: "Who won the gold medal among below in sir Syed university?",
       description2:
         " وہ کون سی شخصیت ہیں جنہیں سر سید یونیورسٹی میں گولڈ میڈل سے نوازا گیا؟",
@@ -146,7 +146,7 @@ export const data = {
       ]
     },
     {
-      id: "6",
+      id: "36",
       description: "How many people have been burried in Moach Goth Graveyard?",
       description2: "مانج گوٹھ کے قبرستان میں کتنی قبر ہے؟",
       timer: 20.0,
@@ -174,7 +174,7 @@ export const data = {
       ]
     },
     {
-      id: "7",
+      id: "37",
       description: "When was the first prayer offered in Masjid-e-Rehman?",
       description2:
         " نوایت کی پہلی مسجد - مسجدِ رحمان نے پہلی نماز کب آدا کی گئی؟",
@@ -203,7 +203,7 @@ export const data = {
       ]
     },
     {
-      id: "8",
+      id: "38",
       description: "When was TH formed?",
       description2: " ٹیلنٹ ہنٹرس ( Talent hunters)  کب تشکیل ہوئی؟",
       timer: 20.0,
@@ -231,7 +231,7 @@ export const data = {
       ]
     },
     {
-      id: "9",
+      id: "39",
       description:
         'Who is the author of the poem "Chalye jamat k sath sath chalye"?',
       description2: "چالئے جماعت کے ساتھ چالئے۔ یہ نظم کس نے لکھی ہے؟",
@@ -260,7 +260,7 @@ export const data = {
       ]
     },
     {
-      id: "10",
+      id: "40",
       description:
         "For how long has the current president of Nawait Community, Khateeb Hafeez has been associated with nawait Jamiat?",
       description2: " نوايت کے موجودہ صدر کس سال سے نوایت جمیعت کے رُکن ہے؟",

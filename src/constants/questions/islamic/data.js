@@ -1,8 +1,8 @@
-export const data = {
+export const islamicData = {
   category: "Islamic",
   question: [
     {
-      id: "1",
+      id: "11",
       description:
         "How many slaves did Hazrat Abu Bakr Siddique Razi ALLAHo Anho set free?",
       description2:
@@ -32,7 +32,7 @@ export const data = {
       ]
     },
     {
-      id: "2",
+      id: "12",
       description:
         "In which battle did Hazrat Abu Bakr Siddique Razi ALLAHo Anho sacrificed all his households for the sake of Allah?",
       description2:
@@ -62,7 +62,7 @@ export const data = {
       ]
     },
     {
-      id: "3",
+      id: "13",
       description:
         "Which surah's ayat was revealed on denial of Hazrat Abu Bakr Siddique Razi ALLAHo anho taking the responsibility of a Sahaba?",
       description2:
@@ -92,7 +92,7 @@ export const data = {
       ]
     },
     {
-      id: "4",
+      id: "14",
       description:
         "Which companion from the following accepted Islam with the efforts of Hazrat Abu Bakr siddiq Razi ALLAHo anho? ",
       description2:
@@ -125,7 +125,7 @@ export const data = {
       ]
     },
     {
-      id: "5",
+      id: "15",
       description:
         "What did hazrat Abu Bakr Razi ALLAHo Anho do after knowing that he is being given the food that was earned by black magic? ",
       description2:
@@ -156,7 +156,7 @@ export const data = {
       ]
     },
     {
-      id: "6",
+      id: "16",
       description:
         "Who grabbed the neck with rope of Prophet Sallal Laho Alaihi Wasallam, and Hazrat Abu Bakr Siddique Razi ALLAHo Anho fought for his defense?",
       description2:
@@ -186,7 +186,7 @@ export const data = {
       ]
     },
     {
-      id: "7",
+      id: "17",
       description:
         "From which part, the last whole of Cave Sur was covered by Hazrat Abu Bakr Siddique Razi ALLAHo Anho?",
       description2:
@@ -216,7 +216,7 @@ export const data = {
       ]
     },
     {
-      id: "8",
+      id: "18",
       description:
         "Four deeds in a day (Fasting, Funeral prayer and burial, Feeding the needy) due to which Prophet Sallal Laho Alaihi Wasallam confirm him the blessing of Jannah. What's the fourth one?",
       description2:
@@ -246,7 +246,7 @@ export const data = {
       ]
     },
     {
-      id: "9",
+      id: "19",
       description:
         "On which occasion Hazrat Abu Bakr Siddiq RaziAllah anho affirmed Prophet sallaho alaihi wasaalam's saying, thus got the title SIDDIQUE.?",
       description2:
@@ -276,7 +276,7 @@ export const data = {
       ]
     },
     {
-      id: "10",
+      id: "20",
       description:
         "If you would had come under my sword during the battle i would have never spared you..To whom did Hazrat Abu Bakr Siddiq RaziAllah Anho said this (later he accepted Islam)?",
       description2:
