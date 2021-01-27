@@ -1183,6 +1183,35 @@ export const data = {
           isTrue: false
         }
       ]
+    },
+    {
+      id: "41",
+      description:
+        "For how long has the current president of Nawait Community, Khateeb Hafeez has been associated with nawait Jamiat?",
+      description2: " نوايت کے موجودہ صدر کس سال سے نوایت جمیعت کے رُکن ہے؟",
+      timer: 20.0,
+      answer: [
+        {
+          id: "1",
+          details: "1993",
+          isTrue: true
+        },
+        {
+          id: "2",
+          details: "1994",
+          isTrue: false
+        },
+        {
+          id: "3",
+          details: "1995",
+          isTrue: false
+        },
+        {
+          id: "4",
+          details: "1996",
+          isTrue: false
+        }
+      ]
     }
   ]
 };
