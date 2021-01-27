@@ -19,6 +19,7 @@ const Loading = ({ isLoggedIn, actions, user, appState, userResult }) => {
     setTimeout(function() {
       isLoadingg(true);
     }, 1000);
+    
   }, []);
   return (
     <div>
