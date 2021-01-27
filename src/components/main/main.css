@@ -61,8 +61,6 @@
   }
   .result {
     width: 100%;
-    border-top: double;
-    border-left: none;
   }
   .main_container {
     display: flex;
