@@ -25,11 +25,14 @@ class App extends Component {
           <div className="logo_text_container">
             <img className="logo_image" src={logo} alt="logo" />
             <span className="text_heading">
-              <span style={{ fontSize: "15px" }}>Presents</span>
+              <span className="text_heading_sub">Presents</span>
               <br />
-              <span style={{ fontSize: "45px" }}>NAWAIT MASTERMIND</span>
+              <span className="text_heading_sub_main">NAWAIT MASTERMIND</span>
             </span>
-            <span className="text_heading">Mursaleen Mehmood</span>
+            <span className="text_heading_cor">
+              Mursaleen
+              <br /> Mehmood
+            </span>
           </div>
           <Loading />
         </Card>

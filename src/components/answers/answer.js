@@ -72,7 +72,7 @@ const Answers = ({ isAdmin, user, appState, userResult, actions }) => {
   useEffect(() => {
     if (!appState.questionStatus) {
       isClickable(false);
-      localStorage.setItem("click",false);
+      localStorage.setItem("click", false);
       setDuration(0);
       setTimer(timer => timer + 1);
     } else {
@@ -96,12 +96,12 @@ const Answers = ({ isAdmin, user, appState, userResult, actions }) => {
       answerSwitch(value, "grey");
       isClickable(false);
     }
-    localStorage.setItem("click",true);
+    localStorage.setItem("click", true);
   };
 
   const onClickNextQuestion = () => {
     const milliseconds = appState.state + 1;
-    localStorage.setItem("click",false);
+    localStorage.setItem("click", false);
     firebase
       .database()
       .ref("appState")
@@ -114,9 +114,9 @@ const Answers = ({ isAdmin, user, appState, userResult, actions }) => {
       });
   };
   useEffect(() => {
-    if (!localStorage.getItem("click")){
+    if (!localStorage.getItem("click")) {
       isClickable(true);
-    }else{
+    } else {
       isClickable(false);
     }
     firebase
@@ -141,10 +141,22 @@ const Answers = ({ isAdmin, user, appState, userResult, actions }) => {
 
     return `${seconds}:${milliseconds}`;
   };
+  const lineBreakString = value => {
+    let result = value.split("/");
+
+    return (
+      <span>
+        {result[0]} <br />
+        {result[1]}
+      </span>
+    );
+  };
 
   return (
-    
     <div className="answer_component">
+      <span align="left" className="question_no_container">
+        Question {appState.state + 1} / 40
+      </span>
       <div className="timer" align="center">
         <CountDownWrapper
           children={children}
@@ -153,6 +165,7 @@ const Answers = ({ isAdmin, user, appState, userResult, actions }) => {
           duration={duration}
         />
       </div>
+
       <div align="center" className="question">
         <p>{data.question[appState.state].description}</p>
         <p>{data.question[appState.state].description2}</p>
@@ -172,7 +185,7 @@ const Answers = ({ isAdmin, user, appState, userResult, actions }) => {
             color="primary"
             disabled={!appState.questionStatus}
           >
-            {data.question[appState.state].answer[0].details}
+            {lineBreakString(data.question[appState.state].answer[0].details)}
           </Button>
         </div>
         <div>
@@ -188,7 +201,7 @@ const Answers = ({ isAdmin, user, appState, userResult, actions }) => {
             color="primary"
             disabled={!appState.questionStatus}
           >
-            {data.question[appState.state].answer[1].details}
+            {lineBreakString(data.question[appState.state].answer[1].details)}
           </Button>
         </div>
       </div>
@@ -206,7 +219,7 @@ const Answers = ({ isAdmin, user, appState, userResult, actions }) => {
             color="primary"
             disabled={!appState.questionStatus}
           >
-            {data.question[appState.state].answer[2].details}
+            {lineBreakString(data.question[appState.state].answer[2].details)}
           </Button>
         </div>
         <div>
@@ -222,7 +235,7 @@ const Answers = ({ isAdmin, user, appState, userResult, actions }) => {
             color="primary"
             disabled={!appState.questionStatus}
           >
-            {data.question[appState.state].answer[3].details}
+            {lineBreakString(data.question[appState.state].answer[3].details)}
           </Button>
         </div>
       </div>

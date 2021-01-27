@@ -15,24 +15,18 @@ const Main = ({ isLoggedIn, user, appState, userResult, error }) => {
         <CustomizedInputs />
       ) : (
         <div>
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "space-between",
-              flexWrap: "wrap",
-              backgroundColor: "#1A4173",
-              borderColor: "#191919",
+          <div className="main_container">
+            <span className="main_username">{user.name}</span>
+            <span className="main_category">ISLAMIC</span>
+            <div className="main_results_container">
+              <span align="left" className="main_score">
+                Score: 0
+              </span>
 
-              paddingLeft: "20px",
-              paddingRight: "20px"
-            }}
-          >
-            <h3 style={{ color: "white" }}>Name: {user.name}</h3>
-            <h3 style={{ color: "white" }}>Category: Islamic</h3>
-            <h3 style={{ color: "white" }}>
-              Questiom: {appState.state + 1} / 40 &ensp;
-            </h3>
-            <h3 style={{ color: "white" }}>Rank: 0</h3>
+              <span align="left" className="main_rank">
+                Rank: 0
+              </span>
+            </div>
           </div>
 
           <div className="quiz_component">

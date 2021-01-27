@@ -5,7 +5,7 @@ const CountDownWrapper = props => {
   let seconds = 20;
   let counter = 100;
 
-  console.log(props.duration,"hamza: timer -> " + props.timer);
+  console.log(props.duration, "hamza: timer -> " + props.timer);
   return (
     <div>
       <CountdownCircleTimer
@@ -16,8 +16,8 @@ const CountDownWrapper = props => {
         duration={props.duration}
         size={100}
         strokeWidth={4}
-        trailColor="#000000"
-        colors="#ffffff"
+        trailColor="#fff"
+        colors="#000000"
       />
     </div>
   );
