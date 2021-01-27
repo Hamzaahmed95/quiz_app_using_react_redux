@@ -5,7 +5,7 @@ import Button from "@material-ui/core/Button";
 import { bindActionCreators } from "redux";
 import * as Actions from "../../actions/userActions";
 import { connect } from "react-redux";
-import { data } from "../../constants/dummyData";
+import { data } from "../../constants/questions/islamic/data";
 import firebase from "firebase";
 
 const Answers = ({ isAdmin, user, appState, userResult, actions }) => {
