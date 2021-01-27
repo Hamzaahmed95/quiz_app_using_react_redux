@@ -242,22 +242,22 @@ export const data = {
       answer: [
         {
           id: "1",
-          details: "Bangladesh /n بنگلہ دیش",
+          details: "Bangladesh / بنگلہ دیش",
           isTrue: true
         },
         {
           id: "2",
-          details: "India /n ہندوستان",
+          details: "India / ہندوستان",
           isTrue: false
         },
         {
           id: "3",
-          details: "Afghanistan /n افغانستان",
+          details: "Afghanistan / افغانستان",
           isTrue: false
         },
         {
           id: "4",
-          details: "China /n چین",
+          details: "China / چین",
           isTrue: false
         }
       ]
