@@ -19,12 +19,17 @@ const Loading = ({ isLoggedIn, actions, user, appState, userResult }) => {
     setTimeout(function() {
       isLoadingg(true);
     }, 1000);
+    
   }, []);
   return (
     <div>
       {!Loadingg ? (
         <div className="progress_bar" align="center">
-          <CircularProgress className="progress_barColor" color="primary" />
+          <CircularProgress
+            style={{ color: "#1A4173" }}
+            className="progress_barColor"
+            color="primary"
+          />
         </div>
       ) : (
         <div className="progress_bar" align="center">

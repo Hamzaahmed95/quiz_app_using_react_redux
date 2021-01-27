@@ -17,7 +17,7 @@ const Answers = ({ isAdmin, user, appState, userResult, actions }) => {
   const [answerColor2, setAnswerColor2] = useState("purple");
   const [answerColor3, setAnswerColor3] = useState("purple");
   const [answerColor4, setAnswerColor4] = useState("purple");
-
+  const [duration, setDuration] = useState(19);
   const correctAnswer = () => {
     const answerTime = +(seconds + "." + milliseconds);
     const questionTime = +data.question[appState.state].timer;
@@ -70,9 +70,14 @@ const Answers = ({ isAdmin, user, appState, userResult, actions }) => {
     }
   };
   useEffect(() => {
-    console.log(appState, "appStateAsd");
     if (!appState.questionStatus) {
       isClickable(false);
+      setDuration(0);
+      setTimer(timer => timer + 1);
+    } else {
+      setDuration(19);
+      if (localStorage.getItem("close")) isClickable(false);
+      setTimer(timer => timer + 1);
     }
   }, [appState]);
   useEffect(() => {
@@ -94,6 +99,7 @@ const Answers = ({ isAdmin, user, appState, userResult, actions }) => {
 
   const onClickNextQuestion = () => {
     const milliseconds = appState.state + 1;
+    localStorage.setItem("close",false);
     firebase
       .database()
       .ref("appState")
@@ -106,10 +112,17 @@ const Answers = ({ isAdmin, user, appState, userResult, actions }) => {
       });
   };
   useEffect(() => {
+    if (localStorage.getItem("close")){
+      isClickable(false);
+    }else{
+      isClickable(true);
+    }
     firebase
       .database()
       .ref("appState")
-      .on("value", () => {});
+      .on("value", () => {
+        console.log(appState, "appstare");
+      });
   }, []);
 
   const children = ({ remainingTime }) => {
@@ -126,18 +139,34 @@ const Answers = ({ isAdmin, user, appState, userResult, actions }) => {
 
     return `${seconds}:${milliseconds}`;
   };
+  const lineBreakString = value => {
+    let result = value.split("/");
+
+    return (
+      <span>
+        {result[0]} <br />
+        {result[1]}
+      </span>
+    );
+  };
 
   return (
     <div className="answer_component">
+      <span align="left" className="question_no_container">
+        Question {appState.state + 1} / 40
+      </span>
       <div className="timer" align="center">
         <CountDownWrapper
           children={children}
           onComplete={onCompleteTimer}
           timer={timer}
+          duration={duration}
         />
       </div>
+
       <div align="center" className="question">
         <p>{data.question[appState.state].description}</p>
+        <p>{data.question[appState.state].description2}</p>
       </div>
 
       <div className="answer_container">
@@ -152,8 +181,9 @@ const Answers = ({ isAdmin, user, appState, userResult, actions }) => {
             className={answerColor1}
             variant="outlined"
             color="primary"
+            disabled={!appState.questionStatus}
           >
-            {data.question[appState.state].answer[0].details}
+            {lineBreakString(data.question[appState.state].answer[0].details)}
           </Button>
         </div>
         <div>
@@ -167,8 +197,9 @@ const Answers = ({ isAdmin, user, appState, userResult, actions }) => {
             className={answerColor2}
             variant="outlined"
             color="primary"
+            disabled={!appState.questionStatus}
           >
-            {data.question[appState.state].answer[1].details}
+            {lineBreakString(data.question[appState.state].answer[1].details)}
           </Button>
         </div>
       </div>
@@ -184,9 +215,9 @@ const Answers = ({ isAdmin, user, appState, userResult, actions }) => {
             className={answerColor3}
             variant="outlined"
             color="primary"
-            isD
+            disabled={!appState.questionStatus}
           >
-            {data.question[appState.state].answer[2].details}
+            {lineBreakString(data.question[appState.state].answer[2].details)}
           </Button>
         </div>
         <div>
@@ -200,8 +231,9 @@ const Answers = ({ isAdmin, user, appState, userResult, actions }) => {
             className={answerColor4}
             variant="outlined"
             color="primary"
+            disabled={!appState.questionStatus}
           >
-            {data.question[appState.state].answer[3].details}
+            {lineBreakString(data.question[appState.state].answer[3].details)}
           </Button>
         </div>
       </div>

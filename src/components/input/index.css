@@ -10,6 +10,17 @@
   flex-direction: column;
 }
 
-.input_container>div {
+.input_container > div {
   padding-bottom: 20px;
+}
+.quiz_start_text {
+  color: black !important;
+  font-size: 28px;
+}
+
+@media screen and (max-width: 752px) {
+  .quiz_start_text {
+    color: white;
+    font-size: 18px;
+  }
 }

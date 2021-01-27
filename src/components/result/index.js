@@ -69,7 +69,15 @@ const Result = () => {
   });
   return (
     <div>
-      <h2>Results</h2>
+      <span
+        style={{
+          fontFamily: "arial, sans-serif",
+          fontSize: "20px",
+          margin: "20%"
+        }}
+      >
+        Results
+      </span>
       <TableContainer className="container">
         <Table>
           <TableHead>

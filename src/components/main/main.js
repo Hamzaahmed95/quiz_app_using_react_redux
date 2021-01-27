@@ -1,7 +1,7 @@
 import React from "react";
 import "./main.css";
 import Answers from "../answers/answer";
-import CustomizedInputs from "../input/input";
+import CustomizedInputs from "../input/index";
 import Register from "../register/register";
 import Result from "../result/index";
 
@@ -15,18 +15,18 @@ const Main = ({ isLoggedIn, user, appState, userResult, error }) => {
         <CustomizedInputs />
       ) : (
         <div>
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "space-between",
-              flexWrap: "wrap",
-              borderBottom: "groove",
-              paddingLeft: "20px",
-              paddingRight: "20px"
-            }}
-          >
-            <h3 style={{ color: "white" }}>Name: {user.name}</h3>
-            <h3 style={{ color: "white" }}>Rank: 0</h3>
+          <div className="main_container">
+            <span className="main_username">{user.name}</span>
+            <span className="main_category">ISLAMIC</span>
+            <div className="main_results_container">
+              <span align="left" className="main_score">
+                Score: 0
+              </span>
+
+              <span align="left" className="main_rank">
+                Rank: 0
+              </span>
+            </div>
           </div>
 
           <div className="quiz_component">
