@@ -16,9 +16,20 @@ class App extends Component {
     } else {
       firebase.app(); // if already initialized, use that one
     }
+    this.componentCleanup = this.componentCleanup.bind(this);
   }
-
+  componentCleanup() {
+    localStorage.setItem("close", true);
+  }
+  componentDidMount(){
+    window.addEventListener('beforeunload', this.componentCleanup);
+  }
+  componentWillUnmount() {
+    this.componentCleanup();
+    window.removeEventListener('beforeunload', this.componentCleanup); // remove the event handler for normal unmounting
+  }
   render() {
+  
     return (
       <div align="center" className="App">
         <Card variant="outlined" className="parent_answer_container">
