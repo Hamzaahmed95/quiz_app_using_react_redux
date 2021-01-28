@@ -12,6 +12,7 @@ const Result = props => {
   console.log("Result1: " + props.appState);
   const [resultShown, isResultShown] = useState(false);
   const [data, setData] = useState([]);
+
   let datas = [];
 
   useEffect(() => {
@@ -35,6 +36,7 @@ const Result = props => {
         );
 
         setData(datas);
+        props.result(datas);
       });
   }, [props.appState]);
 
@@ -106,12 +108,21 @@ const Result = props => {
         </TableContainer>
       )}
       <br />
-      {
-        props.isAdmin ? <button onClick={showResultDb} style={{ marginTop: "10%" }} color="white">
-        {!props.appState.showResult ? "Show result" : "Hide result"}
-      </button> : !props.appState.showResult && <p style={{ marginTop: 10,fontSize:12}}>Top 15 Results will be shown after each category</p>
-      }
-
+      {props.isAdmin ? (
+        <button
+          onClick={showResultDb}
+          style={{ marginTop: "10%" }}
+          color="white"
+        >
+          {!props.appState.showResult ? "Show result" : "Hide result"}
+        </button>
+      ) : (
+        !props.appState.showResult && (
+          <p style={{ marginTop: 10, fontSize: 12 }}>
+            Top 15 Results will be shown after each category
+          </p>
+        )
+      )}
     </div>
   );
 };

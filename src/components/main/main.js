@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./main.css";
 import Answers from "../answers/answer";
 import CustomizedInputs from "../input/index";
@@ -6,6 +6,17 @@ import Register from "../register/register";
 import Result from "../result/index";
 
 const Main = ({ isLoggedIn, user, appState, userResult, error }) => {
+  const [rank, setRank] = useState("");
+
+  const result = data => {
+    data.filter((e, i) => {
+      if (e.id == user.id) {
+        console.log("main:" + i);
+        setRank(i + 1);
+        return i;
+      }
+    });
+  };
   return (
     // <div>
     //   <Register />
@@ -24,7 +35,7 @@ const Main = ({ isLoggedIn, user, appState, userResult, error }) => {
               </span>
 
               <span align="left" className="main_rank">
-                Rank: 0
+                Rank: {rank}
               </span>
             </div>
           </div>
@@ -39,7 +50,11 @@ const Main = ({ isLoggedIn, user, appState, userResult, error }) => {
               />
             </div>
             <div className="result">
-              <Result appState={appState} isAdmin={user.role === "admin" ? true : false}/>
+              <Result
+                result={result}
+                appState={appState}
+                isAdmin={user.role === "admin" ? true : false}
+              />
             </div>
           </div>
         </div>
