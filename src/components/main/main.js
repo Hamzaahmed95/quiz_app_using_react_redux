@@ -17,9 +17,6 @@ const Main = ({ isLoggedIn, user, appState, userResult, error }) => {
       }
     });
   };
-  useEffect(() => {
-    console.log("checking");
-  }, [appState.state]);
   return (
     <div>
       {!isLoggedIn ? (
@@ -31,7 +28,7 @@ const Main = ({ isLoggedIn, user, appState, userResult, error }) => {
             <span className="main_category">ISLAMIC</span>
             <div className="main_results_container">
               <span align="left" className="main_score">
-                Score: 0
+                Score: {userResult.score}
               </span>
 
               <span align="left" className="main_rank">
@@ -61,6 +58,15 @@ const Main = ({ isLoggedIn, user, appState, userResult, error }) => {
         </div>
       ) : (
         <div className="result_final">
+          <div style={{ padding: "10px" }} className="main_results_container">
+            <span align="right" className="main_score">
+              Score: {userResult.score}
+            </span>
+
+            <span align="right" className="main_rank">
+              Rank: {rank}
+            </span>
+          </div>
           <Result
             limit={50}
             result={result}
