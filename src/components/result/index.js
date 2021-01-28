@@ -106,9 +106,12 @@ const Result = props => {
         </TableContainer>
       )}
       <br />
-      <button onClick={showResultDb} style={{ marginTop: "10%" }} color="white">
+      {
+        props.isAdmin ? <button onClick={showResultDb} style={{ marginTop: "10%" }} color="white">
         {!props.appState.showResult ? "Show result" : "Hide result"}
-      </button>
+      </button> : !props.appState.showResult && <p style={{ marginTop: 10,fontSize:12}}>Top 15 Results will be shown after each category</p>
+      }
+
     </div>
   );
 };

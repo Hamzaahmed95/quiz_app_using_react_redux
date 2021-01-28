@@ -39,7 +39,7 @@ const Main = ({ isLoggedIn, user, appState, userResult, error }) => {
               />
             </div>
             <div className="result">
-              <Result appState={appState} />
+              <Result appState={appState} isAdmin={user.role === "admin" ? true : false}/>
             </div>
           </div>
         </div>
