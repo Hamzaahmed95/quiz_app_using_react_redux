@@ -76,8 +76,9 @@ const Answers = ({ isAdmin, user, appState, userResult, actions }) => {
       setTimer(timer => timer + 1);
     } else {
       setDuration(19);
-      if (localStorage.getItem("close")) isClickable(false);
+      // if (localStorage.getItem("close")) isClickable(false);
       setTimer(timer => timer + 1);
+      isClickable(true);
     }
   }, [appState]);
   useEffect(() => {
@@ -99,7 +100,7 @@ const Answers = ({ isAdmin, user, appState, userResult, actions }) => {
 
   const onClickNextQuestion = () => {
     const milliseconds = appState.state + 1;
-    localStorage.setItem("close",false);
+    // localStorage.setItem("close",false);
     firebase
       .database()
       .ref("appState")
@@ -112,11 +113,12 @@ const Answers = ({ isAdmin, user, appState, userResult, actions }) => {
       });
   };
   useEffect(() => {
-    if (localStorage.getItem("close")){
-      isClickable(false);
-    }else{
-      isClickable(true);
-    }
+    // if (localStorage.getItem("close")){
+    //   isClickable(false);
+    // }else{
+    //   isClickable(true);
+    // }
+    isClickable(true);
     firebase
       .database()
       .ref("appState")
