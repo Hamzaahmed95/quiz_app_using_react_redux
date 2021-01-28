@@ -107,7 +107,7 @@ export const data = {
         },
         {
           id: "3",
-          details: "Musakhael / موسی خیل",
+          details: "Musakhel / موسی خیل",
           isTrue: false
         },
         {
@@ -148,8 +148,7 @@ export const data = {
     {
       id: "6",
       description: "In which year, Pakistan was champion in 4 different games?",
-      description2:
-        "پاکستان کس سال بیک وقت  4 مختلف کھیلوں میں عالمی چیمپیئن تھا؟",
+      description2: "پاکستان کس سال 4 مختلف کھیلوں میں عالمی چیمپیئن تھا؟",
       timer: 20.0,
       answer: [
         {
@@ -292,7 +291,7 @@ export const data = {
     {
       id: "11",
       description:
-        "How many slaves did Hazrat Abu Bakr Siddique Razi ALLAHo Anho set free?",
+        "How many slaves did Hazrat Abu Bakr Siddique Razi Allah o Anh set free?",
       description2:
         "حضرت ابوبکر صدیق رضی اللہ تعالی عنہ نے کتنے غلاموں کو آزاد کروایا",
       timer: 20.0,
@@ -322,7 +321,7 @@ export const data = {
     {
       id: "12",
       description:
-        "In which battle did Hazrat Abu Bakr Siddique Razi ALLAHo Anho sacrificed all his households for the sake of Allah?",
+        "In which battle did Hazrat Abu Bakr Siddique Razi Allah o Anh sacrificed all his households for the sake of Allah?",
       description2:
         "وہ کونسی غزوہ تھی جس میں حضرت ابوبکر صدیق رضی اللہ تعالیٰ عنہٗ نے اپنے گھر کا تمام سامان اللہ کی راہ میں خرچ کیا",
       timer: 20.0,
@@ -339,7 +338,7 @@ export const data = {
         },
         {
           id: "3",
-          details: "battle of khyber / غزوہ خیب",
+          details: "battle of khyber / غزوہ خیبر",
           isTrue: false
         },
         {
@@ -352,7 +351,7 @@ export const data = {
     {
       id: "13",
       description:
-        "Which surah's ayat was revealed on denial of Hazrat Abu Bakr Siddique Razi ALLAHo anho taking the responsibility of a Sahaba?",
+        "Which surah's ayat was revealed on denial of Hazrat Abu Bakr Siddique Razi Allah o Anh taking the responsibility of a Sahaba?",
       description2:
         "ایک صحابی  کی کفالت کے انکار پر اللہ رب العالمین نے قرآن میں حضرت ابوبکر  رضی اللہ عنہ کے لیے قرآن کی کونسی سورت سے آیت نازل کی",
       timer: 20.0,
@@ -382,7 +381,7 @@ export const data = {
     {
       id: "14",
       description:
-        "Which companion from the following accepted Islam with the efforts of Hazrat Abu Bakr siddiq Razi ALLAHo anho? ",
+        "Which companion from the following accepted Islam with the efforts of Hazrat Abu Bakr siddiq Razi Allah o Anh? ",
       description2:
         "ان میں وہ کون سے صحابی ہیں  جو حضرت ابوبکر صدیق رضی اللہ تعالی عنہ کی کوششوں سے ایمان لائے",
       timer: 20.0,
@@ -415,7 +414,7 @@ export const data = {
     {
       id: "15",
       description:
-        "What did hazrat Abu Bakr Razi ALLAHo Anho do after knowing that he is being given the food that was earned by black magic? ",
+        "What did hazrat Abu Bakr Razi Allah o Anh do after knowing that he is being given the food that was earned by black magic? ",
       description2:
         "ایک شخص نے جب حضرت ابوبکر صدیق رضی اللہ تعالی عنہ کو جادو ٹونہ کی کمائی سے کچھ کھلایا  تو معلوم ہونے پر حضرت ابوبکر رضی اللہ عنہٗ کا کیا ردعمل تھا",
       timer: 20.0,
@@ -446,7 +445,7 @@ export const data = {
     {
       id: "16",
       description:
-        "Who grabbed the neck with rope of Prophet Sallal Laho Alaihi Wasallam, and Hazrat Abu Bakr Siddique Razi ALLAHo Anho fought for his defense?",
+        "Who grabbed the neck with rope of Prophet Sallal Laho Alaihi Wasallam, and Hazrat Abu Bakr Siddique Razi Allah o Anh fought for his defense?",
       description2:
         "وہ کون تھا  جس نے آپ صلی اللہ علیہ وآلہ وسلم  کی گردن مبارک  پر  رسی کس دی تھی  حضرت ابوبکر صدیق رضی اللہ تعالی عنہ آپ  صلی اللہ علیہ وسلم  کے دفاع میں اس سے لڑے",
       timer: 20.0,
@@ -458,7 +457,7 @@ export const data = {
         },
         {
           id: "2",
-          details: "Umya bin khalf / امیہ بن خلف",
+          details: "Umayya bin khalf / امیہ بن خلف",
           isTrue: false
         },
         {
@@ -476,7 +475,7 @@ export const data = {
     {
       id: "17",
       description:
-        "From which part, the last whole of Cave Sur was covered by Hazrat Abu Bakr Siddique Razi ALLAHo Anho?",
+        "From which part, the last hole of Cave Sur was covered by Hazrat Abu Bakr Siddique Razi Allah o Anh?",
       description2:
         "غار ثور میں  آخری سوراخ کو حضرت ابوبکر صدیق رضی اللہ تعالی عنہ نے کس چیز سے ڈھانپا",
       timer: 20.0,
@@ -488,7 +487,7 @@ export const data = {
         },
         {
           id: "2",
-          details: "His heel / اپنی  ایڑی سے ",
+          details: "His heel / اپنی ایڑھی سے ",
           isTrue: true
         },
         {
@@ -536,7 +535,7 @@ export const data = {
     {
       id: "19",
       description:
-        "On which occasion Hazrat Abu Bakr Siddiq RaziAllah anho affirmed Prophet sallaho alaihi wasaalam's saying, thus got the title SIDDIQUE.?",
+        "On which occasion Hazrat Abu Bakr Siddiq Razi Allah o Anh affirmed Prophet sallaho alaihi wasaalam's saying, thus got the title SIDDIQUE.?",
       description2:
         "وہ کونسا موقع تھا جب حضرت ابوبکر صدیق رضی اللہ تعالی عنہ نے رسول اللہ صلی وسلم کی تصدیق کی اور اس پر انہیں صدیق کا لقب دیا گیا",
       timer: 20.0,
@@ -544,12 +543,12 @@ export const data = {
         {
           id: "1",
           details: "Battle of Badr /جنگ بدر",
-          isTrue: true
+          isTrue: false
         },
         {
           id: "2",
           details: "Mairaj /معراج",
-          isTrue: false
+          isTrue: true
         },
         {
           id: "3",
@@ -566,7 +565,7 @@ export const data = {
     {
       id: "20",
       description:
-        "If you would had come under my sword during the battle i would have never spared you..To whom did Hazrat Abu Bakr Siddiq RaziAllah Anho said this (later he accepted Islam)?",
+        "If you would had come under my sword during the battle i would have never spared you..To whom did Hazrat Abu Bakr Siddiq Razi Allah o Anh said this (later he accepted Islam)?",
       description2:
         "(اگر  تم جنگ میں میری تلوار کی زد میں آتے تو میں تمہیں کبھی نہ چھوڑتا.  حضرت ابوبکر صدیق رضی اللہ تعالیٰ عنہٗ نے یہ  تاریخی جملہ کن سے کہا (بعد میں وہ ایمان لاۓ",
       timer: 20.0,
@@ -574,7 +573,7 @@ export const data = {
         {
           id: "1",
           details:
-            "Hazra Usama Razi ALLAHo Anho / حضرت اسامہ رضی اللہ تعالیٰ عنہٗ",
+            "Hazrat Usama Razi ALLAHo Anho / حضرت اسامہ رضی اللہ تعالیٰ عنہٗ",
           isTrue: false
         },
         {
@@ -623,7 +622,7 @@ export const data = {
         {
           id: "4",
           details:
-            "It is impossible to tell whether Bill or Peter is taller / ہ بتانا ناممکن ہے کہ بل اور پیٹر  میں کون زیادہ لمبا ہے",
+            "It is impossible to tell whether Bill or Peter is taller / یہ بتانا ناممکن ہے کہ بل اور پیٹر  میں کون زیادہ لمبا ہے",
           isTrue: true
         }
       ]
@@ -692,7 +691,7 @@ export const data = {
       description:
         "Two people can make two bycycle in two hours, how many people are needed to build 12 bycycles in 6 hours?",
       description2:
-        "دو لوگ ایک سائیکل دو گھنٹے میں بنا سکتے ہیں، تو 12 سائیکل 6 گھنٹے میں بنانے کے لئے کتنے لوگ درکار ہیں؟",
+        "دو لوگ دو سائیکل دو گھنٹے میں بنا سکتے ہیں، تو 12 سائیکل 6 گھنٹے میں بنانے کے لئے کتنے لوگ درکار ہیں؟",
       timer: 30.0,
       answer: [
         {
@@ -722,7 +721,7 @@ export const data = {
       description:
         "you went to visit a doctor and he gave you 7 pills,  he asked to you to take 1 pill every 30 minutes. how many hours will it take to consume all the pills?",
       description2:
-        "آپ ڈاکٹر کے پاس گئے اور اس نے آپ کو 7 گولی دیں۔ اس نے آپ کو ہر آدھے گھنٹے بعد ایک گولی کھانے کا مشورہ دیا ہے۔ تو اس حساب سے یہ سات گولیاں کتنی دیر بعد ختم ہو جائیں گی؟",
+        "آپ ڈاکٹر کے پاس گئے اور اس نے آپ کو 7 گولیاں دیں۔ اس نے آپ کو ہر آدھے گھنٹے بعد ایک گولی کھانے کا مشورہ دیا ہے۔ تو اس حساب سے یہ سات گولیاں کتنی دیر بعد ختم ہو جائیں گی؟",
       timer: 30.0,
       answer: [
         {
@@ -842,7 +841,7 @@ export const data = {
       description:
         "My son was playing with a book and tore out pages 7,8,100,101,222,223. How many pages were torn out?",
       description2:
-        "میرا بیٹا کتاب سے کھیل رہا تھا اور اس نے صفحہ نمبر ٧، ٨، ١٠٠، ١۔ ١، ٢٢٢ اور ٢٢٣ پھاڑ دیئے؟ تو اس نے کتنے صفحہ پھاڑے؟",
+        "میرا بیٹا کتاب سے کھیل رہا تھا اور اس نے صفحہ نمبر  7, 8, 100, 101, 222, 223 پھاڑ دیئے؟ تو اس نے کتنے صفحہ پھاڑے؟",
       timer: 30.0,
       answer: [
         {
@@ -920,7 +919,7 @@ export const data = {
         },
         {
           id: "4",
-          details: "Karnatak / کوناٹک",
+          details: "Karnatak / کرناٹک",
           isTrue: false
         }
       ]
@@ -957,7 +956,7 @@ export const data = {
     {
       id: "33",
       description: "Who was the first president of Nawait Jamiat ul Muslimeen?",
-      description2: " ہمارے جمیعت کے پہلے صدر کا کیا نام تھا؟ ",
+      description2: " ہماری جمیعت کے پہلے صدر کا کیا نام تھا؟ ",
       timer: 20.0,
       answer: [
         {
@@ -1014,7 +1013,8 @@ export const data = {
     },
     {
       id: "35",
-      description: "Who won the gold medal among below in sir Syed university?",
+      description:
+        "Who has won the gold medal among below in sir Syed university?",
       description2:
         " وہ کون سی شخصیت ہیں جنہیں سر سید یونیورسٹی میں گولڈ میڈل سے نوازا گیا؟",
       timer: 20.0,
@@ -1073,7 +1073,7 @@ export const data = {
       id: "37",
       description: "When was the first prayer offered in Masjid-e-Rehman?",
       description2:
-        " نوایت کی پہلی مسجد - مسجدِ رحمان نے پہلی نماز کب آدا کی گئی؟",
+        " نوایت کی پہلی مسجد - مسجدِ رحمان میں پہلی نماز کب آدا کی گئی؟",
       timer: 20.0,
       answer: [
         {
@@ -1100,8 +1100,8 @@ export const data = {
     },
     {
       id: "38",
-      description: "When was TH formed?",
-      description2: " ٹیلنٹ ہنٹرس ( Talent hunters)  کب تشکیل ہوئی؟",
+      description: "When was TH (Talent Hunters) formed?",
+      description2: "ٹیلنٹ ہنٹرس کب تشکیل ہوئی؟",
       timer: 20.0,
       answer: [
         {
@@ -1130,7 +1130,7 @@ export const data = {
       id: "39",
       description:
         'Who is the author of the poem "Chalye jamat k sath sath chalye"?',
-      description2: "چالئے جماعت کے ساتھ چالئے۔ یہ نظم کس نے لکھی ہے؟",
+      description2: "چلیے جماعت کے ساتھ چلیے یہ نظم کس نے لکھی ہے؟",
       timer: 20.0,
       answer: [
         {
@@ -1140,12 +1140,12 @@ export const data = {
         },
         {
           id: "2",
-          details: "Dhinda Mehmood / دہندہ محمود",
+          details: "Dhinda Mehmood / ڈھنڈا محمود",
           isTrue: false
         },
         {
           id: "3",
-          details: "Dhinda Abdul Ghani /دہندہ عبدالغنی",
+          details: "Dhinda Abdul Ghani /ڈھنڈا عبدالغنی",
           isTrue: true
         },
         {
@@ -1159,7 +1159,8 @@ export const data = {
       id: "40",
       description:
         "For how long has the current president of Nawait Community, Khateeb Hafeez has been associated with nawait Jamiat?",
-      description2: " نوايت کے موجودہ صدر کس سال سے نوایت جمیعت کے رُکن ہے؟",
+      description2:
+        " نوايت کے موجودہ صدر خطیب حفیظ لرحمان کس سال سے نوایت جمیعت کے رُکن ہے؟",
       timer: 20.0,
       answer: [
         {

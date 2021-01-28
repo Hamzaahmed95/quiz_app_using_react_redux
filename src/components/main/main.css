@@ -28,6 +28,20 @@
     #102747
   );
 }
+.result_final {
+  width: 100%;
+  border-color: #ffffff !important;
+  border-left: groove;
+  color: white;
+  background-image: linear-gradient(
+    to bottom,
+    #1a4173,
+    #102747,
+    #102747,
+    #102747,
+    #102747
+  );
+}
 .main_username {
   color: white;
   font-size: 16px;
