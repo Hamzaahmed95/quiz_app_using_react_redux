@@ -17,6 +17,17 @@ const Main = ({ isLoggedIn, user, appState, userResult, error }) => {
       }
     });
   };
+  const getCategory = () => {
+    if (appState.state < 10) {
+      return "General Knowledge";
+    } else if (appState.state < 20) {
+      return "Islamic";
+    } else if (appState.state < 30) {
+      return "IQ";
+    } else if (appState.state < 40) {
+      return "Nawait";
+    }
+  };
   return (
     <div>
       {!isLoggedIn ? (
@@ -25,7 +36,7 @@ const Main = ({ isLoggedIn, user, appState, userResult, error }) => {
         <div>
           <div className="main_container">
             <span className="main_username">{user.name}</span>
-            <span className="main_category">ISLAMIC</span>
+            <span className="main_category">{getCategory()}</span>
             <div className="main_results_container">
               <span align="left" className="main_score">
                 Score: {userResult.score}
