@@ -54,7 +54,7 @@ const Result = props => {
 
   console.log(JSON.stringify(data));
   const showResultData = (result, index) => {
-    if (index < 15) {
+    if (index < props.limit) {
       return (
         <>
           <TableRow key={result.id}>

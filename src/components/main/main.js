@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./main.css";
 import Answers from "../answers/answer";
 import CustomizedInputs from "../input/index";
@@ -17,14 +17,14 @@ const Main = ({ isLoggedIn, user, appState, userResult, error }) => {
       }
     });
   };
+  useEffect(() => {
+    console.log("checking");
+  }, [appState.state]);
   return (
-    // <div>
-    //   <Register />
-    // </div>
     <div>
       {!isLoggedIn ? (
         <CustomizedInputs />
-      ) : (
+      ) : appState.state < 40 ? (
         <div>
           <div className="main_container">
             <span className="main_username">{user.name}</span>
@@ -51,12 +51,22 @@ const Main = ({ isLoggedIn, user, appState, userResult, error }) => {
             </div>
             <div className="result">
               <Result
+                limit={15}
                 result={result}
                 appState={appState}
                 isAdmin={user.role === "admin" ? true : false}
               />
             </div>
           </div>
+        </div>
+      ) : (
+        <div className="result_final">
+          <Result
+            limit={50}
+            result={result}
+            appState={appState}
+            isAdmin={user.role === "admin" ? true : false}
+          />
         </div>
       )}
     </div>
