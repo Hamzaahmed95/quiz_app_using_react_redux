@@ -39,7 +39,7 @@ const Main = ({ isLoggedIn, user, appState, userResult, error }) => {
               />
             </div>
             <div className="result">
-              <Result />
+              <Result appState={appState} />
             </div>
           </div>
         </div>
