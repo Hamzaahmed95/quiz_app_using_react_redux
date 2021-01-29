@@ -118,7 +118,6 @@ const Answers = ({ isAdmin, user, appState, userResult, actions }) => {
     // }else{
     //   isClickable(true);
     // }
-    isClickable(true);
     firebase
       .database()
       .ref("appState")

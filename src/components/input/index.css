@@ -14,13 +14,12 @@
   padding-bottom: 20px;
 }
 .quiz_start_text {
-  color: black !important;
+  color: #6e6e6e !important;
   font-size: 28px;
 }
 
 @media screen and (max-width: 752px) {
   .quiz_start_text {
-    color: white;
-    font-size: 18px;
+    font-size: 14px;
   }
 }

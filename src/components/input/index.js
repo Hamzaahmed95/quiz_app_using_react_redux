@@ -98,7 +98,12 @@ const CustomizedInputs = ({
       )}
       {loginSuccess && !isLoggedIn && user.role === "user" && (
         <>
-          <p className="quiz_start_text">Quiz will start soon</p>
+          <p className="quiz_start_text">
+            Hello, <span style={{ fontWeight: "bold" }}>{user.name} </span>
+            <br />
+            <br />
+            Quiz will start soon
+          </p>
         </>
       )}
       {loginSuccess && !isLoggedIn && user.role === "admin" && (

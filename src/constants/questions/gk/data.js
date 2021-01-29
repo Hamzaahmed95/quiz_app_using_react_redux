@@ -1,60 +1,58 @@
 export const gkData = {
-  category: "General Knowledge",
+  category: "Category 1",
   question: [
     {
       id: "1",
-      description: "Which is the lowest class of civil Award in Pakistan?",
-      description2: "پاکستان میں سب سے چھوٹا سول ایوارڈ  کونسا ہے؟",
+      description: "This is question 1?",
+      description2: "یہ پہلا سوال ہے",
       timer: 20.0,
       answer: [
         {
           id: "1",
-          details: "Nishaan / نشان",
+          details: "Answer 1 / جواب 1",
           isTrue: false
         },
         {
           id: "2",
-          details: "Hilal / حلال",
+          details: "Answer 2 / جواب 2",
           isTrue: false
         },
         {
           id: "3",
-          details: "Sitara / ستارہ",
+          details: "Answer 3 / جواب 3",
           isTrue: false
         },
         {
           id: "4",
-          details: "Tamgha / تمغہ",
+          details: "Answer 4 / جواب 4",
           isTrue: true
         }
       ]
     },
     {
       id: "2",
-      description:
-        "Who was cited with the first Nishan-i-Haider for his gallant and actions of valor?",
-      description2:
-        "کونسے فوجی کو سب سے پہلے انکی بہادری اور دلیری پر نشان حیدرسے نوازا گیا؟",
+      description: "This is second Question?",
+      description2: "یہ دوسرا سوال ہے",
       timer: 20.0,
       answer: [
         {
           id: "1",
-          details: "Muhammad Sarwar Shaheed / محمد سرور شہید",
+          details: "Answer 4 / جواب 1",
           isTrue: true
         },
         {
           id: "2",
-          details: "Aziz bhatti Shaheed / عزیز بھٹی شہید",
+          details: "Answer 4  / جواب 2",
           isTrue: false
         },
         {
           id: "3",
-          details: "Rashid Minhas Shaheed / راشد منہاس شہید",
+          details: "Answer 4  / جواب 3",
           isTrue: false
         },
         {
           id: "4",
-          details: "kernel Sher Khan Shaheed / کرنل شیر خان شہید",
+          details: "Answer 4  / جواب 4",
           isTrue: false
         }
       ]
