@@ -6,7 +6,7 @@ import Register from "../register/register";
 import Result from "../result/index";
 
 const Main = ({ isLoggedIn, user, appState, userResult, error }) => {
-  const [rank, setRank] = useState("");
+  const [rank, setRank] = useState(0);
 
   const result = data => {
     data.filter((e, i) => {
@@ -35,7 +35,12 @@ const Main = ({ isLoggedIn, user, appState, userResult, error }) => {
       ) : appState.state < 40 ? (
         <div>
           <div className="main_container">
-            <span className="main_username">{user.name}</span>
+            <span className="main_username">
+              {user.name}{" "}
+              <span align="left" className="main_username_result">
+                <br />({userResult.name})
+              </span>
+            </span>
             <span className="main_category">{getCategory()}</span>
             <div className="main_results_container">
               <span align="left" className="main_score">

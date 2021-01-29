@@ -99,10 +99,52 @@ const CustomizedInputs = ({
       {loginSuccess && !isLoggedIn && user.role === "user" && (
         <>
           <p className="quiz_start_text">
-            Hello, <span style={{ fontWeight: "bold" }}>{user.name} </span>
-            <br />
-            <br />
-            Quiz will start soon
+            <p>
+              Hello{" "}
+              <span style={{ fontWeight: "bold", color: "#194171" }}>
+                {user.name}!{" "}
+              </span>
+              Welcome to the Nawait Mastermind
+            </p>
+
+            <p className="quiz_start_text_ins" align="left">
+              Instructions
+            </p>
+            <ol className="quiz_start_text_ol" align="left">
+              <li>Each category has 10 questions</li>
+              <li>
+                Time of each question of General Knowledege, Islamic and Nawait
+                categories is 20 seconds.
+              </li>
+              <li>Time of each question of IQ is 30 seconds.</li>
+              <li>Participant can only answer one question at a time.</li>
+              <li>Participant can not answer after the timer has finished.</li>
+              <li>
+                Top 15 participants result will be shown after compeletion of
+                each category.
+              </li>
+              <li>
+                Result will be based on two factors. Total Number of true
+                answers and total time
+              </li>
+              <li>
+                If more than 1 participant has same number of true answers, then
+                result will calculate on total time i.e. the one who answered
+                question in less amount of time.
+              </li>
+              <li>
+                Top 50 participants will be shown in the final result after quiz
+                will end.
+              </li>
+              <li>
+                For privacy, we changed the names of females by their husbands
+                or fathers reference. eg: Umme, Mrs etc.. in the result section
+              </li>
+            </ol>
+
+            <p align="center" style={{ fontWeight: "bold", fontSize: "25px" }}>
+              Best of luck!
+            </p>
           </p>
         </>
       )}

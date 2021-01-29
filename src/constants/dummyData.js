@@ -329,7 +329,7 @@ export const data = {
         {
           id: "1",
           details: "battle of hunain / غزوہ حنین",
-          isTrue: true
+          isTrue: false
         },
         {
           id: "2",
@@ -344,7 +344,7 @@ export const data = {
         {
           id: "4",
           details: "battle of tabuk /غزوہ تبوک",
-          isTrue: false
+          isTrue: true
         }
       ]
     },
@@ -586,13 +586,13 @@ export const data = {
           id: "3",
           details:
             "Hazrat Abu Sufiyan Razi ALLAHo Anho /  حضرت ابو سفیان رضی اللہ تعالیٰ عنہٗ",
-          isTrue: true
+          isTrue: false
         },
         {
           id: "4",
           details:
             "Hazrat Abdur Rehman Razi ALLAHo Anho /حضرت عبدالرحمن رضی اللہ تعالیٰ عنہٗ",
-          isTrue: false
+          isTrue: true
         }
       ]
     },
@@ -1043,28 +1043,28 @@ export const data = {
     },
     {
       id: "36",
-      description: "How many people have been burried in Moach Goth Graveyard?",
+      description: "How many people have been burried in Muhaj Goth Graveyard?",
       description2: "مانج گوٹھ کے قبرستان میں کتنی قبر ہے؟",
       timer: 20.0,
       answer: [
         {
           id: "1",
-          details: "61",
+          details: "60-64",
           isTrue: true
         },
         {
           id: "2",
-          details: "51",
+          details: "55-59",
           isTrue: false
         },
         {
           id: "3",
-          details: "71",
+          details: "65-69",
           isTrue: false
         },
         {
           id: "4",
-          details: "81",
+          details: "70-74",
           isTrue: false
         }
       ]

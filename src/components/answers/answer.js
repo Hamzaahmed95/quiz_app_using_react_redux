@@ -9,7 +9,7 @@ import { data } from "../../constants/dummyData";
 import firebase from "firebase";
 
 const Answers = ({ isAdmin, user, appState, userResult, actions }) => {
-  const [timer, setTimer] = useState(20);
+  const [timer, setTimer] = useState(data.question[appState.state].timer);
   const [clickable, isClickable] = useState(true);
   let milliseconds = 100;
   let seconds = 0;
@@ -17,7 +17,9 @@ const Answers = ({ isAdmin, user, appState, userResult, actions }) => {
   const [answerColor2, setAnswerColor2] = useState("purple");
   const [answerColor3, setAnswerColor3] = useState("purple");
   const [answerColor4, setAnswerColor4] = useState("purple");
-  const [duration, setDuration] = useState(19);
+  const [duration, setDuration] = useState(
+    data.question[appState.state].timer - 1
+  );
   const correctAnswer = () => {
     const answerTime = +(seconds + "." + milliseconds);
     const questionTime = +data.question[appState.state].timer;
@@ -75,7 +77,7 @@ const Answers = ({ isAdmin, user, appState, userResult, actions }) => {
       setDuration(0);
       setTimer(timer => timer + 1);
     } else {
-      setDuration(19);
+      setDuration(data.question[appState.state].timer - 1);
       // if (localStorage.getItem("close")) isClickable(false);
       setTimer(timer => timer + 1);
       isClickable(true);
