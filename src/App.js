@@ -4,10 +4,7 @@ import Loading from "./components/loading/index";
 import { firebaseConfig } from "./constants/apikey.js";
 import firebase from "firebase/app";
 import Card from "@material-ui/core/Card";
-import Result from "./components/result/index";
 import logo from "./assets/logo.png";
-import bgWhite from "./assets/bgWhite.png";
-
 class App extends Component {
   constructor(props) {
     super(props);
@@ -21,15 +18,14 @@ class App extends Component {
   componentCleanup() {
     localStorage.setItem("close", true);
   }
-  componentDidMount(){
-    window.addEventListener('beforeunload', this.componentCleanup);
+  componentDidMount() {
+    window.addEventListener("beforeunload", this.componentCleanup);
   }
   componentWillUnmount() {
     this.componentCleanup();
-    window.removeEventListener('beforeunload', this.componentCleanup); // remove the event handler for normal unmounting
+    window.removeEventListener("beforeunload", this.componentCleanup); // remove the event handler for normal unmounting
   }
   render() {
-  
     return (
       <div align="center" className="App">
         <Card variant="outlined" className="parent_answer_container">

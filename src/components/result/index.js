@@ -7,11 +7,8 @@ import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import firebase from "firebase";
 import "./index.css";
-import { data } from "../../constants/dummyDataResult";
 
 const Result = props => {
-  console.log("Result1: " + props.appState);
-  const [resultShown, isResultShown] = useState(false);
   const [data, setData] = useState([]);
 
   let datas = [];
@@ -26,15 +23,25 @@ const Result = props => {
           datas.push(data.val());
         });
 
-        datas.sort((a, b) =>
-          a.totalCorrectAnswers < b.totalCorrectAnswers
-            ? 1
-            : a.totalCorrectAnswers === b.totalCorrectAnswers
-            ? a.score > b.score
-              ? 1
-              : -1
-            : -1
+        // datas.sort((a, b) =>
+        //   a.totalCorrectAnswers < b.totalCorrectAnswers
+        //     ? 1
+        //     : a.totalCorrectAnswers === b.totalCorrectAnswers
+        //     ? a.score > b.score
+        //       ? 1
+        //       : -1
+        //     : -1
+        // );
+        datas.sort(
+          (a, b) =>
+            b.totalCorrectAnswers - a.totalCorrectAnswers || a.score - b.score
         );
+
+        // datas.sort((a, b) =>
+        //   a.totalCorrectAnswers < b.totalCorrectAnswers ? 1 : -1
+        // );
+        // // .sort((a, b) => (a.score < b.score ? 1 : -1));
+        // // datas
 
         setData(datas);
         props.result(datas);
