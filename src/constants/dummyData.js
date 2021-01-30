@@ -353,7 +353,7 @@ export const data = {
       description:
         "Which surah's ayat was revealed on denial of Hazrat Abu Bakr Siddique Razi Allah o Anh taking the responsibility of a Sahaba?",
       description2:
-        "ایک صحابی  کی کفالت کے انکار پر اللہ رب العالمین نے قرآن میں حضرت ابوبکر  رضی اللہ عنہ کے لیے قرآن کی کونسی سورت سے آیت نازل کی",
+        "ایک صحابی  کے وظیفہ کے انکار پر اللہ رب العالمین نے قرآن میں حضرت ابوبکر  رضی اللہ عنہ کے لیے قرآن کی کونسی سورت سے آیت نازل کی",
       timer: 20.0,
       answer: [
         {
@@ -462,7 +462,7 @@ export const data = {
         },
         {
           id: "3",
-          details: "Iqba bin abi mueet / عقبہ بن ابی معیط",
+          details: "Uqba bin abi mueet / عقبہ بن ابی معیط",
           isTrue: true
         },
         {
@@ -986,7 +986,7 @@ export const data = {
       description:
         "Out of below, Bidchol shaikh served as what for Nawait jamat ul muslimeen?",
       description2:
-        " بڑچول شیخ  محی الدین صاحب جماعت کے ان میں سے کون سے عہدے پر فائز تھے؟",
+        " بڑچول شیخ  محی الدین صاحب جماعت کے ان میں سے کون سے عہدے پر فائز رہے؟",
       timer: 20.0,
       answer: [
         {
@@ -1043,8 +1043,9 @@ export const data = {
     },
     {
       id: "36",
-      description: "How many people have been burried in Muhaj Goth Graveyard?",
-      description2: "مانج گوٹھ کے قبرستان میں کتنی قبر ہے؟",
+      description:
+        "How many people have been burried in Moach goth (Al Nawait graveyard)?",
+      description2: "مواچھ گوٹھ النوائط قبرستان کے قبرستان میں کتنی قبر ہے؟",
       timer: 20.0,
       answer: [
         {
@@ -1073,7 +1074,7 @@ export const data = {
       id: "37",
       description: "When was the first prayer offered in Masjid-e-Rehman?",
       description2:
-        " نوایت کی پہلی مسجد - مسجدِ رحمان میں پہلی نماز کب آدا کی گئی؟",
+        " نوائط کی پہلی مسجد - مسجدِ الرحمن میں پہلی نماز کب آدا کی گئی؟",
       timer: 20.0,
       answer: [
         {
@@ -1129,7 +1130,7 @@ export const data = {
     {
       id: "39",
       description:
-        'Who is the author of the poem "Chalye jamat k sath sath chalye"?',
+        'Who is the poet of the poem "Chalye jamat k sath sath chalye"?',
       description2: "چلیے جماعت کے ساتھ چلیے یہ نظم کس نے لکھی ہے؟",
       timer: 20.0,
       answer: [
@@ -1160,7 +1161,7 @@ export const data = {
       description:
         "For how long has the current president of Nawait Community, Khateeb Hafeez has been associated with nawait Jamiat?",
       description2:
-        " نوايت کے موجودہ صدر خطیب حفیظ لرحمان کس سال سے نوایت جمیعت کے رُکن ہے؟",
+        " نوائط کے موجودہ صدر خطیب حفیظ الرحمن کس سال سے نوایت جمیعت کے رُکن ہے؟",
       timer: 20.0,
       answer: [
         {
