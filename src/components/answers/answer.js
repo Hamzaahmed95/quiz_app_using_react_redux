@@ -27,11 +27,18 @@ const Answers = ({ isAdmin, user, appState, userResult, actions }) => {
     const score = +userResult.score + correctTime;
     const obj = {
       score: score.toFixed(2),
-      totalCorrectAnswers: userResult["totalCorrectAnswers"] + 1
+      totalCorrectAnswers: userResult["totalCorrectAnswers"] + 1,
+      rank: appState.state
     };
     actions.storeAnswer(obj, userResult["id"]);
   };
 
+  const updateCurrentQuestionClick = () => {
+    const obj = {
+      rank: appState.state
+    };
+    actions.storeAnswer(obj, userResult["id"]);
+  };
   const onCompleteTimer = () => {
     isClickable(false);
     milliseconds = 0;
@@ -80,7 +87,11 @@ const Answers = ({ isAdmin, user, appState, userResult, actions }) => {
       setDuration(data.question[appState.state].timer - 1);
       // if (localStorage.getItem("close")) isClickable(false);
       setTimer(timer => timer + 1);
-      isClickable(true);
+      if(userResult.rank == appState.state){
+        isClickable(false);
+      }else{
+        isClickable(true);
+      }
     }
   }, [appState]);
   useEffect(() => {
@@ -94,7 +105,11 @@ const Answers = ({ isAdmin, user, appState, userResult, actions }) => {
   }, [appState.state]);
   const handleClickAnswerCommon = (isTrue, value) => {
     if (clickable) {
-      if (isTrue) correctAnswer();
+      if (isTrue){
+        correctAnswer();
+      }else{
+        updateCurrentQuestionClick();
+      }
       answerSwitch(value, "grey");
       isClickable(false);
     }
