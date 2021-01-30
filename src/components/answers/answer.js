@@ -26,16 +26,17 @@ const Answers = ({ isAdmin, user, appState, userResult, actions }) => {
     const correctTime = questionTime - answerTime;
     const score = +userResult.score + correctTime;
     const obj = {
+      rank: appState.state,
       score: score.toFixed(2),
-      totalCorrectAnswers: userResult["totalCorrectAnswers"] + 1,
-      rank: appState.state
+      totalCorrectAnswers: userResult["totalCorrectAnswers"] + 1
+      
     };
     actions.storeAnswer(obj, userResult["id"]);
   };
 
   const updateCurrentQuestionClick = () => {
     const obj = {
-      rank: appState.state
+      rank: appState.state,
     };
     actions.storeAnswer(obj, userResult["id"]);
   };
@@ -87,11 +88,6 @@ const Answers = ({ isAdmin, user, appState, userResult, actions }) => {
       setDuration(data.question[appState.state].timer - 1);
       // if (localStorage.getItem("close")) isClickable(false);
       setTimer(timer => timer + 1);
-      if(userResult.rank == appState.state){
-        isClickable(false);
-      }else{
-        isClickable(true);
-      }
     }
   }, [appState]);
   useEffect(() => {
@@ -130,11 +126,6 @@ const Answers = ({ isAdmin, user, appState, userResult, actions }) => {
       });
   };
   useEffect(() => {
-    // if (localStorage.getItem("close")){
-    //   isClickable(false);
-    // }else{
-    //   isClickable(true);
-    // }
     firebase
       .database()
       .ref("appState")
@@ -199,7 +190,7 @@ const Answers = ({ isAdmin, user, appState, userResult, actions }) => {
             className={answerColor1}
             variant="outlined"
             color="primary"
-            disabled={!appState.questionStatus}
+            disabled={!appState.questionStatus || userResult.rank == appState.state}
           >
             {lineBreakString(data.question[appState.state].answer[0].details)}
           </Button>
@@ -215,7 +206,7 @@ const Answers = ({ isAdmin, user, appState, userResult, actions }) => {
             className={answerColor2}
             variant="outlined"
             color="primary"
-            disabled={!appState.questionStatus}
+            disabled={!appState.questionStatus || userResult.rank == appState.state}
           >
             {lineBreakString(data.question[appState.state].answer[1].details)}
           </Button>
@@ -233,7 +224,7 @@ const Answers = ({ isAdmin, user, appState, userResult, actions }) => {
             className={answerColor3}
             variant="outlined"
             color="primary"
-            disabled={!appState.questionStatus}
+            disabled={!appState.questionStatus || userResult.rank == appState.state}
           >
             {lineBreakString(data.question[appState.state].answer[2].details)}
           </Button>
@@ -249,7 +240,7 @@ const Answers = ({ isAdmin, user, appState, userResult, actions }) => {
             className={answerColor4}
             variant="outlined"
             color="primary"
-            disabled={!appState.questionStatus}
+            disabled={!appState.questionStatus || userResult.rank == appState.state}
           >
             {lineBreakString(data.question[appState.state].answer[3].details)}
           </Button>

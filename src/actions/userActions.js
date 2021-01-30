@@ -139,9 +139,14 @@ export const storeAnswer = (obj, value) => {
           console.log("Error: passed");
           snapshot.forEach(function(data) {
             console.log("Error: passed", data.val());
-            data.ref.child("score").set(obj.score);
-            data.ref.child("totalCorrectAnswers").set(obj.totalCorrectAnswers);
-          });
+            if(obj.score && obj.totalCorrectAnswers){
+              data.ref.child("score").set(obj.score);
+              data.ref.child("totalCorrectAnswers").set(obj.totalCorrectAnswers);
+              data.ref.child("rank").set(obj.rank);
+            }else{
+              data.ref.child("rank").set(obj.rank);  
+            }
+                      });
         } else {
           console.log("Error: failed");
           dispatch({ type: USER_RESULT_FAILED, payload: "" });
