@@ -46,28 +46,25 @@ const Result = props => {
 
   console.log(JSON.stringify(data));
   const showResultData = (result, index) => {
-    if (index < props.limit) {
-      return (
-        <>
-          <TableRow key={result.id}>
-            {props.limit === 50 && (
-              <TableCell>
-                <b className="color">{index + 1}</b>
-              </TableCell>
-            )}
-            <TableCell className="color" component="th" scope="row">
-              <p className="color">{result.name}</p>
-            </TableCell>
-            <TableCell className="color" align="right">
-              <p className="color">{result.totalCorrectAnswers}</p>
-            </TableCell>
-            <TableCell className="color" align="right">
-              <p className="color">{result.score}</p>
-            </TableCell>
-          </TableRow>
-        </>
-      );
-    }
+    return (
+      <>
+        <TableRow key={result.id}>
+          <TableCell>
+            <b className="color">{index + 1}</b>
+          </TableCell>
+
+          <TableCell className="color" component="th" scope="row">
+            <p className="color">{result.name}</p>
+          </TableCell>
+          <TableCell className="color" align="right">
+            <p className="color">{result.totalCorrectAnswers}</p>
+          </TableCell>
+          <TableCell className="color" align="right">
+            <p className="color">{result.score}</p>
+          </TableCell>
+        </TableRow>
+      </>
+    );
   };
   return (
     <div>
