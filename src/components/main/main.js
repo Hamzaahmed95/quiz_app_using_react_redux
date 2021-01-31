@@ -35,20 +35,24 @@ const Main = ({ isLoggedIn, user, appState, userResult, error }) => {
         <div>
           <div className="main_container">
             <span className="main_username">
-              {user.name}{" "}
+            {user.role === "user" && user.name + " " }
               <span align="left" className="main_username_result">
-                <br />({userResult.name})
+                <br />{user.role === "admin" ? 'Admin' :`(${userResult.name})`}
               </span>
             </span>
             <span className="main_category">{getCategory()}</span>
             <div className="main_results_container">
+            {user.role === "user" &&
+            <>
               <span align="left" className="main_score">
                 Score: {userResult.score}
               </span>
 
               <span align="left" className="main_rank">
                 Rank: {rank}
-              </span>
+          </span>
+          </> 
+          }
             </div>
           </div>
 
