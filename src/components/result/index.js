@@ -22,26 +22,10 @@ const Result = props => {
         snapshot.forEach(function(data) {
           datas.push(data.val());
         });
-
-        // datas.sort((a, b) =>
-        //   a.totalCorrectAnswers < b.totalCorrectAnswers
-        //     ? 1
-        //     : a.totalCorrectAnswers === b.totalCorrectAnswers
-        //     ? a.score > b.score
-        //       ? 1
-        //       : -1
-        //     : -1
-        // );
         datas.sort(
           (a, b) =>
             b.totalCorrectAnswers - a.totalCorrectAnswers || a.score - b.score
         );
-
-        // datas.sort((a, b) =>
-        //   a.totalCorrectAnswers < b.totalCorrectAnswers ? 1 : -1
-        // );
-        // // .sort((a, b) => (a.score < b.score ? 1 : -1));
-        // // datas
 
         setData(datas);
         props.result(datas);
