@@ -7,11 +7,8 @@ import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import firebase from "firebase";
 import "./index.css";
-import { data } from "../../constants/dummyDataResult";
 
 const Result = props => {
-  console.log("Result1: " + props.appState);
-  const [resultShown, isResultShown] = useState(false);
   const [data, setData] = useState([]);
 
   let datas = [];
@@ -25,15 +22,9 @@ const Result = props => {
         snapshot.forEach(function(data) {
           datas.push(data.val());
         });
-
-        datas.sort((a, b) =>
-          a.totalCorrectAnswers < b.totalCorrectAnswers
-            ? 1
-            : a.totalCorrectAnswers === b.totalCorrectAnswers
-            ? a.score > b.score
-              ? 1
-              : -1
-            : -1
+        datas.sort(
+          (a, b) =>
+            b.totalCorrectAnswers - a.totalCorrectAnswers || a.score - b.score
         );
 
         setData(datas);

@@ -11,15 +11,17 @@ import firebase from "firebase";
 const Answers = ({ isAdmin, user, appState, userResult, actions }) => {
   const [timer, setTimer] = useState(data.question[appState.state].timer);
   const [clickable, isClickable] = useState(true);
-  let milliseconds = 100;
-  let seconds = 0;
+  const [duration, setDuration] = useState(
+    data.question[appState.state].timer - 1
+  );
   const [answerColor1, setAnswerColor1] = useState("purple");
   const [answerColor2, setAnswerColor2] = useState("purple");
   const [answerColor3, setAnswerColor3] = useState("purple");
   const [answerColor4, setAnswerColor4] = useState("purple");
-  const [duration, setDuration] = useState(
-    data.question[appState.state].timer - 1
-  );
+
+  let milliseconds = 100;
+  let seconds = 0;
+
   const correctAnswer = () => {
     const answerTime = +(seconds + "." + milliseconds);
     const questionTime = +data.question[appState.state].timer;
@@ -83,22 +85,17 @@ const Answers = ({ isAdmin, user, appState, userResult, actions }) => {
     if (!appState.questionStatus) {
       isClickable(false);
       setDuration(0);
-      setTimer(timer => timer + 1);
     } else {
+      isClickable(true);
       setDuration(data.question[appState.state].timer - 1);
-      // if (localStorage.getItem("close")) isClickable(false);
-      setTimer(timer => timer + 1);
+      setAnswerColor1("purple");
+      setAnswerColor2("purple");
+      setAnswerColor3("purple");
+      setAnswerColor4("purple");
     }
-  }, [appState]);
-  useEffect(() => {
-    console.log(appState, "appStateAsd");
-    isClickable(true);
     setTimer(timer => timer + 1);
-    setAnswerColor1("purple");
-    setAnswerColor2("purple");
-    setAnswerColor3("purple");
-    setAnswerColor4("purple");
-  }, [appState.state]);
+  }, [appState]);
+
   const handleClickAnswerCommon = (isTrue, value) => {
     if (clickable) {
       if (isTrue){
@@ -125,14 +122,6 @@ const Answers = ({ isAdmin, user, appState, userResult, actions }) => {
         });
       });
   };
-  useEffect(() => {
-    firebase
-      .database()
-      .ref("appState")
-      .on("value", () => {
-        console.log(appState, "appstare");
-      });
-  }, []);
 
   const children = ({ remainingTime }) => {
     if (milliseconds === 10) {

@@ -11,7 +11,6 @@ const Main = ({ isLoggedIn, user, appState, userResult, error }) => {
   const result = data => {
     data.filter((e, i) => {
       if (e.id == user.id) {
-        console.log("main:" + i);
         setRank(i + 1);
         return i;
       }
