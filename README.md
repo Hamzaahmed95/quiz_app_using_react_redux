@@ -2,7 +2,7 @@
 
 A quiz applicaton for taking and giving quizzes
 
-## UI SCREENS
+## UI Screens
 
 <img width="802" alt="Screenshot 2021-02-06 at 11 20 48 PM" src="https://user-images.githubusercontent.com/12881181/107122394-82b12380-68d2-11eb-9ba7-44cc246e6ca1.png">
 
