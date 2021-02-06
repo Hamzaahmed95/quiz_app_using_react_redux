@@ -1,4 +1,4 @@
-# Quiz App using React Redux
+# Quiz app using React Redux
 
 A quiz applicaton for taking and giving quizzes
 
